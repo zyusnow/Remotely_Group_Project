@@ -7,13 +7,13 @@ class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
     description = db.Column(db.String(255), nullable=False)
-    imageUrl = db.Column(db.string(255))
+    imageUrl = db.Column(db.String(255))
     price = db.Column(db.Float, nullable=False)
     quantity = db.Column(db.Integer, nullable=False)
     userId = db.Column(db.Integer,
-        db.ForeignKey('users.id', nullable=False))
+        db.ForeignKey('users.id'))
     categoryId = db.Column(db.Integer,
-        db.ForeignKey('categories.id'), nullable=False)
+        db.ForeignKey('categories.id'))
     createdAt = db.Column(db.DateTime, nullable=False, default=datetime.now())
     updatedAt = db.Column(db.DateTime, nullable=False, default=datetime.now())
 

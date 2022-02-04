@@ -8,7 +8,7 @@ class Review(db.Model):
     productId = db.Column(db.Integer,
         db.ForeignKey('products.id'), nullable=False)
     userId = db.Column(db.Integer,
-        db.ForeignKey('users.id', nullable=False))
+        db.ForeignKey('users.id'))
     rating = db.Column(db.Integer, nullable=False)
     comment = db.Column(db.String(2000))
     createdAt = db.Column(db.DateTime, nullable=False, default=datetime.now())
