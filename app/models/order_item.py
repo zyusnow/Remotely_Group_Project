@@ -6,9 +6,9 @@ class OrderItem(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     productId = db.Column(db.Integer,
-        db.ForeignKey('products.id'), nullable=False)
+        db.ForeignKey('products.id'))
     orderId = db.Column(db.Integer,
-        db.ForeignKey('orders.id'), nullable=False)
+        db.ForeignKey('orders.id'))
     quantity = db.Column(db.Integer, default=1, nullable=False)
     createdAt = db.Column(db.DateTime, nullable=False, default=datetime.now())
     updatedAt = db.Column(db.DateTime, nullable=False, default=datetime.now())

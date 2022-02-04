@@ -6,7 +6,7 @@ class Cart(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     userId = db.Column(db.Integer,
-        db.ForeignKey('users.id', nullable=False))
+        db.ForeignKey('users.id'))
     createdAt = db.Column(db.DateTime, nullable=False, default=datetime.now())
     updatedAt = db.Column(db.DateTime, nullable=False, default=datetime.now())
 

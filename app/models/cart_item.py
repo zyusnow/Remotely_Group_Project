@@ -6,9 +6,9 @@ class CartItem(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     productId = db.Column(db.Integer,
-        db.ForeignKey('products.id'), nullable=False)
+        db.ForeignKey('products.id'))
     cartId = db.Column(db.Integer,
-        db.ForeignKey('carts.id'), nullable=False)
+        db.ForeignKey('carts.id'))
     quantity = db.Column(db.Integer, nullable=False)
     createdAt = db.Column(db.DateTime, nullable=False, default=datetime.now())
     updatedAt = db.Column(db.DateTime, nullable=False, default=datetime.now())
