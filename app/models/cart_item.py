@@ -13,5 +13,5 @@ class CartItem(db.Model):
     createdAt = db.Column(db.DateTime, nullable=False, default=datetime.now())
     updatedAt = db.Column(db.DateTime, nullable=False, default=datetime.now())
 
-    cart = db.relationship('Cart', back_populates='cart_item')
-    product = db.relationship('Product', back_populates='cart_item')
+    cart = db.relationship('Cart', back_populates='cart_items')
+    product = db.relationship('Product', back_populates='cart_items')

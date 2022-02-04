@@ -10,5 +10,5 @@ class Cart(db.Model):
     createdAt = db.Column(db.DateTime, nullable=False, default=datetime.now())
     updatedAt = db.Column(db.DateTime, nullable=False, default=datetime.now())
 
-    cart_item = db.relationship('CartItem', back_populates='cart')
+    cart_items = db.relationship('CartItem', back_populates='cart')
     user = db.relationship('User', back_populates='cart')
