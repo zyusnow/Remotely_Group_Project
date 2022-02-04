@@ -17,5 +17,12 @@ class Product(db.Model):
     updatedAt = db.Column(db.Date(), nullable=False)
 
 
+
+
+
+
+
+
+
     category = db.relationship('')
     user = db.relationship('')
