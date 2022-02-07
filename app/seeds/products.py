@@ -8,7 +8,7 @@ def seed_products():
   price = 399.99,
   description='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
   quantity=10,
-  ),
+  )
   product02 = Product(
   title='Keychron K2 Keyboard',
   userId=1,
@@ -16,7 +16,7 @@ def seed_products():
   price = 100.00,
   description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
   quantity=10,
-  ),
+  )
   product03 = Product(
   title='iPad Pro 12.9"',
   userId=1,
@@ -24,7 +24,7 @@ def seed_products():
   price = 999.99,
   description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
   quantity=10
-  ),
+  )
   product04 = Product(
     title='Apple Magic Keyboard -Space Gray',
     userId=1,
@@ -32,7 +32,7 @@ def seed_products():
     price = 149.99,
     description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
     quantity=10
-  ),
+  )
   product05 = Product(
   title='ALT Over The Ear Headset',
   userId=1,
@@ -40,7 +40,7 @@ def seed_products():
   price = 99.99,
   description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
   quantity = 10
-  ),
+  )
   product06 = Product(
   title = 'Desktop Air Purifier',
   userId = 1,
