@@ -1,0 +1,68 @@
+#modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    /* border-color: grey; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+#modal-background {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(88, 88, 88, 0.58);
+}
+
+#modal-content {
+  position: absolute;
+  width: 440px;
+  height: fit-content;
+  padding:40px;
+  border-radius: 8px;
+}
+
+#modal-content input{
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid black;
+  /* caret-color: black; */
+  background: none;
+}
+
+#modal-content input:focus{
+  outline:black;
+  border: 1px solid black;
+}
+
+.button_submit{
+  width:100%;
+  box-sizing: border-box;
+  padding:10px 0;
+  margin: 8px 0;
+  font-size: 14px;
+  border-radius: 5px;
+  border: none;
+}
+
+.button_submit:hover{
+  cursor: pointer;
+}
+
+.button_submit.button_secondary{
+  background-color: #ffd08c;
+}
+
+.button_submit.button_transfer{
+  background-color:#ffd08c;
+}
+
+.hrmodal{
+  margin: 8px 0;
+}

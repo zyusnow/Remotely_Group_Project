@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Route, Switch} from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import LoginForm from './components/auth/LoginForm';
-import SignUpForm from './components/auth/SignUpForm';
-import NavBar from './components/NavBar';
-import ProtectedRoute from './components/auth/ProtectedRoute';
-import UsersList from './components/UsersList';
-import User from './components/User';
+
+
+import LoginPage from './components/auth/LoginPage';
+import SignupPage from './components/auth/SignupPage';
+import NavBar from './components/NavBar'
+import PageNotFound from "./components/PageNotFound";
+// import ProtectedRoute from './components/auth/ProtectedRoute';
 import { authenticate } from './store/session';
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -25,27 +27,32 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
-      <NavBar />
-      <Switch>
-        <Route path='/login' exact={true}>
-          <LoginForm />
-        </Route>
-        <Route path='/sign-up' exact={true}>
-          <SignUpForm />
-        </Route>
-        <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
-        </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
-          <User />
-        </ProtectedRoute>
-        <ProtectedRoute path='/' exact={true} >
-          <h1>My Home Page</h1>
-        </ProtectedRoute>
-      </Switch>
-    </BrowserRouter>
-  );
+    <>
+      <NavBar loaded={loaded} />
+      <div>
+        {loaded && (
+          <div id='main'>
+            <Switch>
+              <Route path='/' exact={true}><h1>My Home Page</h1></Route>
+              <Route path='/signup' exact={true}><SignupPage /></Route>
+              <Route path='/login' exact={true}><LoginPage /></Route>
+              <Route path='/not-found' exact={true}><PageNotFound /></Route>
+            </Switch>
+          </div>
+        )}
+      </div>
+    </>
+  )
 }
+        // <ProtectedRoute path='/users' exact={true} >
+        //   <UsersList/>
+        // </ProtectedRoute>
+        // <ProtectedRoute path='/users/:userId' exact={true} >
+        //   <User />
+        // </ProtectedRoute>
+
+
+
+
 
 export default App;
