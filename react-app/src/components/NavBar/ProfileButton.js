@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Redirect, useHistory } from "react-router-dom";
+import { Redirect, useHistory, NavLink} from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import * as sessionActions from '../../store/session';
 
@@ -51,6 +51,9 @@ function ProfileButton({ user }) {
           </li>
           <li>
             <button id="nav_logout" onClick={logout}>Log Out</button>
+          </li>
+          <li>
+            <NavLink to='/cart'>Cart</NavLink>
           </li>
         </ul>
       )}

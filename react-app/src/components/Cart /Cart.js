@@ -1,7 +1,8 @@
-import {useEffect} from 'react';
+import {useSelector, useEffect} from 'react';
 
-function Cart() {
+function CartPage() {
 
+  const sessionUser = useSelector(state => state.session.user);
   return (
     <>
     <h1>Cart</h1>
@@ -9,4 +10,4 @@ function Cart() {
   )
 }
 
-export default Cart;
+export default CartPage;

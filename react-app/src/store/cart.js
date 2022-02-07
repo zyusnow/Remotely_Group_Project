@@ -5,9 +5,9 @@ const getCart = (cart) => ({
   type: GET_CART,
   payload: cart
 });
-
+const initialState = { cart: [] };
 //Loads cart based on ID
-export const getCart = () => async (dispatch) => {
+export const loadCart = () => async (dispatch) => {
   const response = await fetch('/api/cart/cartId', {
     headers: {
       'Content-Type': 'application/json'
@@ -23,7 +23,7 @@ export const getCart = () => async (dispatch) => {
 }
 
 //Recucer
-export default function reducer(state=initialState, action) {
+export default function reducer(state = initialState, action) {
   switch (action.type) {
     case GET_CART:
       return { cart: action.payload }
