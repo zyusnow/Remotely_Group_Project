@@ -1,21 +1,26 @@
+
 //constants
 const GET_CART = 'cart/GET_CART';
 
 const getCart = (cart) => ({
   type: GET_CART,
-  payload: cart
+  cart
+
 });
+
 const initialState = { cart: [] };
 
 //Loads cart based on ID
-export const loadCart = () => async (dispatch) => {
-  const response = await fetch('/api/cart/:cartId', {
+export const loadCart = (cartId) => async (dispatch) => {
+   console.log("string data SEE MEEEEE");
+  const response = await fetch(`/api/cart/${cartId}`, {
     headers: {
       'Content-Type': 'application/json'
     }
   });
   if (response.ok) {
     const data = await response.json();
+    console.log(data)
     if (data.errors) {
       return;
     }
@@ -25,9 +30,14 @@ export const loadCart = () => async (dispatch) => {
 
 //Recucer
 export default function reducer(state = initialState, action) {
+
+  let newState = {};
+
   switch (action.type) {
     case GET_CART:
-      return { cart: action.payload }
+      newState = {...state};
+      newState[action.cart.id] = action.cart
+      return newState
     default:
       return state;
   }
