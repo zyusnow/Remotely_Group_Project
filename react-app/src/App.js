@@ -38,7 +38,7 @@ function App() {
               <Route path='/signup' exact={true}><SignupPage /></Route>
               <Route path='/login' exact={true}><LoginPage /></Route>
               <Route path='/not-found' exact={true}><PageNotFound /></Route>
-              <ProtectedRoute path='/cart'> <CartPage/> </ProtectedRoute>
+              <ProtectedRoute path='/cart/:cartId'> <CartPage/> </ProtectedRoute>
             </Switch>
           </div>
         )}
