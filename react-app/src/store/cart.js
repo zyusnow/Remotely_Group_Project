@@ -6,9 +6,10 @@ const getCart = (cart) => ({
   payload: cart
 });
 const initialState = { cart: [] };
+
 //Loads cart based on ID
 export const loadCart = () => async (dispatch) => {
-  const response = await fetch('/api/cart/cartId', {
+  const response = await fetch('/api/cart/:cartId', {
     headers: {
       'Content-Type': 'application/json'
     }

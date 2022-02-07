@@ -22,7 +22,6 @@ function NavBar({ loaded }) {
                 <>
                     <LoginFormModal />
                     <SignupFormModal />
-                    <NavLink to='/cart'>Cart</NavLink>
                 </>
             );
         }
