@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, session, request, redirect
 from flask_login import login_required
 from app.models import Product, db
-# from app.forms import ProductForm
+from app.forms import ProductForm
 
 product_routes = Blueprint('products', __name__)
 
@@ -26,21 +26,21 @@ def get_product(id):
     product = Product.query.get(id)
     return product.to_dict()
 
-# @product_routes.route('/new', methods=['POST'])
-# def add_product():
-#     form = ProductForm()
-#     form['csrf_token'].data = request.cookies['csrf_token']
-#     if form.validate_on_submit():
-#         new_product = Product(
-#             title = form.data['title'],
-#             description = form.data['description'],
-#             imageUrl = form.data['imageUrl'],
-#             price = form.data['price'],
-#             quantity = form.data['quantity'],
-
-
-#         )
-#         db.session.add(new_product)
-#         db.session.commit()
-#         return redirect('/')
-#     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+@product_routes.route('/new', methods=['GET', 'POST'])
+def add_product():
+    form = ProductForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        new_product = Product(
+            title = form.data['title'],
+            description = form.data['description'],
+            imageUrl = form.data['imageUrl'],
+            price = form.data['price'],
+            quantity = form.data['quantity'],
+            categoryId = 1,
+            userId = 1
+        )
+        db.session.add(new_product)
+        db.session.commit()
+        return redirect('/')
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401

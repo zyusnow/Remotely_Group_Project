@@ -14,3 +14,5 @@ class ProductForm(FlaskForm):
     quantity = IntegerField('Quantity', validators=[DataRequired(), NumberRange(min=1, message="Please enter a valid quantity")])
     category = SelectField('Category', choices=categories, validators=[DataRequired()])
 
+
+
