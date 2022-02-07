@@ -2,6 +2,10 @@ from flask.cli import AppGroup
 from .users import seed_users, undo_users
 from .categories import seed_categories, undo_categories
 
+from .products import seed_products, undo_products
+from .reviews import seed_reviews, undo_reviews
+from .cart import seed_cart, undo_cart
+from .cart_items import seed_cart_items, undo_cart_items
 # Creates a seed group to hold our commands
 # So we can type `flask seed --help`
 seed_commands = AppGroup('seed')
@@ -12,6 +16,10 @@ seed_commands = AppGroup('seed')
 def seed():
     seed_users()
     seed_categories()
+    seed_products()
+    seed_reviews()
+    seed_cart()
+    seed_cart_items()
     # Add other seed functions here
 
 
@@ -20,4 +28,8 @@ def seed():
 def undo():
     undo_users()
     undo_categories()
+    undo_products()
+    undo_reviews()
+    undo_cart()
+    undo_cart_items()
     # Add other undo functions here
