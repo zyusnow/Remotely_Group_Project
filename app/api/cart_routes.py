@@ -7,5 +7,4 @@ cart_routes = Blueprint('cart', __name__)
 @cart_routes.route('/<int:id>')
 def cart(id):
     cart = Cart.query.get(id)
-    # jsonify(cart.to_dict())
-    return '<h1>Cart Route Working, Yay!</h1>'
+    return jsonify(cart.to_dict())
