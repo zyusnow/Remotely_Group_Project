@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, session, request
+from flask import Blueprint, jsonify, session, request, redirect
 from flask_login import login_required
 from app.models import Product, db
 from app.forms import ProductForm
@@ -32,5 +32,15 @@ def add_product():
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         new_product = Product(
-            title=
+            title = form.data['title'],
+            description = form.data['description'],
+            imageUrl = form.data['imageUrl'],
+            price = form.data['price'],
+            quantity = form.data['quantity'],
+
+
         )
+        db.session.add(new_product)
+        db.session.commit()
+        return redirect('/')
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
