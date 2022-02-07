@@ -7,6 +7,7 @@ import LoginPage from './components/auth/LoginPage';
 import SignupPage from './components/auth/SignupPage';
 import NavBar from './components/NavBar'
 import PageNotFound from "./components/PageNotFound";
+import AllProducts from './components/Products';
 // import ProtectedRoute from './components/auth/ProtectedRoute';
 import { authenticate } from './store/session';
 
@@ -37,6 +38,8 @@ function App() {
               <Route path='/signup' exact={true}><SignupPage /></Route>
               <Route path='/login' exact={true}><LoginPage /></Route>
               <Route path='/not-found' exact={true}><PageNotFound /></Route>
+              <Route path='/products' exact={true}><AllProducts /></Route>
+
             </Switch>
           </div>
         )}
