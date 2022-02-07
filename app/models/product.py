@@ -22,3 +22,17 @@ class Product(db.Model):
     order_items = db.relationship('OrderItem', back_populates='product')
     cart_items = db.relationship('CartItem', back_populates='product')
     reviews = db.relationship('Review', back_populates='product')
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'title': self.title,
+            'description': self.description,
+            'imageUrl': self.imageUrl,
+            'price': self.price,
+            'quantity': self.quantity,
+            'userId': self.userId,
+            'categoryId': self.categoryId,
+            'createdAt': self.createdAt,
+            'updatedAt': self.updatedAt
+        }
