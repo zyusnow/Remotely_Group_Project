@@ -1,3 +1,4 @@
+from unicodedata import category
 from app.models import db, Product
 
 def seed_products():
@@ -8,6 +9,7 @@ def seed_products():
   price = 399.99,
   description='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
   quantity=10,
+  categoryId=1,
   )
   product02 = Product(
   title='Keychron K2 Keyboard',
@@ -16,6 +18,7 @@ def seed_products():
   price = 100.00,
   description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
   quantity=10,
+  categoryId=2,
   )
   product03 = Product(
   title='iPad Pro 12.9"',
@@ -23,7 +26,8 @@ def seed_products():
   imageUrl='https://res.cloudinary.com/bigtechnik/imageUrl/upload/v1644253487/Remotely/imageUrl_yrnqdn.png',
   price = 999.99,
   description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-  quantity=10
+  quantity=10,
+  categoryId=2,
   )
   product04 = Product(
     title='Apple Magic Keyboard -Space Gray',
@@ -31,7 +35,8 @@ def seed_products():
     imageUrl='https://res.cloudinary.com/bigtechnik/imageUrl/upload/v1644253515/Remotely/imageUrl_xqoaoa.png',
     price = 149.99,
     description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-    quantity=10
+    quantity=10,
+    categoryId=2,
   )
   product05 = Product(
   title='ALT Over The Ear Headset',
@@ -39,7 +44,8 @@ def seed_products():
   imageUrl='https://res.cloudinary.com/bigtechnik/imageUrl/upload/v1644253404/Remotely/imageUrl_dgz2jl.jpg',
   price = 99.99,
   description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-  quantity = 10
+  quantity = 10,
+  categoryId=2,
   )
   product06 = Product(
   title = 'Desktop Air Purifier',
@@ -47,7 +53,8 @@ def seed_products():
   imageUrl='https://res.cloudinary.com/bigtechnik/imageUrl/upload/v1644254451/Remotely/imageUrl_upspw6.png',
   price = 199.99,
   description='Lorem ipsum dolor sit amet, consectetur adispiscing elit, sed do eismod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-  quantity=10
+  quantity=10,
+  categoryId=2,
   )
 
   db.session.add(product01)
