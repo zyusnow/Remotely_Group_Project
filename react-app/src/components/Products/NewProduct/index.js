@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux'
-import { useHistory, Redirect } from 'react-router-dom'
+import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import { addOneProduct } from '../../../store/product';
 
 export default function NewProduct() {
@@ -14,27 +14,35 @@ export default function NewProduct() {
 
     const dispatch = useDispatch()
     const history = useHistory()
-    const sessionUser = useSelector(state => state.session.user)
+
+    useEffect(() => {
+        const errors = [];
+        if (title.length < 2 || !title) errors.push("Please enter a valid title")
+        if (title.length > 100) errors.push("Title must be less than 100 characters")
+        if (description.length < 2) errors.push("Please enter a valid description")
+        if (description.length > 255) errors.push("Description must be less than 255 characters") 
+        if (price < 1) errors.push("Price must be at least $1")
+        if (quantity < 1) errors.push("Please enter a valid quantity")
+
+        setErrors(errors)
+      },[title, description, price, quantity])
 
     const addProductSubmit = async (e) => {
         e.preventDefault()
 
         const payload = {
-            userId: sessionUser.id,
             title,
             description,
             imageUrl,
             price,
             quantity,
-            categoryId
+            categoryId: 1
         }
 
-        return dispatch(addOneProduct(payload))
-            .catch(async (res) => {
-                const data = await res.json()
-                if (data.errors) setErrors(data.errors)
-            })
-            .then((res) => res && history.push("/"))
+        let newProduct = await dispatch(addOneProduct(payload))
+        if (newProduct) {
+            history.push("/")
+        }
     }
   return (
     <div className="new-product-container">
@@ -61,6 +69,7 @@ export default function NewProduct() {
             name="price"
             autoComplete="off"
             placeholder='Price'
+            step="0.01"
             value={price}
             onChange={(e) => setPrice(e.target.value)}
           />
@@ -75,8 +84,7 @@ export default function NewProduct() {
             onChange={(e) => setQuantity(e.target.value)}
           />
           <label htmlFor="description">Description</label>
-          <input 
-            type="text"
+          <textarea 
             name="description"
             autoComplete="off"
             placeholder='Description'
@@ -84,8 +92,11 @@ export default function NewProduct() {
             onChange={(e) => setDescription(e.target.value)}
           />
           <label htmlFor="Category">Category</label>
-          <select/>
-
+          <select onChange={(e) => setCategoryName(e.target.value)}>
+              {/* {categoryTypes.map(category => 
+                <option key={category.id} id={category.id}>{category}</option> 
+                )} */}
+          </select>
           <label htmlFor="imageUrl">Image URL</label>
           <input 
             type="url"

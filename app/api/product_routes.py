@@ -26,7 +26,7 @@ def get_product(id):
     product = Product.query.get(id)
     return product.to_dict()
 
-@product_routes.route('/new', methods=['GET', 'POST'])
+@product_routes.route('/new', methods=['POST'])
 def add_product():
     form = ProductForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -37,8 +37,8 @@ def add_product():
             imageUrl = form.data['imageUrl'],
             price = form.data['price'],
             quantity = form.data['quantity'],
-            categoryId = form.data['categoryId'],
-            userId = current_user.id
+            categoryId = int(form.data['categoryId']),
+            userId = int(current_user.id)
         )
         db.session.add(new_product)
         db.session.commit()

@@ -47,18 +47,18 @@ export const getOneProduct = (productId) => async (dispatch) => {
 }
 
 export const addOneProduct = (productDetails) => async (dispatch) => {
-    const res = await fetch ('/api/products/new', {
+    const res = await fetch('/api/products/new', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body:JSON.stringify(productDetails)
+        body: JSON.stringify(productDetails)
     });
 
     if (res.ok) {
         const product = await res.json();
         dispatch(addProduct(product))
-        return null;
+        return product;
     } else if (res.status < 500) {
         const data = await res.json();
         if (data.errors) {
