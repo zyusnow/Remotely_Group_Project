@@ -4,7 +4,7 @@ def seed_products():
   product01 = Product(
   title='Remotely Adjustable Height Desk',
   userId=1,
-  imageUrl='https://res.cloudinary.com/bigtechnik/imageUrl/upload/v1644253577/Remotely/imageUrl_dalnxk.jpg',
+  imageUrl='https://res.cloudinary.com/dprnsux1z/image/upload/v1644296197/thestandingdesk-_mpablfu5pM-unsplash_m2snt5.jpg',
   price = 399.99,
   description='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
   quantity=10,
@@ -13,7 +13,7 @@ def seed_products():
   product02 = Product(
   title='Keychron K2 Keyboard',
   userId=1,
-  imageUrl='https://res.cloudinary.com/bigtechnik/imageUrl/upload/v1644253526/Remotely/imageUrl_mhtykj.png',
+  imageUrl='https://res.cloudinary.com/dprnsux1z/image/upload/v1644295664/nafis-al-sadnan-w6t471f3bBs-unsplash_zustbe.jpg',
   price = 100.00,
   description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
   quantity=10,
@@ -22,7 +22,7 @@ def seed_products():
   product03 = Product(
   title='iPad Pro 12.9"',
   userId=1,
-  imageUrl='https://res.cloudinary.com/bigtechnik/imageUrl/upload/v1644253487/Remotely/imageUrl_yrnqdn.png',
+  imageUrl='https://res.cloudinary.com/dprnsux1z/image/upload/v1644296070/daniel-romero-Z4_kN9ybLf4-unsplash_cwtd7k.jpg',
   price = 999.99,
   description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
   quantity=10,
@@ -31,7 +31,7 @@ def seed_products():
   product04 = Product(
     title='Apple Magic Keyboard -Space Gray',
     userId=1,
-    imageUrl='https://res.cloudinary.com/bigtechnik/imageUrl/upload/v1644253515/Remotely/imageUrl_xqoaoa.png',
+    imageUrl='https://res.cloudinary.com/dprnsux1z/image/upload/v1644296351/ramiro-mendes-CjS3QsRuxnE-unsplash_yqyi3u.jpg',
     price = 149.99,
     description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
     quantity=10,
@@ -40,7 +40,7 @@ def seed_products():
   product05 = Product(
   title='ALT Over The Ear Headset',
   userId=1,
-  imageUrl='https://res.cloudinary.com/bigtechnik/imageUrl/upload/v1644253404/Remotely/imageUrl_dgz2jl.jpg',
+  imageUrl='https://res.cloudinary.com/dprnsux1z/image/upload/v1644296468/c-d-x-PDX_a_82obo-unsplash_vylypt.jpg',
   price = 99.99,
   description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
   quantity = 10,
@@ -49,7 +49,7 @@ def seed_products():
   product06 = Product(
   title = 'Desktop Air Purifier',
   userId = 1,
-  imageUrl='https://res.cloudinary.com/bigtechnik/imageUrl/upload/v1644254451/Remotely/imageUrl_upspw6.png',
+  imageUrl='https://res.cloudinary.com/dprnsux1z/image/upload/v1644296542/alvaro-bernal-_Ib-JulMgzo-unsplash_soeosh.jpg',
   price = 199.99,
   description='Lorem ipsum dolor sit amet, consectetur adispiscing elit, sed do eismod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
   quantity=10,

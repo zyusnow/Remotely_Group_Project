@@ -9,25 +9,18 @@
 /* ------------------------------------------------------------ */
 
 .nav a {
-    color: black
+    color: black;
+    font-weight: 600;
 }
 
 .nav a:hover{
-    color:#ffd08c;
+    color:#8430f1;
 }
 
 #nav_head{
     font-size: 1.5em;
     text-decoration: none;
 }
-
-.nav_center a {
-    padding:0 20px;
-    text-decoration: none;
-    font-weight: 400;
-    font-size: 1.1em;
-}
-
 
 .nav_right{
     display: flex;

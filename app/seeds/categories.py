@@ -9,7 +9,7 @@ def seed_categories():
         name = 'Computer Technology',
     )
     category03 = Category(
-        name = 'Computer Accessories & Machines',
+        name = 'Computer Accessories',
     )
     category04 = Category(
         name = 'Stationery & Office Supplies'
@@ -18,7 +18,7 @@ def seed_categories():
         name = 'Boards'
     )
     category06 = Category(
-        name = 'Desk Storage'
+        name = 'Office Electronics'
     )
 
 
