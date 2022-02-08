@@ -1,27 +1,39 @@
 import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
+import { getAllCategories } from '../../../store/category';
 import { addOneProduct } from '../../../store/product';
 import './NewProduct.css'
 
+
 export default function NewProduct() {
-    const [title, setTitle] = useState("")
-    const [description, setDescription] = useState("")
-    const [imageUrl, setImageUrl] = useState("")
-    const [price, setPrice] = useState("")
-    const [quantity, setQuantity] = useState("")
-    const [categoryName, setCategoryName] = useState("")
+    const [title, setTitle] = useState("test")
+    const [description, setDescription] = useState("hh")
+    const [imageUrl, setImageUrl] = useState("https://res.cloudinary.com/dprnsux1z/image/upload/v1644337202/chalo-garcia-RBoGC_OJvWs-unsplash_kpuzkk.jpg")
+    const [price, setPrice] = useState("100")
+    const [quantity, setQuantity] = useState("1")
+    const [categoryId, setCategoryId] = useState("")
     const [errors, setErrors] = useState([])
+
+
+
+    const categoriesObj = useSelector(state => state?.category?.categories)
+    const categoriesArr = Object.values(categoriesObj)
 
     const dispatch = useDispatch()
     const history = useHistory()
+
+    useEffect(() => {
+      dispatch(getAllCategories())
+    }, [dispatch])
+
 
     useEffect(() => {
         const errors = [];
         if (title.length < 2 || !title) errors.push("Please enter a valid title")
         if (title.length > 100) errors.push("Title must be less than 100 characters")
         if (description.length < 2) errors.push("Please enter a valid description")
-        if (description.length > 255) errors.push("Description must be less than 255 characters") 
+        if (description.length > 255) errors.push("Description must be less than 255 characters")
         if (price < 1) errors.push("Price must be at least $1")
         if (quantity < 1) errors.push("Please enter a valid quantity")
 
@@ -37,12 +49,14 @@ export default function NewProduct() {
             imageUrl,
             price,
             quantity,
-            categoryId: 1
+            categoryId
         }
 
+        console.log("payload", payload)
         let newProduct = await dispatch(addOneProduct(payload))
+        console.log("newProduct", newProduct)
         if (newProduct) {
-            history.push("/")
+            history.push("/products")
         }
     }
   return (
@@ -64,7 +78,7 @@ export default function NewProduct() {
             onChange={(e) => setTitle(e.target.value)}
           />
           <label htmlFor="price">Price</label>
-          <input 
+          <input
             type="number"
             min="1"
             name="price"
@@ -75,7 +89,7 @@ export default function NewProduct() {
             onChange={(e) => setPrice(e.target.value)}
           />
           <label htmlFor="quantity">Quantity</label>
-          <input 
+          <input
             type="number"
             min="1"
             name="quantity"
@@ -85,7 +99,7 @@ export default function NewProduct() {
             onChange={(e) => setQuantity(e.target.value)}
           />
           <label htmlFor="description">Description</label>
-          <textarea 
+          <textarea
             name="description"
             autoComplete="off"
             placeholder='Description'
@@ -93,13 +107,14 @@ export default function NewProduct() {
             onChange={(e) => setDescription(e.target.value)}
           />
           <label htmlFor="Category">Category</label>
-          <select onChange={(e) => setCategoryName(e.target.value)}>
-              {/* {categoryTypes.map(category => 
-                <option key={category.id} id={category.id}>{category}</option> 
-                )} */}
+          <select required value={categoryId} onChange={(e) => setCategoryId(e.target.value)}>
+            <option disabled selected>Select</option>
+            {categoriesArr.map((category) => (
+              <option key={category?.id} value={category?.id}>{category?.name}</option>
+            ))}
           </select>
           <label htmlFor="imageUrl">Image URL</label>
-          <input 
+          <input
             type="url"
             name="imageUrl"
             autoComplete="off"

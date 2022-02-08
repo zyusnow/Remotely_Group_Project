@@ -11,9 +11,8 @@ import AllProducts from './components/Products/AllProducts';
 import ProductDetail from './components/Products/ProductDetail';
 import NewProduct from './components/Products/NewProduct';
 import HomePage from './components/HomePage';
-
-
-// import ProtectedRoute from './components/auth/ProtectedRoute';
+import Categories from './components/Categories';
+import ProtectedRoute from './components/auth/ProtectedRoute';
 import { authenticate } from './store/session';
 
 
@@ -42,10 +41,11 @@ function App() {
               <Route path='/' exact={true}><HomePage /></Route>
               <Route path='/signup' exact={true}><SignupPage /></Route>
               <Route path='/login' exact={true}><LoginPage /></Route>
-              <Route path='/not-found' exact={true}><PageNotFound /></Route>
               <Route path='/products' exact={true}><AllProducts /></Route>
               <Route path='/products/:id' exact={true}><ProductDetail /></Route>
               <Route path='/addProduct' exact={true}><NewProduct /></Route>
+              <Route path='/category/:categoryName' exact={true}><Categories /></Route>
+              <Route><PageNotFound /></Route>
             </Switch>
           </div>
         )}
