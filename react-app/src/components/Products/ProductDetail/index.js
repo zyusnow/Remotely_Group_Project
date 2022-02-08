@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getOneProduct } from '../../../store/product';
+import Reviews from '../../Reviews';
 
 export default function ProductDetail() {
     const dispatch = useDispatch();
@@ -27,6 +28,7 @@ export default function ProductDetail() {
                 <div>{product?.description}</div>
             </div>
             <button>Add to Cart</button>
+            <Reviews productId={product?.id} />
         </>
     )
 }

@@ -25,5 +25,6 @@ class Review(db.Model):
             'userId': self.userId,
             'productId': self.productId,
             'createdAt': self.createdAt,
-            'updatedAt': self.updatedAt
+            'updatedAt': self.updatedAt,
+            'user_name': self.user.username if self.user else None,
         }
