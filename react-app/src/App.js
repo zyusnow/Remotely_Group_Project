@@ -7,7 +7,7 @@ import LoginPage from './components/auth/LoginPage';
 import SignupPage from './components/auth/SignupPage';
 import NavBar from './components/NavBar'
 import PageNotFound from "./components/PageNotFound";
-import CartPage from './components/Cart /Cart';
+import CartPage from './components/Cart ';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import { authenticate } from './store/session';
 
