@@ -10,7 +10,7 @@ export default function AllProducts() {
     const dispatch = useDispatch();
     const productsObj = useSelector(state => state?.product?.products)
     const productsArr = Object.values(productsObj)
-    console.log("allProducts",productsArr)
+    // console.log("allProducts",productsArr)
     useEffect(() => {
         dispatch(getAllProducts())
     }, [dispatch])
@@ -25,7 +25,6 @@ export default function AllProducts() {
                                 <img className="img" src={product?.imageUrl} alt={product?.category_name}></img>
                         </div>
                         <div className='card_content'>
-                            {product.id}
                             <Link className='product_title' to={`/products/${product.id}`}>{product?.title}</Link>
                             <div className='product_price'>${product?.price}</div>
                         </div>
