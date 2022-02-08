@@ -9,41 +9,22 @@ export default function ProductDetail() {
     const productId = +id;
 
     const product = useSelector(state => state.product.products[productId])
-
+    
     useEffect(() => {
         dispatch(getOneProduct(productId))
     }, [dispatch, productId])
 
-
-    useEffect(() => {
-        if (product && (!title)) {
-            setUsername(product.user_name)
-            setTitle(product.title)
-            setCategoryName(product.category_name)
-            setPrice(product.price)
-            setDescription(product.description)
-            setImageUrl(product.imageUrl)
-        }
-      }, [product])
-
-    const [username, setUsername] = useState(product?.user_name)
-    const [title, setTitle] = useState(product?.title)
-    const [categoryName, setCategoryName] = useState(product?.category_name)
-    const [price, setPrice] = useState(product?.price)
-    const [description, setDescription] = useState(product?.description)
-    const [imageUrl, setImageUrl] = useState(product?.imageUrl)
-
     return (
         <>
             <div className='product_img_container'>
-                <img className="img" src={imageUrl} alt="product"></img>
+                <img className="img" src={product?.imageUrl}></img>
             </div>
             <div className='product_detail_container'>
-                <div>{username}</div>
-                <div>{categoryName}</div>
-                <div>{title}</div>
-                <div>${price}</div>
-                <div>{description}</div>
+                <div>{product?.user_name}</div>
+                <div>{product?.category_name}</div>
+                <div>{product?.title}</div>
+                <div>${product?.price}</div>
+                <div>{product?.description}</div>
             </div>
             <button>Add to Cart</button>
         </>

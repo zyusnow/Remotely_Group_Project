@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Switch} from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-
+import './app.css'
 
 import LoginPage from './components/auth/LoginPage';
 import SignupPage from './components/auth/SignupPage';
@@ -10,6 +10,8 @@ import PageNotFound from "./components/PageNotFound";
 import AllProducts from './components/Products/AllProducts';
 import ProductDetail from './components/Products/ProductDetail';
 import NewProduct from './components/Products/NewProduct';
+import HomePage from './components/HomePage';
+
 
 // import ProtectedRoute from './components/auth/ProtectedRoute';
 import { authenticate } from './store/session';
@@ -37,7 +39,7 @@ function App() {
         {loaded && (
           <div id='main'>
             <Switch>
-              <Route path='/' exact={true}><h1>My Home Page</h1></Route>
+              <Route path='/' exact={true}><HomePage /></Route>
               <Route path='/signup' exact={true}><SignupPage /></Route>
               <Route path='/login' exact={true}><LoginPage /></Route>
               <Route path='/not-found' exact={true}><PageNotFound /></Route>

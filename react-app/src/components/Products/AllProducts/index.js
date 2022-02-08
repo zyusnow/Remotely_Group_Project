@@ -17,7 +17,7 @@ export default function AllProducts() {
 
     return (
         <>
-            <h2>All Products</h2>
+            <div className='category_title'>category_title</div>
             <div className='products_container'>
                 {productsArr?.map(product => (
                     <div className='one_product_container' key={product?.id}>
@@ -25,7 +25,8 @@ export default function AllProducts() {
                                 <img className="img" src={product?.imageUrl} alt={product?.category_name}></img>
                         </div>
                         <div className='card_content'>
-                            <Link to={`/products/${product.id}`}>{product?.title}</Link>
+                            <Link className='product_title' to={`/products/${product.id}`}>{product?.title}</Link>
+                            <div className='product_price'>${product?.price}</div>
                         </div>
                     </div>
                 ))}

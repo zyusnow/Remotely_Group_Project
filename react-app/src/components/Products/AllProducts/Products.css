@@ -3,4 +3,39 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
     column-gap: 2em;
     margin: 0;
+    row-gap: 2.2em;
+}
+
+.category_title{
+    font-weight: 600;
+    font-size: 3em;
+    align-self: center;
+    margin-bottom: 1.7em;
+    background: -webkit-linear-gradient(45deg, #d54fe7, #3845d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.img{
+    background-size: 100%;
+    background-position: center;
+    display: flex;
+    object-fit: unset;
+    height: 250px;
+    width: 100%;
+    margin-bottom: 12px;
+    overflow: hidden;
+    border-radius: 2px;
+}
+
+.product_title{
+    text-decoration:none;
+    color:black;
+    font-size: 0.95em;
+    font-weight: 400;
+}
+
+.product_price{
+    font-weight: 500;
+    font-size: 1.3em;
 }
