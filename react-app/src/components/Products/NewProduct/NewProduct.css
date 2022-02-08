@@ -1,0 +1,24 @@
+.new-product-form {
+    margin: 100px auto;
+    width: 22rem;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 1.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.8rem;
+}
+
+.add-form-title {
+text-align: center;
+font-weight: 400;
+margin-bottom: 1rem;
+font-size: 1.25rem;
+color: #212124;
+}
+
+.add-input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: space-evenly;
+    width: 94%;
+    margin: 0px;
+}
