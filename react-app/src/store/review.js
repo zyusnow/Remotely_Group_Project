@@ -57,8 +57,8 @@ export const addOneReview = (reviewDetails) => async (dispatch) => {
         const review = await response.json()
         dispatch(addReview(review))
         return review
-    } else if (res.status < 500) {
-        const data = await res.json();
+    } else if (response.status < 500) {
+        const data = await response.json();
         if (data.errors) {
           return data.errors;
         }
@@ -90,6 +90,9 @@ export const editReviewById = ({ reviewId, rating, comment, productId }) => asyn
 export const deleteReviewById = (reviewId) => async (dispatch) => {
     const response = await fetch(`/api/reviews/${reviewId}`, {
         method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        },
         body: JSON.stringify({
             reviewId
         })

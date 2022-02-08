@@ -42,7 +42,7 @@ def add_review():
 
 @review_routes.route('/<int:id>', methods=['PUT'])
 @login_required
-def edit_review():
+def edit_review(id):
     review = Review.query.get(id)
 
     form = ReviewForm()
@@ -59,9 +59,10 @@ def edit_review():
 
 @review_routes.route('/<int:id>', methods=['DELETE'])
 @login_required
-def delete_review():
+def delete_review(id):
     review = Review.query.get(id)
-    if int(current_user.id) == review.userId:
+
+    if int(current_user.id) == int(review.userId):
         db.session.delete(review)
         db.session.commit()
         return "Delete successful"
