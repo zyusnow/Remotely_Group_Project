@@ -9,7 +9,7 @@ import NavBar from './components/NavBar'
 import PageNotFound from "./components/PageNotFound";
 import AllProducts from './components/Products/AllProducts';
 import ProductDetail from './components/Products/ProductDetail';
-// import NewProduct from './components/Products/NewProduct';
+import NewProduct from './components/Products/NewProduct';
 
 // import ProtectedRoute from './components/auth/ProtectedRoute';
 import { authenticate } from './store/session';
@@ -43,7 +43,7 @@ function App() {
               <Route path='/not-found' exact={true}><PageNotFound /></Route>
               <Route path='/products' exact={true}><AllProducts /></Route>
               <Route path='/products/:id' exact={true}><ProductDetail /></Route>
-              {/* <Route path='/products/new' exact={true}><NewProduct /></Route> */}
+              <Route path='/addProduct' exact={true}><NewProduct /></Route>
             </Switch>
           </div>
         )}

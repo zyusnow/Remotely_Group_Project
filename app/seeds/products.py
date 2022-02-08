@@ -1,4 +1,3 @@
-from unicodedata import category
 from app.models import db, Product
 
 def seed_products():
@@ -18,7 +17,7 @@ def seed_products():
   price = 100.00,
   description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
   quantity=10,
-  categoryId=2,
+  categoryId=3,
   )
   product03 = Product(
   title='iPad Pro 12.9"',
@@ -36,7 +35,7 @@ def seed_products():
     price = 149.99,
     description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
     quantity=10,
-    categoryId=2,
+    categoryId=3,
   )
   product05 = Product(
   title='ALT Over The Ear Headset',
@@ -45,7 +44,7 @@ def seed_products():
   price = 99.99,
   description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
   quantity = 10,
-  categoryId=2,
+  categoryId=3,
   )
   product06 = Product(
   title = 'Desktop Air Purifier',
@@ -54,7 +53,7 @@ def seed_products():
   price = 199.99,
   description='Lorem ipsum dolor sit amet, consectetur adispiscing elit, sed do eismod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
   quantity=10,
-  categoryId=2,
+  categoryId=3,
   )
 
   db.session.add(product01)

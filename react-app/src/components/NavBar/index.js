@@ -33,7 +33,7 @@ function NavBar({ loaded }) {
                 <NavLink id="nav_head" to="/">Remotely</NavLink>
                 </div>
                 <div className='nav_center'>
-                <NavLink to="/">Find All Products</NavLink>
+                <NavLink to="/products">Find All Products</NavLink>
                 </div>
                 <div className='nav_right'>
                     {loaded && sessionLinks}

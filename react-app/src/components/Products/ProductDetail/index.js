@@ -1,44 +1,49 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {useParams} from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { getOneProduct } from '../../../store/product';
 
 export default function ProductDetail() {
     const dispatch = useDispatch();
-    const {id} = useParams();
+    const { id } = useParams();
     const productId = +id;
 
-    const productObj = useSelector(state => state?.product?.products)
-    const product = productObj[productId]
+    const product = useSelector(state => state.product.products[productId])
 
-
-    const [title, setTitle] = useState(product?.title);
-
-
-    console.log(product)
     useEffect(() => {
         dispatch(getOneProduct(productId))
-    }, [dispatch])
+    }, [dispatch, productId])
 
 
     useEffect(() => {
-        if (product && (!product.title)) {
+        if (product && (!title)) {
+            setUsername(product.user_name)
             setTitle(product.title)
+            setCategoryName(product.category_name)
+            setPrice(product.price)
+            setDescription(product.description)
+            setImageUrl(product.imageUrl)
         }
       }, [product])
 
+    const [username, setUsername] = useState(product?.user_name)
+    const [title, setTitle] = useState(product?.title)
+    const [categoryName, setCategoryName] = useState(product?.category_name)
+    const [price, setPrice] = useState(product?.price)
+    const [description, setDescription] = useState(product?.description)
+    const [imageUrl, setImageUrl] = useState(product?.imageUrl)
 
     return (
         <>
             <div className='product_img_container'>
-                <img className="img" src={product?.imageUrl}></img>
+                <img className="img" src={imageUrl} alt="product"></img>
             </div>
             <div className='product_detail_container'>
-                <div>{product?.user_name}</div>
-                <div>{product?.category_name}</div>
-                <div>{product?.title}</div>
-                <div>${product?.price}</div>
-                <div>{product?.description}</div>
+                <div>{username}</div>
+                <div>{categoryName}</div>
+                <div>{title}</div>
+                <div>${price}</div>
+                <div>{description}</div>
             </div>
             <button>Add to Cart</button>
         </>
