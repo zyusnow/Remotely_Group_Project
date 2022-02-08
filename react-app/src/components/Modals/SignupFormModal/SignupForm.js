@@ -59,7 +59,7 @@ const SignupForm = () => {
         if (user) {
             <Redirect to='/' />
         };
-    }, []);
+    }, [user]);
 
     return (
         <>
