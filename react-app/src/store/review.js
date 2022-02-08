@@ -101,3 +101,32 @@ export const deleteReviewById = (reviewId) => async (dispatch) => {
         return "Delete successful"
     }
 }
+
+/* ------ REDUCER ------ */
+const initialState = {reviews: {}};
+export default function reviewReducer(state = initialState, action) {
+    let newState;
+    switch (action.type) {
+        case GET_REVIEWS:
+            newState = {...state}
+            newState.reviews = action.reviews.reduce((reviews, review) => {
+                reviews[review.id] = review
+                return reviews
+            }, {})
+            return newState
+        case ADD_REVIEW:
+            newState = {...state}
+            newState.reviews[action.review.id] = action.review
+            return newState
+        case EDIT_REVIEW:
+            newState = {...state}
+            newState.reviews[action.review.id] = action.review
+            return newState
+        case DELETE_REVIEW:
+            newState = {...state}
+            delete newState.reviews[action.reviewId]
+            return newState
+        default:
+            return state;
+    }
+}
