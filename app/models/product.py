@@ -32,7 +32,10 @@ class Product(db.Model):
             'price': self.price,
             'quantity': self.quantity,
             'userId': self.userId,
+            'user_name': self.user.username if self.user else None,
             'categoryId': self.categoryId,
+            'category_name': self.category.name if self.category else None,
             'createdAt': self.createdAt,
-            'updatedAt': self.updatedAt
+            'updatedAt': self.updatedAt,
+
         }
