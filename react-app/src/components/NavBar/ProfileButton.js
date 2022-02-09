@@ -37,6 +37,12 @@ function ProfileButton({ user }) {
       history.push(`/`)
     }
   }
+  const toAddProduct = (e) => {
+    e.preventDefault();
+    if(user) {
+      history.push(`/addProduct`)
+    }
+  }
 
   return (
     <>
@@ -48,6 +54,9 @@ function ProfileButton({ user }) {
         <ul className="profile-dropdown">
           <li>
             <button id="nav_logout" onClick={toMyOrder}>My order</button>
+          </li>
+          <li>
+            <button id="nav_logout" onClick={toAddProduct}>Sell product</button>
           </li>
           <li>
             <button id="nav_logout" onClick={logout}>Log Out</button>
