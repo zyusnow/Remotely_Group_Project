@@ -26,6 +26,7 @@ def get_product(id):
     product = Product.query.get(id)
     return product.to_dict()
 
+
 @product_routes.route('/new', methods=['POST'])
 @login_required
 def add_product():
@@ -71,3 +72,4 @@ def edit(id):
         db.session.commit()
         return product_to_edit.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
