@@ -4,6 +4,7 @@ import { Modal } from '../../context/Modal'
 import { getAllReviews, addOneReview, deleteReviewById } from'../../store/review'
 import { getOneProduct } from '../../store/product';
 import EditReviewForm from './EditReviewForm';
+import './Reviews.css'
 
 export default function Reviews({ productId }) {
     const dispatch = useDispatch()
@@ -13,7 +14,7 @@ export default function Reviews({ productId }) {
     const [showModal, setShowModal] = useState(false)
     const [editRevId, setEditRevId] = useState("")
 
-    const userId = useSelector(state => state.session.user.id)
+    const userId = useSelector(state => state.session.user?.id)
     const allReviewsObj = useSelector(state => state.review.reviews)
     
     const allReviewsArray = Object.values(allReviewsObj)
@@ -57,7 +58,7 @@ export default function Reviews({ productId }) {
 
     return (
         <div className='review-container'>
-            <form className="add-review-form">
+            {userId && <form className="add-review-form">
                 <select
                 value={rating}
                 onChange={(e) => setRating(e.target.value)}
@@ -76,7 +77,7 @@ export default function Reviews({ productId }) {
                 onChange={(e) => setComment(e.target.value)}
                 />
                 <button onClick={addReview} type="submit" disabled={!rating}>Add Review</button>
-            </form>
+            </form>}
             <div className='reviews-header'>Reviews</div>
             <div className='reviews-list'>
                 {productReviews.length > 0 && productReviews.map((review, idx) => (

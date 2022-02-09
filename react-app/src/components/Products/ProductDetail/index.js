@@ -60,7 +60,7 @@ export default function ProductDetail() {
             </div>
             <button>Add to Cart</button>            
 
-            {sessionUser?.id===product?.userId &&
+            {sessionUser?.id === product?.userId &&
               <>
                 <button onClick={handleDelete}>Delete</button>
                 <button onClick={handleUpdate}>Edit</button>

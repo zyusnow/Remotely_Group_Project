@@ -1,0 +1,51 @@
+.edit-review-form {
+    background-color: white;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.edit-review-title {
+    text-align: center;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    color: #9256e0;
+}
+
+.edit-input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: space-evenly;
+}
+
+.edit-input-container > * {
+    margin: 4px 10px;
+}
+
+.edit-input-container select {
+    margin: 5px 10px;
+    font-family: "Open Sans", sans-serif;
+}
+
+#edit-rev-textarea {
+    margin-top: 0px;
+    height: 50px;
+    font-family: "Open Sans", sans-serif;
+}
+
+.edit-rev-submit {
+    box-sizing: border-box;
+    border-radius: 4px;
+    font-size: 0.85em;
+    border: none;
+    align-self: center;
+    background-color: #844bcf;
+    color:white;
+    padding: 7px;
+    margin-top: 12px;
+}
+
+.edit-rev-submit:hover {
+    cursor:pointer;
+    opacity: 80%;
+}
