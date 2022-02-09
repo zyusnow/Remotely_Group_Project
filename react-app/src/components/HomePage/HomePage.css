@@ -1,0 +1,49 @@
+
+.banner{
+    position: relative;
+    background: linear-gradient(#d54fe7, #3845d4);;
+    text-align: center;
+    margin-bottom: 4em;
+    height: 300px;
+    z-index: 1;
+}
+
+.welcome{
+    position: relative;
+    top: 1.4em;
+    font-weight: 400;
+    font-size: 3.6em;
+    color:antiquewhite
+  }
+
+.round-image{
+    height: 7em;
+    width: 7em;
+    border-radius: 50%;
+}
+
+.categories_container ul {
+    position: relative;
+    bottom: -10em;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    column-gap: 1em;
+    gap: 1em;
+    justify-content: center;
+    text-align: center;
+}
+
+.categories_container li {
+    list-style: none;
+}
+
+.categories_container li:hover {
+    transform: scale(1.15);
+    transition: 220ms ease-in-out;
+}
+
+
+.categories_container p {
+    font-size: 1em;
+    font-weight: 400;
+}

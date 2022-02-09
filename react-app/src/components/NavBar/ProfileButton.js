@@ -31,10 +31,16 @@ function ProfileButton({ user }) {
     return <Redirect to='/' />;
   };
 
-  const toDashboard = (e) => {
+  const toMyOrder = (e) => {
     e.preventDefault();
     if(user) {
       history.push(`/`)
+    }
+  }
+  const toAddProduct = (e) => {
+    e.preventDefault();
+    if(user) {
+      history.push(`/addProduct`)
     }
   }
 
@@ -47,7 +53,10 @@ function ProfileButton({ user }) {
       {showMenu && (
         <ul className="profile-dropdown">
           <li>
-            <button id="nav_logout" onClick={toDashboard}>My Dashboard</button>
+            <button id="nav_logout" onClick={toMyOrder}>My order</button>
+          </li>
+          <li>
+            <button id="nav_logout" onClick={toAddProduct}>Sell product</button>
           </li>
           <li>
             <button id="nav_logout" onClick={logout}>Log Out</button>

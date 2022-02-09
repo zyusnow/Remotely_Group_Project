@@ -20,10 +20,11 @@ class Review(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
-            'productId': self.productId,
-            'userId': self.userId,
             'rating': self.rating,
             'comment': self.comment,
+            'userId': self.userId,
+            'productId': self.productId,
             'createdAt': self.createdAt,
-            'updatedAt': self.updatedAt
-        } 
+            'updatedAt': self.updatedAt,
+            'user_name': self.user.username if self.user else None,
+        }

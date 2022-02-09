@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Switch} from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-
+import './app.css'
 
 import LoginPage from './components/auth/LoginPage';
 import SignupPage from './components/auth/SignupPage';
@@ -9,6 +9,13 @@ import NavBar from './components/NavBar'
 import PageNotFound from "./components/PageNotFound";
 import CartPage from './components/Cart ';
 import ProtectedRoute from './components/auth/ProtectedRoute';
+import AllProducts from './components/Products/AllProducts';
+import ProductDetail from './components/Products/ProductDetail';
+import NewProduct from './components/Products/NewProduct';
+import HomePage from './components/HomePage';
+import Categories from './components/Categories';
+import EditProduct from './components/Products/EditProduct';
+// import ProtectedRoute from './components/auth/ProtectedRoute';
 import { authenticate } from './store/session';
 
 
@@ -34,11 +41,17 @@ function App() {
         {loaded && (
           <div id='main'>
             <Switch>
-              <Route path='/' exact={true}><h1>My Home Page</h1></Route>
+              <Route path='/' exact={true}><HomePage /></Route>
               <Route path='/signup' exact={true}><SignupPage /></Route>
               <Route path='/login' exact={true}><LoginPage /></Route>
               <Route path='/not-found' exact={true}><PageNotFound /></Route>
+              <Route path='/products' exact={true}><AllProducts /></Route>
+              <Route path='/products/:id' exact={true}><ProductDetail /></Route>
+              <Route path='/products/:id/edit' exact={true}><EditProduct /></Route>
+              <Route path='/addProduct' exact={true}><NewProduct /></Route>
+              <Route path='/category/:categoryName' exact={true}><Categories /></Route>
               <ProtectedRoute path='/cart'> <CartPage/> </ProtectedRoute>
+              <Route><PageNotFound /></Route>
             </Switch>
           </div>
         )}
