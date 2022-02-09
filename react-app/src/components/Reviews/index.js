@@ -11,7 +11,8 @@ export default function Reviews({ productId }) {
     
     const [rating, setRating] = useState("")
     const [comment, setComment] = useState("")
-    const [showModal, setShowModal] = useState(false)
+    const [showEditModal, setShowEditModal] = useState(false)
+    const [showAddModal, setShowAddModal] = useState(false)
     const [editRevId, setEditRevId] = useState("")
 
     const userId = useSelector(state => state.session.user?.id)
@@ -39,6 +40,7 @@ export default function Reviews({ productId }) {
           setComment("")
           setRating("")
           dispatch(getOneProduct(+productId))
+          setShowAddModal(false)
         }
       }
 
@@ -51,33 +53,53 @@ export default function Reviews({ productId }) {
         }
       }
 
+      const openAddReviewForm = (e) => {
+          e.preventDefault()
+          setShowAddModal(true)
+    }
+
       const openEditReviewForm = (e) => {
           setEditRevId(e.target.value)
-          setShowModal(true)
+          setShowEditModal(true)
       }
+
+
 
     return (
         <div className='review-container'>
-            {userId && <form className="add-review-form">
-                <select
-                value={rating}
-                onChange={(e) => setRating(e.target.value)}
-                >
-                    <option value='' disabled>Rating</option>
-                    <option value={Number(5)}>5</option>
-                    <option value={Number(4)}>4</option>
-                    <option value={Number(3)}>3</option>
-                    <option value={Number(2)}>2</option>
-                    <option value={Number(1)}>1</option>
-                </select>
-                <textarea
-                placeholder='Add a comment...'
-                autoComplete="off"
-                value={comment}
-                onChange={(e) => setComment(e.target.value)}
-                />
-                <button onClick={addReview} type="submit" disabled={!rating}>Add Review</button>
-            </form>}
+            {userId && <button onClick={openAddReviewForm}>Write a review</button>}
+            {showAddModal && (
+                <Modal onClose={() => setShowAddModal(false)}>
+                    <div className='review-form'>
+                        <h3 className="review-title">Add a Review</h3>
+                        <form>
+                            <div className='rev-input-container'>
+                                <label>*Select a rating:
+                                    <select
+                                    value={rating}
+                                    onChange={(e) => setRating(e.target.value)}
+                                    >
+                                        <option value='' disabled>Rating</option>
+                                        <option value={Number(5)}>5</option>
+                                        <option value={Number(4)}>4</option>
+                                        <option value={Number(3)}>3</option>
+                                        <option value={Number(2)}>2</option>
+                                        <option value={Number(1)}>1</option>
+                                    </select>
+                                </label>
+                                <label>Add a comment (Optional): </label>
+                                <textarea
+                                className="rev-textarea"
+                                placeholder='Add a comment...'
+                                autoComplete="off"
+                                value={comment}
+                                onChange={(e) => setComment(e.target.value)}
+                                />
+                                <button onClick={addReview} type="submit" disabled={!rating} className="rev-submit">Add Review</button>
+                            </div>
+                        </form>
+                    </div>
+                </Modal>)}
             <div className='reviews-header'>Reviews</div>
             <div className='reviews-list'>
                 {productReviews.length > 0 && productReviews.map((review, idx) => (
@@ -98,9 +120,9 @@ export default function Reviews({ productId }) {
                         </span>
                   </div>
                 ))}
-                {showModal && (
-                    <Modal onClose={() => setShowModal(false)}>
-                        <EditReviewForm reviewId={editRevId} productId={productId} setShowModal={setShowModal}/>
+                {showEditModal && (
+                    <Modal onClose={() => setShowEditModal(false)}>
+                        <EditReviewForm reviewId={editRevId} productId={productId} setShowEditModal={setShowEditModal}/>
                     </Modal>
                 )}
             </div>

@@ -2,9 +2,9 @@ import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { editReviewById } from '../../store/review'
 import { getOneProduct } from '../../store/product'
+import './Reviews.css'
 
-
-export default function EditReviewForm({ reviewId, productId, setShowModal }) {
+export default function EditReviewForm({ reviewId, productId, setShowEditModal }) {
     const dispatch = useDispatch()
 
     const review = useSelector(state => state.review.reviews[+reviewId])
@@ -26,18 +26,18 @@ export default function EditReviewForm({ reviewId, productId, setShowModal }) {
 
         if (editedReview) {
             dispatch(getOneProduct(productId))
-            setShowModal(false)
+            setShowEditModal(false)
         }
         
     }
 
     return (
         <>
-            <div className="edit-review-form">
-                <h3 className="edit-review-title">Edit Review</h3>
+            <div className="review-form">
+                <h3 className="review-title">Edit Review</h3>
                 <form>
-                    <div className="edit-input-container">
-                        <label>Select a rating: 
+                    <div className="rev-input-container">
+                        <label>Update rating: 
                             <select
                             value={rating}
                             onChange={(e) => setRating(e.target.value)}
@@ -51,13 +51,13 @@ export default function EditReviewForm({ reviewId, productId, setShowModal }) {
                         </label>
                         <label>Add a comment (Optional): </label>
                         <textarea
-                        id="edit-rev-textarea"
+                        className="rev-textarea"
                         placeholder='Add a comment...'
                         autoComplete="off"
                         value={comment}
                         onChange={(e) => setComment(e.target.value)}
                         />
-                        <button onClick={editReview} type="submit" disabled={!rating} className="edit-rev-submit">Save Changes</button>
+                        <button onClick={editReview} type="submit" disabled={!rating} className="rev-submit">Save Changes</button>
                     </div>
                 </form>
             </div>
