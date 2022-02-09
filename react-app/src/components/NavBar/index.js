@@ -5,6 +5,8 @@ import LoginFormModal from '../Modals/LoginFormModal';
 import SignupFormModal from '../Modals/SignupFormModal';
 import ProfileButton from './ProfileButton';
 import './NavBar.css';
+import SearchBar from './search';
+
 
 function NavBar({ loaded }) {
     const location = useLocation();
@@ -32,8 +34,7 @@ function NavBar({ loaded }) {
                 <div className='nav_left'>
                 <NavLink id="nav_head" to="/">Remotely</NavLink>
                 </div>
-                <div className='search_bar'>
-                </div>
+               <SearchBar />
                 <div className='nav_right'>
                     {loaded && sessionLinks}
                 </div>
