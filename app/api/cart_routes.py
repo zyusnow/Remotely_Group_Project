@@ -24,11 +24,17 @@ def add_cart_item():
         productId = form.data['productId']
         product = Product.query.get(productId)
         product.quantity -= 1
-        cartItem = CartItem(
-            productId=productId,
-            cartId=current_user.id,
-            quantity=quantity
-        )
-        db.session.add(cartItem)
+        cartItem = CartItem.query\
+            .filter_by(productId)\
+            .all()
+        if not cartItem:
+            cartItem = CartItem(
+                productId=productId,
+                cartId=current_user.id,
+                quantity=1
+            )
+            db.session.add(cartItem)
+        else:
+            cartItem.quanity += 1
         db.session.commit()
     return cartItem.to_dict()

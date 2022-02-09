@@ -32,7 +32,7 @@ export default function ProductDetail() {
 
     useEffect(() => {
         dispatch(getOneProduct(productId))
-    }, [dispatch, productId, productReviews.length])
+    }, [productId, productReviews.length])
 
     const handleDelete = e =>{
         e.preventDefault();
@@ -46,8 +46,19 @@ export default function ProductDetail() {
             e.preventDefault();
             history.push(`/products/${productId}/edit`);
           }
-    const addToCart = e => {
-      e.preventDefault();
+    const addItemToCart = e => {
+    //   e.preventDefault();
+      const cartId = sessionUser.id
+      const productId = product.id
+      const quantity = product.quantity
+      const cartItem  = {
+          cartId,
+          productId,
+          quantity
+      }
+      const res = dispatch(addToCart(cartItem))
+      console.log(res)
+
       history.push('/products');
     }
 
@@ -80,7 +91,7 @@ export default function ProductDetail() {
           <div>{product?.description}</div>
         </div>
 
-        <button onClick={addToCart}>Add to Cart</button>
+        <button onClick={addItemToCart}>Add to Cart</button>
 
         {sessionUser?.id === product?.userId && (
           <>
