@@ -1,24 +1,85 @@
-.new-product-form {
-    margin: 100px auto;
-    width: 22rem;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    padding: 1.5rem;
-    border-radius: 0.25rem;
-    font-size: 0.8rem;
-}
-
-.add-form-title {
-text-align: center;
-font-weight: 400;
-margin-bottom: 1rem;
-font-size: 1.25rem;
-color: #212124;
-}
-
-.add-input-container {
+#new-product-container{
+    width:60%;
     display: flex;
     flex-direction: column;
-    align-items: space-evenly;
-    width: 94%;
-    margin: 0px;
+    margin: 0px auto 0px;
+}
+.add-input-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.add-form-title{
+    margin-bottom: 1em;
+    font-size: 3em;
+    font-weight: 500;
+    font-style:oblique;
+}
+
+.form_content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.form_content label{
+    font-size: 1.1em;
+    font-weight: 400;
+    color:rgb(30, 30, 31);
+    margin-top: 30px;
+    width: 13%;
+    background: -webkit-linear-gradient(45deg, #d54fe7, #3845d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+.form_content input,
+.form_content textarea,
+.form_content select{
+    width: 80%;
+    margin: 30px 40px;
+    line-height: 2.2em;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    color:rgb(70, 70, 70);
+    padding-left: 10px;
+    font-family: "Open Sans", sans-serif;
+}
+
+.form_content select{
+    height: 40px;
+}
+
+.add-product-button{
+    margin-top: 30px;
+    width: 10em;
+    height: 40px;
+    box-sizing: border-box;
+    font-size: 16px;
+    border-radius: 4px;
+    border: none;
+    align-self: end;
+    margin-right: 30px;
+    background-color: #8430f1;
+    color:white
+}
+
+.cancel{
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    color:rgb(61, 61, 61);
+}
+
+.add-product-button:hover{
+    cursor: pointer;
+}
+
+.errors{
+    list-style-type: none;
+    font-style:oblique;
+    color:rgb(87, 87, 87);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    text-align: center;
 }

@@ -35,6 +35,10 @@
     font-weight: 400;
 }
 
+.product_title:hover{
+    color:#8430f1
+}
+
 .product_price{
     font-weight: 500;
     font-size: 1.3em;
