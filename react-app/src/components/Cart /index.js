@@ -1,4 +1,4 @@
-import { useEffect, useState} from 'react';
+import { useEffect, /* useState */} from 'react';
 import {useDispatch, useSelector } from 'react-redux';
 import { loadCart, deleteFromCart } from '../../store/cart'
 import {getAllProducts} from '../../store/product'
@@ -8,24 +8,15 @@ function CartPage() {
   const id = useSelector((state) => state.session?.user.id);
   const cartItemsArray = useSelector((state) => state.carts?.cart);
   const products = useSelector((state) => state.product?.products )
-  const user = useSelector((state) => state.session?.user)
+  // const user = useSelector((state) => state.session?.user)
+  // const [cart, setCart] = useState({});
+  // const [isLoaded, setIsLoaded] = useState(false);
   const dispatch = useDispatch();
-  const [cart, setCart] = useState({});
-  const [isLoaded, setIsLoaded] = useState(false);
-  console.log(cartItemsArray);
-  console.log(products)
-
-  useEffect(() => {
-    dispatch(getAllProducts())
-    dispatch(loadCart(id));
-  }, [dispatch, cart]);
 
   const productIds = cartItemsArray?.map(cartItem => {
-    console.log(cartItem)
    return [cartItem.productId, cartItem.quantity, cartItem.id];
   })
 
- console.log(productIds)
   const cartProducts = productIds?.map(productId => {
     const cartItem = products[productId[0]];
     if (cartItem) {
@@ -35,7 +26,11 @@ function CartPage() {
     return cartItem;
   })
 
-  console.log(cartProducts)
+  useEffect(() => {
+    dispatch(getAllProducts())
+    dispatch(loadCart(id));
+  }, [dispatch, id]);
+  
 
   const handleDelete = (cartId) => {
     cartId = +cartId;
@@ -50,22 +45,20 @@ function CartPage() {
       <div>
         <ul className="cartItems">
           {cartProducts?.map((product) => {
-            if (product) {
+            if (!product) {
+              return <h1>You have no items in your cart.</h1>
+            } else {
               return (
                 <>
-                  <li key={product.img} className="cartImage">
-                    {/* <img src={product.imageUrl} /> */}
+                  <li key={product.img}>
+                    <img alt={product.description} src={product.imageUrl}  className="cartImage"/>
                   </li>
                   <li key={product.price} className="cartItemPrice">
                     {product.price}
                   </li>
-                  <li>{product.cartId}</li>
                   <li><button id={product.cartId} onClick={e => handleDelete(e.target.id)}>Delete</button></li>
                 </>
               );
-            }
-            else {
-              return <h1>You have no items in your cart.</h1>
             }
           })}
         </ul>
