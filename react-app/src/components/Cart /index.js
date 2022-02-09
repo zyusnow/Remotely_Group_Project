@@ -18,20 +18,29 @@ function CartPage() {
   useEffect(() => {
     dispatch(getAllProducts())
     dispatch(loadCart(id));
-  }, [dispatch]);
+  }, [dispatch, cart]);
 
   const productIds = cartItemsArray?.map(cartItem => {
-   return cartItem.productId
+    console.log(cartItem)
+   return [cartItem.productId, cartItem.quantity, cartItem.id];
   })
+
  console.log(productIds)
   const cartProducts = productIds?.map(productId => {
-    cartItem = products[productId]
-
+    const cartItem = products[productId[0]];
+    if (cartItem) {
+      cartItem.quantity = productId[1];
+      cartItem.cartId = productId[2];
+    }
+    return cartItem;
   })
 
-  const handleDelete =() => {
+  console.log(cartProducts)
 
-
+  const handleDelete = (cartId) => {
+    cartId = +cartId;
+    dispatch(deleteFromCart(cartId));
+    dispatch(loadCart(id));
   }
 
   return (
@@ -45,14 +54,18 @@ function CartPage() {
               return (
                 <>
                   <li key={product.img} className="cartImage">
-                    <img src={product.imageUrl} />
+                    {/* <img src={product.imageUrl} /> */}
                   </li>
                   <li key={product.price} className="cartItemPrice">
                     {product.price}
                   </li>
-                  <li><button onClick={handleDelete}>Delete</button></li>
+                  <li>{product.cartId}</li>
+                  <li><button id={product.cartId} onClick={e => handleDelete(e.target.id)}>Delete</button></li>
                 </>
               );
+            }
+            else {
+              return <h1>You have no items in your cart.</h1>
             }
           })}
         </ul>

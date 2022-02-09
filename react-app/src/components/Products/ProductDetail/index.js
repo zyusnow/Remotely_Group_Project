@@ -46,8 +46,7 @@ export default function ProductDetail() {
             e.preventDefault();
             history.push(`/products/${productId}/edit`);
           }
-    const addItemToCart = e => {
-    //   e.preventDefault();
+    const addItemToCart =() => {
       const cartId = sessionUser.id
       const productId = product.id
       const quantity = product.quantity
@@ -56,10 +55,8 @@ export default function ProductDetail() {
           productId,
           quantity
       }
-      const res = dispatch(addToCart(cartItem))
-      console.log(res)
-
-      history.push('/products');
+      dispatch(addToCart(cartItem))
+      history.push('/cart');
     }
 
     return (
