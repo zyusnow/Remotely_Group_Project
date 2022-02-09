@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { Modal } from '../../context/Modal'
 import { getAllReviews, addOneReview, deleteReviewById } from'../../store/review'
+import { getOneProduct } from '../../store/product';
 import EditReviewForm from './EditReviewForm';
 
 export default function Reviews({ productId }) {
@@ -9,8 +10,6 @@ export default function Reviews({ productId }) {
     
     const [rating, setRating] = useState("")
     const [comment, setComment] = useState("")
-    const [addRev, setAddRev] = useState("")
-    const [delRev, setDelRev] = useState("")
     const [showModal, setShowModal] = useState(false)
     const [editRevId, setEditRevId] = useState("")
 
@@ -22,9 +21,7 @@ export default function Reviews({ productId }) {
 
     useEffect(() => {
         dispatch(getAllReviews())
-        setAddRev("")
-        setDelRev("")
-    }, [dispatch, addRev, delRev])
+    }, [dispatch])
 
     const addReview = (e) => {
         e.preventDefault();
@@ -40,7 +37,7 @@ export default function Reviews({ productId }) {
         if(newReview) {
           setComment("")
           setRating("")
-          setAddRev("Added Review")
+          dispatch(getOneProduct(+productId))
         }
       }
 
@@ -49,7 +46,7 @@ export default function Reviews({ productId }) {
         let deletedReview = dispatch(deleteReviewById(Number(e.target.id)))
         
         if(deletedReview) {
-            setDelRev('Delete successful')
+            dispatch(getOneProduct(+productId))
         }
       }
 
@@ -71,7 +68,6 @@ export default function Reviews({ productId }) {
                     <option value={Number(3)}>3</option>
                     <option value={Number(2)}>2</option>
                     <option value={Number(1)}>1</option>
-                )
                 </select>
                 <textarea
                 placeholder='Add a comment...'
@@ -103,7 +99,7 @@ export default function Reviews({ productId }) {
                 ))}
                 {showModal && (
                     <Modal onClose={() => setShowModal(false)}>
-                        <EditReviewForm reviewId={editRevId} productId={productId}/>
+                        <EditReviewForm reviewId={editRevId} productId={productId} setShowModal={setShowModal}/>
                     </Modal>
                 )}
             </div>
