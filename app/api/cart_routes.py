@@ -24,9 +24,7 @@ def add_cart_item():
         productId = form.data['productId']
         product = Product.query.get(productId)
         product.quantity -= 1
-        cartItem = CartItem.query\
-            .filter_by(productId)\
-            .all()
+        cartItem = CartItem.query.filter_by(productId=productId, cartId=current_user.id).first()
         if not cartItem:
             cartItem = CartItem(
                 productId=productId,
@@ -35,6 +33,6 @@ def add_cart_item():
             )
             db.session.add(cartItem)
         else:
-            cartItem.quanity += 1
+            cartItem.quantity += 1
         db.session.commit()
     return cartItem.to_dict()
