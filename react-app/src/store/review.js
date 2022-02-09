@@ -82,7 +82,7 @@ export const editReviewById = ({ reviewId, rating, comment, productId }) => asyn
 
     if (response.ok) {
         const editedReview = await response.json()
-        dispatch(editReview(editReview))
+        dispatch(editReview(editedReview))
         return editedReview
     }
 }

@@ -1,6 +1,8 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { getAllReviews, addOneReview, editReviewById, deleteReviewById } from'../../store/review'
+import { Modal } from '../../context/Modal'
+import { getAllReviews, addOneReview, deleteReviewById } from'../../store/review'
+import EditReviewForm from './EditReviewForm';
 
 export default function Reviews({ productId }) {
     const dispatch = useDispatch()
@@ -8,8 +10,9 @@ export default function Reviews({ productId }) {
     const [rating, setRating] = useState("")
     const [comment, setComment] = useState("")
     const [addRev, setAddRev] = useState("")
-    const [editRev, setEditRev] = useState("")
     const [delRev, setDelRev] = useState("")
+    const [showModal, setShowModal] = useState(false)
+    const [editRevId, setEditRevId] = useState("")
 
     const userId = useSelector(state => state.session.user.id)
     const allReviewsObj = useSelector(state => state.review.reviews)
@@ -20,7 +23,6 @@ export default function Reviews({ productId }) {
     useEffect(() => {
         dispatch(getAllReviews())
         setAddRev("")
-        // setEditRev("")
         setDelRev("")
     }, [dispatch, addRev, delRev])
 
@@ -36,7 +38,7 @@ export default function Reviews({ productId }) {
     
         let newReview = dispatch(addOneReview(payload))
         if(newReview) {
-          setComment('')
+          setComment("")
           setRating("")
           setAddRev("Added Review")
         }
@@ -51,8 +53,34 @@ export default function Reviews({ productId }) {
         }
       }
 
+      const openEditReviewForm = (e) => {
+          setEditRevId(e.target.value)
+          setShowModal(true)
+      }
+
     return (
         <div className='review-container'>
+            <form className="add-review-form">
+                <select
+                value={rating}
+                onChange={(e) => setRating(e.target.value)}
+                >
+                    <option value='' disabled>Rating</option>
+                    <option value={Number(5)}>5</option>
+                    <option value={Number(4)}>4</option>
+                    <option value={Number(3)}>3</option>
+                    <option value={Number(2)}>2</option>
+                    <option value={Number(1)}>1</option>
+                )
+                </select>
+                <textarea
+                placeholder='Add a comment...'
+                autoComplete="off"
+                value={comment}
+                onChange={(e) => setComment(e.target.value)}
+                />
+                <button onClick={addReview} type="submit" disabled={!rating}>Add Review</button>
+            </form>
             <div className='reviews-header'>Reviews</div>
             <div className='reviews-list'>
                 {productReviews.length > 0 && productReviews.map((review, idx) => (
@@ -62,28 +90,18 @@ export default function Reviews({ productId }) {
                     <span>{review.rating}
                         {review.comment}
                       {review.userId === userId && 
-                        <button onClick={deleteReview} id={review.id}>Delete Review</button>}
-                        {/* <button onClick={editReview}>Edit Review</button> */}
+                        <>
+                            <button onClick={deleteReview} id={review.id}>Delete Review</button>
+                            <button onClick={openEditReviewForm} value={review.id}>Edit Review</button>
+                        </>}
                     </span>
                   </div>
                 ))}
-            </div>
-            <div className="add-review">
-                <select>
-                required
-                type="number"
-                min="1"
-                max="5"
-                value={rating}
-                onChange={(e) => setRating(e.target.value)}
-                </select>
-                <textarea
-                placeholder='Add a comment...'
-                autoComplete="off"
-                value={comment}
-                onChange={(e) => setComment(e.target.value)}
-                />
-                <button onClick={addReview} type="submit">Add Review</button>
+                {showModal && (
+                    <Modal onClose={() => setShowModal(false)}>
+                        <EditReviewForm reviewId={editRevId} productId={productId}/>
+                    </Modal>
+                )}
             </div>
         </div>
     )
