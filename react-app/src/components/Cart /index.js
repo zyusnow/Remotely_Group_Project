@@ -1,11 +1,9 @@
-import {useSelector, useEffect, useState} from 'react';
-import {useParams } from 'react-router-dom';
-import {useDispatch} from 'react-redux';
+import { useEffect, useState} from 'react';
+import {useDispatch, useSelector } from 'react-redux';
 import { loadCart } from '../../store/cart'
 
 function CartPage() {
-const { cartId } = use;
-const id = +cartId
+const id = useSelector(state => state.session.user.id);
 const dispatch = useDispatch();
 const [cart, setCart] = useState({})
 const [isLoaded, setIsLoaded] = useState(false)
