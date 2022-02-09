@@ -18,13 +18,14 @@ const SignupForm = () => {
 
     const onSignUp = async (e) => {
         e.preventDefault();
-        if (password === repeatPassword) {
-            const data = await dispatch(signUp(username, email, password));
+        // if (password === repeatPassword) {
+            const data = await dispatch(signUp(username, email, password, repeatPassword));
             if (data) {
                 setErrors(data)
             }
-        }
+        // }
     }
+
 
     const updateUsername = (e) => {
         setUsername(e.target.value);
