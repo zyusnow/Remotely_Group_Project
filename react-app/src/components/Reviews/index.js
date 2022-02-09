@@ -59,6 +59,7 @@ export default function Reviews({ productId }) {
     }
 
       const openEditReviewForm = (e) => {
+          e.preventDefault()
           setEditRevId(e.target.value)
           setShowEditModal(true)
       }
