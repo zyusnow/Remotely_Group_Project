@@ -46,12 +46,15 @@ export default function ProductDetail() {
             e.preventDefault();
             history.push(`/products/${productId}/edit`);
           }
-
+    const addToCart = e => {
+      e.preventDefault();
+      history.push('/products');
+    }
 
     return (
       <>
         <div className="product_img_container">
-          <Link to={`/products/${product.id}`}>
+          <Link to={`/products/${productId}`}>
             <img
               className="img"
               src={product?.imageUrl}

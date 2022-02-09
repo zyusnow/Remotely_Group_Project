@@ -22,7 +22,7 @@ export default function AllProducts() {
                 {productsArr?.map(product => (
                     <div className='one_product_container' key={product?.id}>
                         <div className='img_container'>
-                        <img className="img" src={product?.id} alt={product?.category_name}></img>
+                        <img className="img" src={product?.imageUrl} alt={product?.category_name}></img>
                         </div>
                         <div className='card_content'>
                             <Link className='product_title' to={`/products/${product.id}`}>{product?.title}</Link>

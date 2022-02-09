@@ -11,7 +11,6 @@ const [isLoaded, setIsLoaded] = useState(false)
 
 
 console.log(id)
-console.log(cartItemsArray)
 
 useEffect(() => {
   dispatch(loadCart(id))
