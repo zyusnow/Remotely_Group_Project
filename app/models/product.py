@@ -37,5 +37,5 @@ class Product(db.Model):
             'category_name': self.category.name if self.category else None,
             'createdAt': self.createdAt,
             'updatedAt': self.updatedAt,
-
+            'reviews': [review.to_dict() for review in self.reviews]
         }
