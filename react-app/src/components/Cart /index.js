@@ -4,7 +4,7 @@ import {useDispatch} from 'react-redux';
 import { loadCart } from '../../store/cart'
 
 function CartPage() {
-const { cartId } = useParams();
+const { cartId } = use;
 const id = +cartId
 const dispatch = useDispatch();
 const [cart, setCart] = useState({})
