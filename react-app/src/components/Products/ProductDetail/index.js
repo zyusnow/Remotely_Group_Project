@@ -13,6 +13,7 @@ export default function ProductDetail() {
     const product = useSelector(state => state.product.products[productId])
     const sessionUser = useSelector(state => state.session.user);
     const allReviewsObj = useSelector(state => state.review.reviews)
+    quantity = useSelector
     const allReviewsArray = Object.values(allReviewsObj)
     const productReviews = allReviewsArray.filter(review => review.productId === productId)
 
@@ -20,6 +21,14 @@ export default function ProductDetail() {
         return productReviews?.reduce(function(prevValue, review){
             return (prevValue + review.rating)
         }, 0)
+    }
+
+    const handleSubmit = e => {
+        e.preventDefault();
+        const product = {
+            productId,
+            quantity
+        }
     }
 
     let rating = Math.round(overallRating(productReviews)/productReviews.length)
@@ -58,7 +67,8 @@ export default function ProductDetail() {
                 <div>${product?.price}</div>
                 <div>{product?.description}</div>
             </div>
-            <button>Add to Cart</button>            
+
+            <button onClick={handleSubmit}>Add to Cart</button>            
 
             {sessionUser?.id===product?.userId &&
               <>

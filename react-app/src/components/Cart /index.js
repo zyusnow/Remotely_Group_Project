@@ -10,6 +10,7 @@ const [cart, setCart] = useState({})
 const [isLoaded, setIsLoaded] = useState(false)
 
 
+
 useEffect(() => {
   dispatch(loadCart(id))
   }, [dispatch])
@@ -18,7 +19,6 @@ useEffect(() => {
     <>
     <h1>Cart</h1>
     <p>This is just fluff {id}</p>
-    
     </>
   )
 }
