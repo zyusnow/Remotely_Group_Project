@@ -30,7 +30,7 @@ export default function EditReviewForm({ reviewId, productId }) {
 
     return (
         <div style={{backgroundColor: 'white'}}>
-            <h3>Edit Form</h3>
+            <h3>Edit Review</h3>
             <form className="edit-review-form">
                 <select
                 value={rating}

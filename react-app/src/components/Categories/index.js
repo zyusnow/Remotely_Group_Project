@@ -10,11 +10,10 @@ export default function Categories() {
     const { categoryName } = useParams();
     const category = useSelector(state => state.category.categories[categoryName])
     const productArr = useSelector(state => state.category.categories[categoryName].products)
-    // const productArr = category.products
 
     useEffect(() => {
         dispatch(getOneCategory(categoryName))
-    }, [dispatch])
+    }, [dispatch, categoryName])
 
     return (
         <>
@@ -23,7 +22,7 @@ export default function Categories() {
                  {productArr?.map(product => (
                     <div className='one_product_container' key={product?.id}>
                         <div className='img_container'>
-                                <img className="img" src={product?.imageUrl}></img>
+                                <img className="img" src={product?.imageUrl} alt={product?.category_name}></img>
                         </div>
                         <div className='card_content'>
                             <Link className='product_title' to={`/products/${product.id}`}>{product?.title}</Link>
@@ -35,36 +34,3 @@ export default function Categories() {
         </>
     )
 }
-
-
-
-
-
-
-//     const productsObj = useSelector(state => state?.product?.products)
-//     const productsArr = Object.values(productsObj)
-
-//     useEffect(() => {
-//         dispatch(getAllProducts())
-//     }, [dispatch])
-
-//     return (
-//         <>
-//             <div className='category_title'>Find all products</div>
-//             <div className='products_container'>
-//                 {productsArr?.map(product => (
-//                     <div className='one_product_container' key={product?.id}>
-//                         <div className='img_container'>
-//                                 <img className="img" src={product?.imageUrl} alt={product?.category_name}></img>
-//                         </div>
-//                         <div className='card_content'>
-//                             <Link className='product_title' to={`/products/${product.id}`}>{product?.title}</Link>
-//                             <div className='product_price'>${product?.price}</div>
-//                         </div>
-//                     </div>
-//                 ))}
-//             </div>
-//         </>
-//     )
-
-// }

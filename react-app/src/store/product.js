@@ -28,7 +28,7 @@ const addProduct = (product) => {
 
 const deleteProduct = (id) => {
     return {
-        type:DELETE_PRODUCT,
+        type: DELETE_PRODUCT,
         id
     }
 }
@@ -37,10 +37,8 @@ const deleteProduct = (id) => {
 //thunk
 export const getAllProducts = () => async (dispatch) => {
     const res = await fetch('/api/products');
-    // console.log("getAll thunk before", res)
     if (res.ok) {
         const productsObj = await res.json();
-        // console.log("getAll thunk after", productsObj)
         dispatch(getProducts(productsObj.products));
         return productsObj.products
     }
