@@ -36,3 +36,13 @@ def add_cart_item():
             cartItem.quantity += 1
         db.session.commit()
     return cartItem.to_dict()
+
+@cart_routes.route('/delete/<int:id>', methods=['DELETE'])
+def delete_cart_item(id):
+    cartItem = CartItem.query.get(id)
+    if cartItem:
+        db.session.delete(cartItem)
+        db.session.commit()
+    else:
+        return jsonify({'message': 'Item does not exist in cart'})
+    return('Successfully Deleted Item')

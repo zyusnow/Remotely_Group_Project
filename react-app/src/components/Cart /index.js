@@ -1,6 +1,6 @@
 import { useEffect, useState} from 'react';
 import {useDispatch, useSelector } from 'react-redux';
-import { loadCart } from '../../store/cart'
+import { loadCart, deleteFromCart } from '../../store/cart'
 import {getAllProducts} from '../../store/product'
 import './Cart.css'
 
@@ -25,9 +25,14 @@ function CartPage() {
   })
  console.log(productIds)
   const cartProducts = productIds?.map(productId => {
-    return products[productId]
+    cartItem = products[productId]
+
   })
 
+  const handleDelete =() => {
+
+
+  }
 
   return (
     <>
@@ -45,6 +50,7 @@ function CartPage() {
                   <li key={product.price} className="cartItemPrice">
                     {product.price}
                   </li>
+                  <li><button onClick={handleDelete}>Delete</button></li>
                 </>
               );
             }
