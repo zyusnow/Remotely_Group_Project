@@ -47,3 +47,58 @@
     font-size: 1em;
     font-weight: 400;
 }
+
+
+.img_banner{
+    display: flex;
+    object-fit: unset;
+    height: auto;
+    width: 44%;
+    margin-bottom: 12px;
+    border-radius: 2px;
+}
+
+.down_banner{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 6em;
+
+}
+
+.down_banner_left{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width:46%
+}
+
+.left_title{
+    color:rgb(167, 164, 164)
+}
+
+.left_sub_title{
+    font-size: 2em;
+    font-weight: 500;
+    margin-bottom: 1.4em;
+}
+
+.left_content{
+    letter-spacing: 1.6px;
+    font-size: 1.1em;
+    padding-bottom: 1.2em;
+}
+
+.banner_button{
+    width: fit-content;
+    align-self: flex-start;
+    padding: 1.1em;
+    border:none;
+    background-color: rgb(250, 193, 4);
+}
+
+.btn_link{
+    text-decoration: none;
+    color:black;
+    font-size: larger;
+}
