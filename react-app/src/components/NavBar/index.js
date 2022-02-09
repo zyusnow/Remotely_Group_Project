@@ -27,21 +27,21 @@ function NavBar({ loaded }) {
         }
     }
     return (
-        <>
-            <nav className="nav">
-                <div className='nav_left'>
-                <NavLink id="nav_head" to="/">Remotely</NavLink>
-                </div>
-                <div className='search_bar'>
-                </div>
-                <div className='nav_right'>
-                    {loaded && sessionLinks}
-                </div>
-                <i className="fas fa-shopping-cart"></i>
-            </nav>
-        </>
-
-    )
+      <>
+        <nav className="nav">
+          <div className="nav_left">
+            <NavLink id="nav_head" to="/">
+              Remotely
+            </NavLink>
+          </div>
+          <div className="search_bar"></div>
+          <div className="nav_right">{loaded && sessionLinks}</div>
+          <NavLink to="/cart">
+            <i className="fas fa-shopping-cart"/>
+          </NavLink>
+        </nav>
+      </>
+    );
 
 }
 

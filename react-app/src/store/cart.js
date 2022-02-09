@@ -4,7 +4,7 @@ const GET_CART = 'cart/GET_CART';
 const ADD_CART = 'cart/ADD_CART_ITEM';
 
 const getCart = (cart) =>
-  { 
+  {
     return {
     type: GET_CART,
     cart
@@ -38,26 +38,19 @@ export const loadCart = (cartId) => async (dispatch) => {
   }
 }
 
-export const addToCart = (product) => async (dispatch) => {
+export const addToCart = (newCartItem) => async (dispatch) => {
   const res = await fetch('/api/cart/add', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(product)
+    body: JSON.stringify(newCartItem)
   });
-  if (res.ok) {
     const cartItem = await res.json();
-    dispatch(addCartItem(product));
+    dispatch(addCartItem(cartItem));
     return cartItem;
-  } else if (res.status === 401) {
-    return res.json().then(({ message }) => {
-      throw new Error(message);
-    });
-  } else {
-    throw new Error('Something went wrong');
-  }
-} 
+
+}
 
 const initialState = {};
 //Reducer
@@ -70,12 +63,11 @@ export default function reducer(state = initialState, action) {
       newState = {...state};
       newState.cart = action.cart;
       return newState;
-    case ADD_CART_ITEM:
+    case ADD_CART:
       newState = { ...state };
-      newState.cart[action.cartItem.id] = action.cartItem;
-      return newState; 
+      newState.cart = action.cart;
+      return newState;
     default:
       return state;
   }
 }
-

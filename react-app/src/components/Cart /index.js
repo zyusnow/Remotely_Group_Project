@@ -4,12 +4,14 @@ import { loadCart } from '../../store/cart'
 
 function CartPage() {
 const id = useSelector(state => state.session.user.id);
-const cartItems = useSelector(state => state.carts.cart)
+const cartItemsArray = useSelector(state => state.carts.cart)
 const dispatch = useDispatch();
 const [cart, setCart] = useState({})
 const [isLoaded, setIsLoaded] = useState(false)
 
 
+console.log(id)
+console.log(cartItemsArray)
 
 useEffect(() => {
   dispatch(loadCart(id))
@@ -19,6 +21,7 @@ useEffect(() => {
     <>
     <h1>Cart</h1>
     <p>This is just fluff {id}</p>
+
     </>
   )
 }

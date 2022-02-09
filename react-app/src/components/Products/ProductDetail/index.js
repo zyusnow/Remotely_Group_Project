@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory, useParams, Link} from 'react-router-dom';
 import { deleteOneProduct, getOneProduct } from '../../../store/product';
+import { addToCart } from '../../../store/cart';
 import Reviews from '../../Reviews';
 
 export default function ProductDetail() {
@@ -9,11 +10,10 @@ export default function ProductDetail() {
     const { id } = useParams();
     const productId = +id;
     const history = useHistory();
-  
+
     const product = useSelector(state => state.product.products[productId])
     const sessionUser = useSelector(state => state.session.user);
     const allReviewsObj = useSelector(state => state.review.reviews)
-    quantity = useSelector
     const allReviewsArray = Object.values(allReviewsObj)
     const productReviews = allReviewsArray.filter(review => review.productId === productId)
 
@@ -23,15 +23,12 @@ export default function ProductDetail() {
         }, 0)
     }
 
-    const handleSubmit = e => {
-        e.preventDefault();
-        const product = {
-            productId,
-            quantity
-        }
-    }
+     let rating = Math.round(
+       overallRating(productReviews) / productReviews.length
+     );
 
-    let rating = Math.round(overallRating(productReviews)/productReviews.length)
+
+
 
     useEffect(() => {
         dispatch(getOneProduct(productId))
@@ -49,34 +46,47 @@ export default function ProductDetail() {
             e.preventDefault();
             history.push(`/products/${productId}/edit`);
           }
-    
+
 
     return (
-        <>
-            <div className='product_img_container'>
-                <img className="img" src={product?.imageUrl} alt={product?.category_name}></img>
-            </div>
-            <div className='product_detail_container'>
-                <div>{product?.user_name}</div>
-                <div>{product?.category_name}</div>
-                <div>
-                    {rating > 0 && Array(rating).fill(
-                        <span><i className="fas fa-star"></i></span>).map((star, idx) => <span key={idx}>{star}</span>)}
-                </div>
-                <div>{product?.title}</div>
-                <div>${product?.price}</div>
-                <div>{product?.description}</div>
-            </div>
+      <>
+        <div className="product_img_container">
+          <Link to={`/products/${product.id}`}>
+            <img
+              className="img"
+              src={product?.imageUrl}
+              alt={product?.category_name}
+            />
+          </Link>
+        </div>
+        <div className="product_detail_container">
+          <div>{product?.user_name}</div>
+          <div>{product?.category_name}</div>
+          <div>
+            {rating > 0 &&
+              Array(rating)
+                .fill(
+                  <span>
+                    <i className="fas fa-star"></i>
+                  </span>
+                )
+                .map((star, idx) => <span key={idx}>{star}</span>)}
+          </div>
+          <div>{product?.title}</div>
+          <div>${product?.price}</div>
+          <div>{product?.description}</div>
+        </div>
 
-            <button onClick={handleSubmit}>Add to Cart</button>            
+        <button onClick={addToCart}>Add to Cart</button>
 
-            {sessionUser?.id===product?.userId &&
-              <>
-                <button onClick={handleDelete}>Delete</button>
-                <button onClick={handleUpdate}>Edit</button>
-              </>}
+        {sessionUser?.id === product?.userId && (
+          <>
+            <button onClick={handleDelete}>Delete</button>
+            <button onClick={handleUpdate}>Edit</button>
+          </>
+        )}
 
-            <Reviews productId={product?.id} />
-        </>
-    )
+        <Reviews productId={product?.id} />
+      </>
+    );
 }

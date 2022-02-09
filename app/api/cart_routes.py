@@ -13,7 +13,7 @@ def cart(id):
     return jsonify([cartItem.to_dict() for cartItem in cartItems])
 
 
-@cart_routes.route('/add/', methods=['POST'])
+@cart_routes.route('/add', methods=['POST'])
 def add_cart_item():
     print("I'm in!")
     form = AddToCartForm()

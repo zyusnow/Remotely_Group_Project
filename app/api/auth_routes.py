@@ -41,6 +41,8 @@ def login():
         # Add the user to the session, we are logged in!
         user = User.query.filter(User.email == form.data['email']).first()
         login_user(user)
+        # Add cart to the session
+        cart = Cart.query.filter(Cart.userId == user.id).first()
         return user.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
