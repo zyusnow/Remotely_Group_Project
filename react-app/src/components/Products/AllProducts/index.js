@@ -1,17 +1,16 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { getAllProducts } from '../../../store/product';
 import './Products.css'
 
 
-
 export default function AllProducts() {
     const dispatch = useDispatch();
-    const history =useHistory();
+
     const productsObj = useSelector(state => state?.product?.products)
     const productsArr = Object.values(productsObj)
-    // console.log("allProducts",productsArr)
+
     useEffect(() => {
         dispatch(getAllProducts())
     }, [dispatch])

@@ -13,7 +13,7 @@ import NewProduct from './components/Products/NewProduct';
 import HomePage from './components/HomePage';
 import Categories from './components/Categories';
 import EditProduct from './components/Products/EditProduct';
-import ProtectedRoute from './components/auth/ProtectedRoute';
+// import ProtectedRoute from './components/auth/ProtectedRoute';
 import { authenticate } from './store/session';
 
 

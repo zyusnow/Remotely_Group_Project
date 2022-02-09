@@ -18,7 +18,7 @@ function HomePage() {
             <div className='banner'>
                 <div className='welcome'>Stay comfortabley, work remotely!</div>
                 <div className='categories_container'>
-                        <ul>
+                    <ul>
                     {categoriesArr?.map(category => (
                             <li key={category?.id}>
                                 <Link to={`/category/${category.name}`}>
@@ -28,37 +28,6 @@ function HomePage() {
                             </li>
                     ))}
                     </ul>
-                        {/* <li>
-                            <Link to="/products?search=pokemon">
-                            <img src="https://res.cloudinary.com/dprnsux1z/image/upload/v1644336599/joshua-fuller-I0ucRdvImTo-unsplash_rznkn8.jpg" className="round-image" alt="" />
-                            </Link>
-                            <p>Office Electronics</p>
-                        </li>
-                        <li>
-                            <Link to="/products">
-                                <img src="https://res.cloudinary.com/dprnsux1z/image/upload/v1644295492/tianyi-ma-WiONHd_zYI4-unsplash_oc7ycm.jpg" className="round-image" alt="" />
-                            </Link>
-                            <p>Computer Technology</p>
-                        </li>
-                        <li>
-                            <Link to="/products">
-                            <img src="https://res.cloudinary.com/dprnsux1z/image/upload/v1644295631/bryan-natanael-c4a_0kycTUE-unsplash_ybcbyb.jpg" className="round-image" alt="" />
-                            </Link>
-                            <p>Computer Accessories</p>
-                        </li>
-                        <li>
-                            <Link to="/products">
-                            <img src="https://res.cloudinary.com/dprnsux1z/image/upload/v1644336706/marten-bjork-rH8O0FHFpfw-unsplash_s4bbzw.jpg" className="round-image" alt="" />
-                            </Link>
-                            <p>Stationery & Office Supplies</p>
-                        </li>
-                        <li>
-                            <Link to="/products">
-                            <img src="https://res.cloudinary.com/dprnsux1z/image/upload/v1644337131/jan-antonin-kolar-bXBTjpjgidM-unsplash_vxt4ul.jpg" className="round-image" alt="" />
-                            </Link>
-                            <p>Boards</p>
-                        </li> */}
-
                 </div>
             </div>
         </>

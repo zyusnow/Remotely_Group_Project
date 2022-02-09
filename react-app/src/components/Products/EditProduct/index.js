@@ -48,8 +48,6 @@ function EditProduct() {
         }
     }
 
-
-
     useEffect(() => {
         if (!sessionUser) {
             history.push('/login')
@@ -59,7 +57,7 @@ function EditProduct() {
     useEffect(() => {
         dispatch(getOneProduct(productId))
         dispatch(getAllCategories())
-    }, [dispatch], productId);
+    }, [dispatch, productId]);
 
 
     const handleCancel = (e) => {
@@ -128,7 +126,7 @@ function EditProduct() {
                             value={categoryId}
                             onChange={(e) => setCategoryId(e.target.value)}
                         >
-                            <option value=''>Select</option>
+                            <option value=''>Select a category</option>
                             {categoriesArr.map((category) => (
                                 <option key={category?.id} value={category?.id}>{category?.name}</option>
                             ))}

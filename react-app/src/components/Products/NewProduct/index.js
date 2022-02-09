@@ -7,15 +7,13 @@ import './NewProduct.css'
 
 
 export default function NewProduct() {
-  const [title, setTitle] = useState("test")
-  const [description, setDescription] = useState("hh")
-  const [imageUrl, setImageUrl] = useState("https://res.cloudinary.com/dprnsux1z/image/upload/v1644337202/chalo-garcia-RBoGC_OJvWs-unsplash_kpuzkk.jpg")
-  const [price, setPrice] = useState("100")
-  const [quantity, setQuantity] = useState("1")
+  const [title, setTitle] = useState("")
+  const [description, setDescription] = useState("")
+  const [imageUrl, setImageUrl] = useState("")
+  const [price, setPrice] = useState("")
+  const [quantity, setQuantity] = useState("")
   const [categoryId, setCategoryId] = useState("")
   const [errors, setErrors] = useState([])
-
-
 
   const categoriesObj = useSelector(state => state?.category?.categories)
   const categoriesArr = Object.values(categoriesObj)
@@ -133,7 +131,7 @@ export default function NewProduct() {
               value={categoryId}
               onChange={(e) => setCategoryId(e.target.value)}
             >
-              <option value=''>Select</option>
+              <option value=''>Select a category</option>
               {categoriesArr.map((category) => (
                 <option key={category?.id} value={category?.id}>{category?.name}</option>
               ))}
@@ -151,10 +149,10 @@ export default function NewProduct() {
             />
           </div>
           <div>
-          <button type="submit" className="add-product-button">Add Product</button>
-          <button className="add-product-button cancel" onClick={handleCancel}>Cancel</button>
+            <button type="submit" className="add-product-button">Add Product</button>
+            <button className="add-product-button cancel" onClick={handleCancel}>Cancel</button>
+          </div>
         </div>
-    </div>
       </form >
     </div >
   )

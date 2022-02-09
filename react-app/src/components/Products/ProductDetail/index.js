@@ -1,9 +1,8 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getOneProduct } from '../../../store/product';
-import Reviews from '../../Reviews';
 import { useHistory, useParams } from 'react-router-dom';
 import { deleteOneProduct, getOneProduct } from '../../../store/product';
+import Reviews from '../../Reviews';
 
 export default function ProductDetail() {
     const dispatch = useDispatch();
@@ -46,7 +45,7 @@ export default function ProductDetail() {
     return (
         <>
             <div className='product_img_container'>
-                <img className="img" src={product?.imageUrl}></img>
+                <img className="img" src={product?.imageUrl} alt={product?.category_name}></img>
             </div>
             <div className='product_detail_container'>
                 <div>{product?.user_name}</div>
@@ -68,7 +67,6 @@ export default function ProductDetail() {
               </>}
 
             <Reviews productId={product?.id} />
-
         </>
     )
 }
