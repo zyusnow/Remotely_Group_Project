@@ -37,6 +37,7 @@ function NavBar({ loaded }) {
                 <div className='nav_right'>
                     {loaded && sessionLinks}
                 </div>
+                <i className="fas fa-shopping-cart"></i>
             </nav>
         </>
 

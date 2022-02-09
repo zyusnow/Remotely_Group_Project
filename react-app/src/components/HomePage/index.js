@@ -8,7 +8,6 @@ function HomePage() {
     const dispatch = useDispatch();
     const categoriesObj = useSelector(state => state?.category?.categories)
     const categoriesArr = Object.values(categoriesObj)
-    console.log(categoriesArr)
 
     useEffect(() => {
         dispatch(getAllCategories())
@@ -19,14 +18,17 @@ function HomePage() {
             <div className='banner'>
                 <div className='welcome'>Stay comfortabley, work remotely!</div>
                 <div className='categories_container'>
-                    <ul>
-                        <li>
-                            <Link to="/products">
-                                <img src="https://res.cloudinary.com/dprnsux1z/image/upload/v1644337202/chalo-garcia-RBoGC_OJvWs-unsplash_kpuzkk.jpg" className="round-image" alt="" />
-                            </Link>
-                            <p>Office Furniture</p>
-                        </li>
-                        <li>
+                        <ul>
+                    {categoriesArr?.map(category => (
+                            <li key={category?.id}>
+                                <Link to={`/category/${category.name}`}>
+                                    <img src={category.category_image} className="round-image" alt="" />
+                                </Link>
+                                <p>{category.name}</p>
+                            </li>
+                    ))}
+                    </ul>
+                        {/* <li>
                             <Link to="/products?search=pokemon">
                             <img src="https://res.cloudinary.com/dprnsux1z/image/upload/v1644336599/joshua-fuller-I0ucRdvImTo-unsplash_rznkn8.jpg" className="round-image" alt="" />
                             </Link>
@@ -55,8 +57,8 @@ function HomePage() {
                             <img src="https://res.cloudinary.com/dprnsux1z/image/upload/v1644337131/jan-antonin-kolar-bXBTjpjgidM-unsplash_vxt4ul.jpg" className="round-image" alt="" />
                             </Link>
                             <p>Boards</p>
-                        </li>
-                    </ul>
+                        </li> */}
+
                 </div>
             </div>
         </>

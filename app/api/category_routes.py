@@ -13,7 +13,6 @@ def get_categories():
 
     return {'categories': categories}
 
-@category_routes.route('/<int:id>')
-def get_category(id):
-    category = Category.query.get(id)
+@category_routes.route('/:categoryName')
+def get_category(categoryName):
     return category.to_dict()

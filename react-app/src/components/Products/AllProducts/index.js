@@ -10,14 +10,14 @@ export default function AllProducts() {
     const dispatch = useDispatch();
     const productsObj = useSelector(state => state?.product?.products)
     const productsArr = Object.values(productsObj)
-
+    // console.log("allProducts",productsArr)
     useEffect(() => {
         dispatch(getAllProducts())
     }, [dispatch])
 
     return (
         <>
-            <div className='category_title'>category_title</div>
+            <div className='category_title'>Find all products</div>
             <div className='products_container'>
                 {productsArr?.map(product => (
                     <div className='one_product_container' key={product?.id}>
