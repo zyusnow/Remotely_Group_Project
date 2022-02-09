@@ -2,19 +2,20 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { Modal } from '../../context/Modal'
 import { getAllReviews, addOneReview, deleteReviewById } from'../../store/review'
+import { getOneProduct } from '../../store/product';
 import EditReviewForm from './EditReviewForm';
+import './Reviews.css'
 
 export default function Reviews({ productId }) {
     const dispatch = useDispatch()
     
     const [rating, setRating] = useState("")
     const [comment, setComment] = useState("")
-    const [addRev, setAddRev] = useState("")
-    const [delRev, setDelRev] = useState("")
-    const [showModal, setShowModal] = useState(false)
+    const [showEditModal, setShowEditModal] = useState(false)
+    const [showAddModal, setShowAddModal] = useState(false)
     const [editRevId, setEditRevId] = useState("")
 
-    const userId = useSelector(state => state.session.user.id)
+    const userId = useSelector(state => state.session.user?.id)
     const allReviewsObj = useSelector(state => state.review.reviews)
     
     const allReviewsArray = Object.values(allReviewsObj)
@@ -22,9 +23,7 @@ export default function Reviews({ productId }) {
 
     useEffect(() => {
         dispatch(getAllReviews())
-        setAddRev("")
-        setDelRev("")
-    }, [dispatch, addRev, delRev])
+    }, [dispatch])
 
     const addReview = (e) => {
         e.preventDefault();
@@ -40,7 +39,8 @@ export default function Reviews({ productId }) {
         if(newReview) {
           setComment("")
           setRating("")
-          setAddRev("Added Review")
+          dispatch(getOneProduct(+productId))
+          setShowAddModal(false)
         }
       }
 
@@ -49,38 +49,58 @@ export default function Reviews({ productId }) {
         let deletedReview = dispatch(deleteReviewById(Number(e.target.id)))
         
         if(deletedReview) {
-            setDelRev('Delete successful')
+            dispatch(getOneProduct(+productId))
         }
       }
 
+      const openAddReviewForm = (e) => {
+          e.preventDefault()
+          setShowAddModal(true)
+    }
+
       const openEditReviewForm = (e) => {
+          e.preventDefault()
           setEditRevId(e.target.value)
-          setShowModal(true)
+          setShowEditModal(true)
       }
+
+
 
     return (
         <div className='review-container'>
-            <form className="add-review-form">
-                <select
-                value={rating}
-                onChange={(e) => setRating(e.target.value)}
-                >
-                    <option value='' disabled>Rating</option>
-                    <option value={Number(5)}>5</option>
-                    <option value={Number(4)}>4</option>
-                    <option value={Number(3)}>3</option>
-                    <option value={Number(2)}>2</option>
-                    <option value={Number(1)}>1</option>
-                )
-                </select>
-                <textarea
-                placeholder='Add a comment...'
-                autoComplete="off"
-                value={comment}
-                onChange={(e) => setComment(e.target.value)}
-                />
-                <button onClick={addReview} type="submit" disabled={!rating}>Add Review</button>
-            </form>
+            {userId && <button onClick={openAddReviewForm}>Write a review</button>}
+            {showAddModal && (
+                <Modal onClose={() => setShowAddModal(false)}>
+                    <div className='review-form'>
+                        <h3 className="review-title">Add a Review</h3>
+                        <form>
+                            <div className='rev-input-container'>
+                                <label>*Select a rating:
+                                    <select
+                                    value={rating}
+                                    onChange={(e) => setRating(e.target.value)}
+                                    >
+                                        <option value='' disabled>Rating</option>
+                                        <option value={Number(5)}>5</option>
+                                        <option value={Number(4)}>4</option>
+                                        <option value={Number(3)}>3</option>
+                                        <option value={Number(2)}>2</option>
+                                        <option value={Number(1)}>1</option>
+                                    </select>
+                                </label>
+                                <label>Add a comment (Optional): </label>
+                                <textarea
+                                className="rev-textarea"
+                                placeholder='Add a comment...'
+                                autoComplete="off"
+                                value={comment}
+                                onChange={(e) => setComment(e.target.value)}
+                                />
+                                <button onClick={addReview} type="submit" disabled={!rating} className="rev-submit">Add Review</button>
+                            </div>
+                        </form>
+                    </div>
+                </Modal>)}
             <div className='reviews-header'>Reviews</div>
             <div className='reviews-list'>
                 {productReviews.length > 0 && productReviews.map((review, idx) => (
@@ -101,9 +121,9 @@ export default function Reviews({ productId }) {
                         </span>
                   </div>
                 ))}
-                {showModal && (
-                    <Modal onClose={() => setShowModal(false)}>
-                        <EditReviewForm reviewId={editRevId} productId={productId}/>
+                {showEditModal && (
+                    <Modal onClose={() => setShowEditModal(false)}>
+                        <EditReviewForm reviewId={editRevId} productId={productId} setShowEditModal={setShowEditModal}/>
                     </Modal>
                 )}
             </div>
