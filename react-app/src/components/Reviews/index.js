@@ -85,16 +85,20 @@ export default function Reviews({ productId }) {
             <div className='reviews-list'>
                 {productReviews.length > 0 && productReviews.map((review, idx) => (
                     <div key={idx} className="reviews-content">
-                    <div>{review.user_name}: </div>
-                    <div>{review.createdAt}</div>
-                    <span>{review.rating}
-                        {review.comment}
-                      {review.userId === userId && 
-                        <>
-                            <button onClick={deleteReview} id={review.id}>Delete Review</button>
-                            <button onClick={openEditReviewForm} value={review.id}>Edit Review</button>
-                        </>}
-                    </span>
+                        <span>{review.user_name}: </span>
+                        <span>{review.createdAt}</span>
+                        <span>
+                        <div>
+                            {Array(review.rating).fill(
+                                <span><i className="fas fa-star fa-xs"></i></span>).map((star, idx) => <span key={idx}>{star}</span>)}
+                        </div>
+                            {review.comment}
+                        {review.userId === userId && 
+                            <>
+                                <button onClick={deleteReview} id={review.id}>Delete Review</button>
+                                <button onClick={openEditReviewForm} value={review.id}>Edit Review</button>
+                            </>}
+                        </span>
                   </div>
                 ))}
                 {showModal && (
