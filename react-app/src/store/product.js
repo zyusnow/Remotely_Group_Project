@@ -1,7 +1,8 @@
 // constants
 const GET_PRODUCTS = 'products/GET_PRODUCTS';
-const GET_PRODUCT = 'products/GET_PRODUCT'
-const ADD_PRODUCT = 'products/ADD_PRODUCT'
+const GET_PRODUCT = 'products/GET_PRODUCT';
+const ADD_PRODUCT = 'products/ADD_PRODUCT';
+const DELETE_PRODUCT = 'products/DELETE_PRODUCT';
 
 //actions creator
 const getProducts = (products) => {
@@ -24,6 +25,14 @@ const addProduct = (product) => {
         product
     }
 }
+
+const deleteProduct = (id) => {
+    return {
+        type:DELETE_PRODUCT,
+        id
+    }
+}
+
 
 //thunk
 export const getAllProducts = () => async (dispatch) => {
@@ -69,6 +78,43 @@ export const addOneProduct = (productDetails) => async (dispatch) => {
       }
 }
 
+export const updateOneProduct = (product, productId) => async dispatch => {
+    const res = await fetch(`/api/products/edit/${productId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(product)
+    });
+    
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(addProduct(data))
+        return null;
+    } else if (res.status < 500) {
+        const data = await res.json();
+        if (data.errors) {
+          return data.errors;
+        }
+      } else {
+        return ['An error occurred. Please try again.']
+      }
+}
+
+export const deleteOneProduct = productId => async dispatch => {
+    const res = await fetch(`/api/products/delete/${productId}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+    })
+    if (res.ok) {
+        await dispatch(deleteProduct(+productId));
+        return res
+    }
+}
+
+
 //reducer
 const initialState = {products: {}};
 export default function productReducer(state = initialState, action) {
@@ -88,6 +134,10 @@ export default function productReducer(state = initialState, action) {
         case ADD_PRODUCT:
             newState = {...state};
             newState.products[action.product.id] = action.product;
+            return newState;
+        case DELETE_PRODUCT:
+            newState = {...state};
+            delete newState.products[action.id]
             return newState;
         default:
             return state;

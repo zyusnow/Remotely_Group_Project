@@ -1,16 +1,18 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
 import { getOneProduct } from '../../../store/product';
 import Reviews from '../../Reviews';
+import { useHistory, useParams } from 'react-router-dom';
+import { deleteOneProduct, getOneProduct } from '../../../store/product';
 
 export default function ProductDetail() {
     const dispatch = useDispatch();
     const { id } = useParams();
     const productId = +id;
-
+    const history = useHistory();
+  
     const product = useSelector(state => state.product.products[productId])
-
+    const sessionUser = useSelector(state => state.session.user);
     const allReviewsObj = useSelector(state => state.review.reviews)
     const allReviewsArray = Object.values(allReviewsObj)
     const productReviews = allReviewsArray.filter(review => review.productId === productId)
@@ -26,6 +28,20 @@ export default function ProductDetail() {
     useEffect(() => {
         dispatch(getOneProduct(productId))
     }, [dispatch, productId, productReviews.length])
+
+    const handleDelete = e =>{
+        e.preventDefault();
+        const deleted_product = dispatch(deleteOneProduct(productId))
+        if (deleted_product) {
+            history.push('/products')
+        }
+    }
+
+    const handleUpdate = e => {
+            e.preventDefault();
+            history.push(`/products/${productId}/edit`);
+          }
+    
 
     return (
         <>
@@ -43,8 +59,16 @@ export default function ProductDetail() {
                 <div>${product?.price}</div>
                 <div>{product?.description}</div>
             </div>
-            <button>Add to Cart</button>
+            <button>Add to Cart</button>            
+
+            {sessionUser?.id===product?.userId &&
+              <>
+                <button onClick={handleDelete}>Delete</button>
+                <button onClick={handleUpdate}>Edit</button>
+              </>}
+
             <Reviews productId={product?.id} />
+
         </>
     )
 }

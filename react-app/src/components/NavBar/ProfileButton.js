@@ -31,7 +31,7 @@ function ProfileButton({ user }) {
     return <Redirect to='/' />;
   };
 
-  const toDashboard = (e) => {
+  const toMyOrder = (e) => {
     e.preventDefault();
     if(user) {
       history.push(`/`)
@@ -47,7 +47,7 @@ function ProfileButton({ user }) {
       {showMenu && (
         <ul className="profile-dropdown">
           <li>
-            <button id="nav_logout" onClick={toDashboard}>My Dashboard</button>
+            <button id="nav_logout" onClick={toMyOrder}>My order</button>
           </li>
           <li>
             <button id="nav_logout" onClick={logout}>Log Out</button>
