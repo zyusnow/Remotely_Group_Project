@@ -8,4 +8,4 @@ cart_routes = Blueprint('cart', __name__)
 def cart(id):
     cart = Cart.query.get(id)
     cartItems = CartItem.query.filter_by(cartId=id).all()
-    return jsonify({'cart': cart.to_dict(), 'cartItems': [cartItem.to_dict() for cartItem in cartItems]})
+    return jsonify([cartItem.to_dict() for cartItem in cartItems])

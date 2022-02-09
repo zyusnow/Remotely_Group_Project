@@ -30,8 +30,8 @@ export const loadCart = (cartId) => async (dispatch) => {
   }
 }
 
-const initialState = { cart: {} };
-//Recucer
+const initialState = {};
+//Reducer
 export default function reducer(state = initialState, action) {
 
   let newState;
@@ -39,7 +39,7 @@ export default function reducer(state = initialState, action) {
   switch (action.type) {
     case GET_CART:
       newState = {...state};
-      newState.cart[action.cart.id] = action.cart;
+      newState.cart = action.cart;
       return newState;
     default:
       return state;
