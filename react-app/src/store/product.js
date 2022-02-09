@@ -86,6 +86,7 @@ export const updateOneProduct = (product, productId) => async dispatch => {
         },
         body: JSON.stringify(product)
     });
+    
     if (res.ok) {
         const data = await res.json();
         dispatch(addProduct(data))
