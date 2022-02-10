@@ -23,5 +23,10 @@ class CartItem(db.Model):
             'cartId': self.cartId,
             'quantity': self.quantity,
             'createdAt': self.createdAt,
-            'updatedAt': self.updatedAt
+            'updatedAt': self.updatedAt,
+            #  these keys are associated with other tables
+            'productTitle': self.product.title,
+            'productPrice': self.product.price,
+            'productImageUrl': self.product.imageUrl,
+            'productCategory': self.product.category.name,
         }

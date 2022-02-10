@@ -8,8 +8,9 @@ cart_routes = Blueprint('cart', __name__)
 
 @cart_routes.route('/<int:id>')
 def cart(id):
+    #  TODO: alter this query to join products table
     cart = Cart.query.get(id)
-    cartItems = CartItem.query.filter_by(cartId=id).all()
+    cartItems = CartItem.query.filter_by(cartId=id).join(Product).all()
     return jsonify([cartItem.to_dict() for cartItem in cartItems])
 
 
