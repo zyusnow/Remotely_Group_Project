@@ -16,10 +16,8 @@ def cart(id):
 
 @cart_routes.route('/add', methods=['POST'])
 def add_cart_item():
-    print("I'm in!")
     form = AddToCartForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    print('add to cart form worked!')
     if form.validate_on_submit:
         quantity = form.data['quantity']
         productId = form.data['productId']
