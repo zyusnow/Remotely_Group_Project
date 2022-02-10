@@ -6,8 +6,7 @@ const searchProduct = (products) => ({
 })
 
 export const searchRes = (q) => async(dispatch) => {
-    const response = await fetch(`/api/search?q=${q}`, {
-    })
+    const response = await fetch(`/api/search?q=${q}`)
 
     if (response.ok) {
         const searchResults = await response.json();
@@ -16,9 +15,9 @@ export const searchRes = (q) => async(dispatch) => {
     }
 }
 
-export default function searchReducer (state={}, action){
+export default function searchReducer (state = {}, action){
     let newState;
-    switch(action.type){
+    switch (action.type) {
         case SEARCH_PRODUCT:
             newState = action.products
             return newState
