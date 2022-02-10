@@ -7,29 +7,12 @@ import './Cart.css'
 function CartPage() {
   const id = useSelector((state) => state.session?.user.id);
   const cartItemsArray = useSelector((state) => state.carts?.cart);
-  const products = useSelector((state) => state.product?.products )
-  // const user = useSelector((state) => state.session?.user)
-  // const [cart, setCart] = useState({});
-  // const [isLoaded, setIsLoaded] = useState(false);
   const dispatch = useDispatch();
-
-  // const productIds = cartItemsArray?.map(cartItem => {
-  //  return [cartItem.productId, cartItem.quantity, cartItem.id];
-  // })
-
-  // const cartProducts = productIds?.map(productId => {
-  //   const cartItem = products[productId[0]];
-  //   if (cartItem) {
-  //     cartItem.quantity = productId[1];
-  //     cartItem.cartId = productId[2];
-  //   }
-  //   return cartItem;
-  // })
 
   useEffect(() => {
     dispatch(getAllProducts())
     dispatch(loadCart(id));
-  }, [dispatch, id]);
+  }, [dispatch, id, cartItemsArray]);
   
 
   const handleDelete = (cartId) => {
@@ -38,13 +21,15 @@ function CartPage() {
     dispatch(loadCart(id));
   }
 
+  if (!cartItemsArray) {
+    return <></>
+  }
   return (
     <>
       <h1>My Cart</h1>
-
       <div>
         <ul className="cartItems">
-          { (!cartItemsArray || !cartItemsArray.length) ? 
+          { (!cartItemsArray.length) ? 
             <h1>You have no items in your cart.</h1>
           : cartItemsArray?.map((product) => {
               return (
