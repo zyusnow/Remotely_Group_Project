@@ -39,7 +39,3 @@ def seed_cart_items():
 
   db.session.add_all([cartItem1, cartItem2, cartItem3, cartItem4, cartItem5, cartItem6, cartItem7])
   db.session.commit()
-
-def undo_cart_items():
-  db.session.execute('TRUNCATE cart_item RESTART IDENTITY CASCADE;')
-  db.session.commit()
