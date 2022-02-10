@@ -28,7 +28,7 @@ export default function ProductDetail() {
      let rating = Math.round(
        overallRating(productReviews) / productReviews.length
      );
-  
+
 
     useEffect(() => {
         dispatch(getOneProduct(productId))
@@ -60,7 +60,7 @@ export default function ProductDetail() {
       dispatch(addToCart(cartItem))
       history.push('/cart');
     }
-    
+
     if (product && isLoaded) {
       return (
         <>
@@ -102,6 +102,6 @@ export default function ProductDetail() {
         </>
       );
     } else {
-      return <PageNotFound />
+      return <></>
     }
 }
