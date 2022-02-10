@@ -1,4 +1,3 @@
-import { user } from 'pg/lib/defaults';
 import { useEffect,  useState } from 'react';
 import {useDispatch, useSelector } from 'react-redux';
 import { loadCart, deleteFromCart, addToCart } from '../../store/cart'
