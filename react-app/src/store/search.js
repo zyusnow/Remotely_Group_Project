@@ -15,7 +15,7 @@ export const searchRes = (q) => async(dispatch) => {
     }
 }
 
-export default function searchReducer (state = {}, action){
+export default function searchReducer(state = {}, action){
     let newState;
     switch (action.type) {
         case SEARCH_PRODUCT:
