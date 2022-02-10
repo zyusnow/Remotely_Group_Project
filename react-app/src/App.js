@@ -15,6 +15,8 @@ import Categories from './components/Categories';
 import EditProduct from './components/Products/EditProduct';
 // import ProtectedRoute from './components/auth/ProtectedRoute';
 import { authenticate } from './store/session';
+import Search from './components/Search';
+
 
 
 function App() {
@@ -47,6 +49,7 @@ function App() {
               <Route path='/products/:id/edit' exact={true}><EditProduct /></Route>
               <Route path='/addProduct' exact={true}><NewProduct /></Route>
               <Route path='/category/:categoryName' exact={true}><Categories /></Route>
+              <Route path='/search'><Search /></Route>
               <Route><PageNotFound /></Route>
             </Switch>
           </div>

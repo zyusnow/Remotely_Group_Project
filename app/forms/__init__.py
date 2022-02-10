@@ -3,4 +3,3 @@ from .signup_form import SignUpForm
 from .product_form import ProductForm
 from .review_form import ReviewForm
 from .product_form_edit import ProductFormEdit
-from .search_form import SearchForm

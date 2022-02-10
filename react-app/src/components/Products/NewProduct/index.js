@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { getAllCategories } from '../../../store/category';
-import { addOneProduct } from '../../../store/product';
+import { addOneProduct, getAllProducts } from '../../../store/product';
 import './NewProduct.css'
 
 

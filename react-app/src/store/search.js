@@ -5,17 +5,17 @@ const searchProduct = (products) => ({
     products
 })
 
-export const search = () => async(dispatch) => {
-    const response = await fetch(`/api/search`)
+export const searchRes = (term) => async(dispatch) => {
+    const response = await fetch(`/api/search?term=${term}`, {
+    })
 
     if (response.ok) {
         const searchResults = await response.json();
-        dispatch(searchProduct(searchResults))
+        dispatch(searchProduct(searchResults.products))
         return searchResults
     }
 }
 
-// const initialState = {search: {}};
 export default function searchReducer (state={}, action){
     let newState;
     switch(action.type){
