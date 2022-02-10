@@ -1,9 +1,9 @@
 export default function SearchBar() {
     return (
         <>
-            <form action="/search" method="POST">
+            <form action="/search">
                 <input
-                    type="text"
+                    type="search"
                     name="term"
                     placeholder="Search for product"
                 />

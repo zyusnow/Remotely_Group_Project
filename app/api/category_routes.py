@@ -1,5 +1,4 @@
-from flask import Blueprint, jsonify, session, request, redirect
-from flask_login import login_required, current_user
+from flask import Blueprint
 from app.models import Category, db
 
 category_routes = Blueprint('categories', __name__)
@@ -15,4 +14,5 @@ def get_categories():
 
 @category_routes.route('/:categoryName')
 def get_category(categoryName):
+    category = Category.query.get(categoryName)
     return category.to_dict()

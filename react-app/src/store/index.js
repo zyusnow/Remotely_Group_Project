@@ -4,12 +4,14 @@ import session from './session';
 import product from './product';
 import category from './category';
 import review from './review'
+import search from './search';
 
 const rootReducer = combineReducers({
   session,
   product,
   category,
-  review
+  review,
+  search
 });
 
 
