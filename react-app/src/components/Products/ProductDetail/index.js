@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams, Link} from 'react-router-dom';
 import { deleteOneProduct, getOneProduct } from '../../../store/product';
 import { addToCart } from '../../../store/cart';
-import PageNotFound from '../../PageNotFound';
+// import PageNotFound from '../../PageNotFound';
 import Reviews from '../../Reviews';
 
 export default function ProductDetail() {
