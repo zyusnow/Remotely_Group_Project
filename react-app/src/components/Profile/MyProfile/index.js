@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
-import { loadUser } from '../../store/user'
+import { loadUser } from '../../../store/user'
+import './Profile.css';
 
 function ProfilePage(){
  const [user, setUser] = useState({});
  const [isLoaded, setIsLoaded] = useState(false);
- const sessionUser = useSelector(state => state.session.user);
- const products = useSelector(state => state.user?.user.products)
+ const sessionUser = useSelector(state => state.session?.user);
+ const products = useSelector(state => state.user?.user?.products)
  const id = sessionUser.id;
 const dispatch = useDispatch();
 console.log(id)
@@ -22,12 +23,11 @@ console.log(products)
 
  return (
    <>
-     <div id="main">
+     <div className="main">
        <div className="profile_banner">
-         <h1>My Profile</h1>
          <div>
-           <div className="profile_picture">
-             <img
+           <div className="image_container">
+             <img className="profile_picture"
                alt="profile_pic"
                src="https://res.cloudinary.com/bigtechnik/image/upload/v1644534295/Remotely/images_bvdorh.png"
              />
@@ -35,7 +35,7 @@ console.log(products)
            <ul>
              <li>{sessionUser.username}</li>
              <li>{sessionUser.email}</li>
-             <li><Link to='/'>Edit My Profile</Link></li>
+             <li><Link to={`/profile/${sessionUser.id}/edit`}>Edit My Profile</Link></li>
            </ul>
          </div>
        </div>
@@ -47,11 +47,15 @@ console.log(products)
              if (product) {
                return (
                  <>
-                   <li className="product_img" key={product.imageUrl}>
-                     <img src={product.imageUrl} />
-                   </li>
-                   <li>{product.title}</li>
-                   <li><Link to={`/products/${product.id}/edit`}>Edit</Link></li>
+                   <div className="product_square">
+                     <li key={product.imageUrl}>
+                       <img className="product_img" src={product.imageUrl} />
+                     </li>
+                     <li>{product.title}</li>
+                     <li>
+                       <Link to={`/products/${product.id}/edit`}>Edit</Link>
+                     </li>
+                   </div>
                  </>
                );
              }
