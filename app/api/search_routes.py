@@ -9,11 +9,6 @@ def search():
     searchResult = Product.query.filter(Product.title.ilike(f'%{term}%')).all()
     if searchResult:
         result = { product.id : product.to_dict() for product in searchResult }
-        return {
-            "products" : result,
-            "searchTerm": term
-            }
+        return { "products" : result }
     else:
-        return { 
-            "products" : {},
-            "searchTerm" : term }
+        return { "products" : {} }

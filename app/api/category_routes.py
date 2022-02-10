@@ -12,7 +12,7 @@ def get_categories():
 
     return {'categories': categories}
 
-@category_routes.route('/:categoryName')
+@category_routes.route('/<categoryName>')
 def get_category(categoryName):
-    category = Category.query.get(categoryName)
+    category = Category.query.filter(Category.name == categoryName).one()
     return category.to_dict()
