@@ -1,7 +1,7 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams, Link} from 'react-router-dom';
-import { deleteOneProduct, getAllProducts, getOneProduct } from '../../../store/product';
+import { deleteOneProduct, getOneProduct } from '../../../store/product';
 import { addToCart } from '../../../store/cart';
 import PageNotFound from '../../PageNotFound';
 import Reviews from '../../Reviews';
@@ -12,6 +12,7 @@ export default function ProductDetail() {
     const productId = +id;
     const history = useHistory();
 
+    const [isLoaded, setIsLoaded] = useState(false);
     const product = useSelector(state => state.product.products[productId])
     const sessionUser = useSelector(state => state.session.user);
     const allReviewsObj = useSelector(state => state.review.reviews)
@@ -30,8 +31,8 @@ export default function ProductDetail() {
   
 
     useEffect(() => {
-        dispatch(getAllProducts())
         dispatch(getOneProduct(productId))
+          .then(() => setIsLoaded(true));
     }, [dispatch, productId, productReviews.length])
 
     const handleDelete = e =>{
@@ -60,7 +61,7 @@ export default function ProductDetail() {
       history.push('/cart');
     }
     
-    if (product) {
+    if (product && isLoaded) {
       return (
         <>
           <div className="product_img_container">

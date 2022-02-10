@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import { useParams } from 'react-router-dom';
 import { getAllCategories } from '../../../store/category';
-import { getAllProducts, getOneProduct, updateOneProduct } from '../../../store/product';
+import { getOneProduct, updateOneProduct } from '../../../store/product';
 import '../NewProduct/NewProduct.css'
 
 function EditProduct() {
@@ -68,7 +68,6 @@ function EditProduct() {
     useEffect(() => {
         dispatch(getOneProduct(productId))
         dispatch(getAllCategories())
-        dispatch(getAllProducts())
     }, [dispatch, productId]);
 
 
