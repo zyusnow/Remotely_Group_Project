@@ -28,7 +28,7 @@ function AddRemoveItem({productId, cartId, quantity}) {
                 onChange={(e) => setProductQuantity(e.target.value)}
               >
                 {options.map((option) => (
-                  <option>{option}</option>
+                  <option key={option}>{option}</option>
                 ))}
                 </select>
       <button onClick={addItemToCart}>Edit Quantity</button>

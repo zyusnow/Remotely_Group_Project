@@ -1,3 +1,4 @@
+import { bindActionCreators } from "redux";
 
 //constants
 const GET_CART = 'cart/GET_CART';
@@ -5,11 +6,11 @@ const ADD_CART = 'cart/ADD_CART_ITEM';
 const DELETE_CART = 'cart/DELETE_CART_ITEM'
 const EDIT_CART = 'cart/EDIT_CART_ITEM'
 
-const getCart = (cart) =>
+const getCart = (cartItems) =>
   {
     return {
     type: GET_CART,
-    cart
+    cartItems
   }
   };
 
@@ -20,10 +21,10 @@ const getCart = (cart) =>
     }
   }
 
-const deleteCartItem = cartItem => {
+const deleteCartItem = id => {
   return {
     type: DELETE_CART,
-    cartItem
+    id
   }
 }
 
@@ -36,22 +37,20 @@ const editCartItem = cartItem => {
 
 //Loads cart based on ID
 export const loadCart = (cartId) => async (dispatch) => {
-   console.log("string data SEE MEEEEE");
   const response = await fetch(`/api/cart/${cartId}`, {
     headers: {
       'Content-Type': 'application/json'
     }
   });
-  console.log(response);
   if (response.ok) {
     const data = await response.json();
-    console.log(data)
     if (data.errors) {
       return;
     }
-    dispatch(getCart(data));
+    dispatch(getCart(data.cartItems));
   }
 }
+
 //Add item to cart
 export const addToCart = (newCartItem) => async (dispatch) => {
   const res = await fetch('/api/cart/add', {
@@ -67,15 +66,15 @@ export const addToCart = (newCartItem) => async (dispatch) => {
 
 }
 //Delete item from cart
-export const deleteFromCart = (productId) => async (dispatch) => {
-  const res = await fetch(`/api/cart/delete/${productId}`, {
+export const deleteFromCart = (cartId) => async (dispatch) => {
+  const res = await fetch(`/api/cart/delete/${cartId}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
     },
   });
-  if (res.ok) {
-    await dispatch(deleteCartItem(productId));
+  if (res) {
+    await dispatch(deleteCartItem(cartId));
     return res.json();
   } else if (res.status === 401) {
     return res.json().then(({ message }) => {
@@ -100,7 +99,7 @@ export const editCart = (editedCartItem) => async (dispatch) => {
    return cartItem;
 }
 
-const initialState = {};
+const initialState = { cartItems: {}};
 //Reducer
 export default function reducer(state = initialState, action) {
 
@@ -109,15 +108,18 @@ export default function reducer(state = initialState, action) {
   switch (action.type) {
     case GET_CART:
       newState = { ...state };
-      newState.cart = action.cart;
+      newState.cartItems = action.cartItems.reduce((accum, current) => {
+        accum[current.id] = current;
+        return accum;
+      }, {});
       return newState;
     case ADD_CART:
       newState = { ...state };
-      newState.cart = action.cart;
+      newState.cartItems[action.cartItem.id] = action.cartItem;
       return newState;
     case DELETE_CART:
       newState = { ...state };
-      delete newState.cart[action.id];
+      delete newState.cartItems[action.id];
       return newState;
     default:
       return state;

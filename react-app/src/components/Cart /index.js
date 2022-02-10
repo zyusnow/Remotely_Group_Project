@@ -10,31 +10,15 @@ const options = [0, 1, 2, 3]
 function CartPage() {
   const [productQuantity, setProductQuantity] = useState(0);
   const id = useSelector((state) => state.session?.user.id);
-  const cartItemsArray = useSelector((state) => state.carts?.cart);
-  // const products = useSelector((state) => state.product?.products )
-  // const user = useSelector((state) => state.session?.user)
-  // const [cart, setCart] = useState({});
+  const cartItemsObj = useSelector((state) => state.carts?.cartItems);
+  const cartItemsArray = Object.values(cartItemsObj)
   const [isLoaded, setIsLoaded] = useState(false);
   const dispatch = useDispatch();
 
-  // const productIds = cartItemsArray?.map(cartItem => {
-  //  return [cartItem.productId, cartItem.quantity, cartItem.id];
-  // })
-
-  // const cartProducts = productIds?.map(productId => {
-  //   const cartItem = products[productId[0]];
-  //   if (cartItem) {
-  //     cartItem.quantity = productId[1];
-  //     cartItem.cartId = productId[2];
-  //   }
-  //   return cartItem;
-  // })
-
 
   useEffect(() => {
-    dispatch(loadCart(id)).then(setIsLoaded(true));
-  }, [dispatch, id]);
-
+    dispatch(loadCart(id));
+  }, [dispatch]);
 
   const handleDelete = (cartId) => {
     cartId = +cartId;
@@ -52,19 +36,24 @@ function CartPage() {
             <h1>You have no items in your cart.</h1>
           : cartItemsArray?.map((product) => {
               return (
-                <>
-                  <li key={product.productImg}>
+                <div key={product.id} >
+                  <li>
                     <img alt={product.productTitle} src={product.productImageUrl}  className="cartImage"/>
                   </li>
-                  <li key={product.productPrice} className="cartItemPrice">
+                  <li className="cartItemPrice">
                     {product.productPrice}
                   </li>
-                  <AddRemoveItem productId={product.id} cartId={id} quantity={product.quantity} />
-                  <li><button id={product.id} onClick={e => handleDelete(e.target.id)}>Delete</button></li>
+                  <li>
+                    <AddRemoveItem productId={product.id} cartId={id} quantity={product.quantity} />
+                  </li>
+                  <li>
+                    <button id={product.id} onClick={e => handleDelete(e.target.id)}>Delete</button>
+                  </li>
 
-                </>
+                </div>
               );
           })}
+          {}
         </ul>
       </div>
     </>
