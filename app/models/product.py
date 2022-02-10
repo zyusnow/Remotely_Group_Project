@@ -6,8 +6,8 @@ class Product(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
-    description = db.Column(db.String(255), nullable=False)
-    imageUrl = db.Column(db.String(255))
+    description = db.Column(db.String(1000), nullable=False)
+    imageUrl = db.Column(db.String(500), nullable=False)
     price = db.Column(db.Float, nullable=False)
     quantity = db.Column(db.Integer, nullable=False)
     userId = db.Column(db.Integer,
