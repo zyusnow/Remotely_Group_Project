@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Redirect, useHistory, NavLink} from "react-router-dom";
+import { Redirect, useHistory, NavLink, Link} from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 
@@ -52,6 +52,9 @@ function ProfileButton({ user }) {
       </button>
       {showMenu && (
         <ul className="profile-dropdown">
+          <li>
+            <Link to='/profile'>My Profile</Link>
+          </li>
           <li>
             <button id="nav_logout" onClick={toMyOrder}>My order</button>
           </li>
