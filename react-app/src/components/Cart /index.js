@@ -1,12 +1,19 @@
+<<<<<<< HEAD
 import { user } from 'pg/lib/defaults';
 import { useEffect,  useState } from 'react';
+=======
+import { useEffect, useState, /* useState */} from 'react';
+>>>>>>> 552f7c5433eab0d9bc9b9a29afeadae1fe9c55a9
 import {useDispatch, useSelector } from 'react-redux';
-import { loadCart, deleteFromCart } from '../../store/cart'
+import { loadCart, deleteFromCart, addToCart } from '../../store/cart'
 import {getAllProducts} from '../../store/product'
 import AddRemoveItem from './Add_Remove_Item';
 import './Cart.css'
 
+const options = [0, 1, 2, 3]
+
 function CartPage() {
+  const [productQuantity, setProductQuantity] = useState(0);
   const id = useSelector((state) => state.session?.user.id);
   const cartItemsArray = useSelector((state) => state.carts?.cart);
   const products = useSelector((state) => state.product?.products )
@@ -41,12 +48,10 @@ function CartPage() {
     dispatch(loadCart(id));
   }
 
-
   return (
 
     <>
       <h1>My Cart</h1>
-
       <div>
         <ul className="cartItems">
           { (!cartItemsArray || !cartItemsArray.length) ?
