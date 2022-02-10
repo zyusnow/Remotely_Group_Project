@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams, Link} from 'react-router-dom';
-import { deleteOneProduct, getAllProducts, getOneProduct } from '../../../store/product';
+import { deleteOneProduct, getOneProduct } from '../../../store/product';
 import { addToCart } from '../../../store/cart';
 import PageNotFound from '../../PageNotFound';
 import Reviews from '../../Reviews';
@@ -30,7 +30,6 @@ export default function ProductDetail() {
   
 
     useEffect(() => {
-        dispatch(getAllProducts())
         dispatch(getOneProduct(productId))
     }, [dispatch, productId, productReviews.length])
 
