@@ -32,7 +32,7 @@ export default function ProductDetail() {
     useEffect(() => {
         dispatch(getAllProducts())
         dispatch(getOneProduct(productId))
-    }, [productId, productReviews.length])
+    }, [dispatch, productId, productReviews.length])
 
     const handleDelete = e =>{
         e.preventDefault();
