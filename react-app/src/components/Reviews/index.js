@@ -8,7 +8,7 @@ import './Reviews.css'
 
 export default function Reviews({ productId }) {
     const dispatch = useDispatch()
-    
+
     const [rating, setRating] = useState("")
     const [comment, setComment] = useState("")
     const [showEditModal, setShowEditModal] = useState(false)
@@ -17,7 +17,7 @@ export default function Reviews({ productId }) {
 
     const userId = useSelector(state => state.session.user?.id)
     const allReviewsObj = useSelector(state => state.review.reviews)
-    
+
     const allReviewsArray = Object.values(allReviewsObj)
     const productReviews = allReviewsArray.filter(review => review.productId === +productId)
 
@@ -27,14 +27,14 @@ export default function Reviews({ productId }) {
 
     const addReview = (e) => {
         e.preventDefault();
-    
+
         const payload = {
           userId,
           productId: +productId,
           comment,
           rating
         }
-    
+
         let newReview = dispatch(addOneReview(payload))
         if(newReview) {
           setComment("")
@@ -47,7 +47,7 @@ export default function Reviews({ productId }) {
       const deleteReview = (e) => {
         e.preventDefault()
         let deletedReview = dispatch(deleteReviewById(Number(e.target.id)))
-        
+
         if(deletedReview) {
             dispatch(getOneProduct(+productId))
         }
@@ -113,7 +113,7 @@ export default function Reviews({ productId }) {
                                 <span><i className="fas fa-star fa-xs"></i></span>).map((star, idx) => <span key={idx}>{star}</span>)}
                         </div>
                             {review.comment}
-                        {review.userId === userId && 
+                        {review.userId === userId &&
                             <>
                                 <button onClick={deleteReview} id={review.id}>Delete Review</button>
                                 <button onClick={openEditReviewForm} value={review.id}>Edit Review</button>
