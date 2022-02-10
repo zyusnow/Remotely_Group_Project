@@ -11,7 +11,7 @@ function CartPage() {
   const [productQuantity, setProductQuantity] = useState(0);
   const id = useSelector((state) => state.session?.user.id);
   const cartItemsArray = useSelector((state) => state.carts?.cart);
-  const products = useSelector((state) => state.product?.products )
+  // const products = useSelector((state) => state.product?.products )
   // const user = useSelector((state) => state.session?.user)
   // const [cart, setCart] = useState({});
   const [isLoaded, setIsLoaded] = useState(false);
@@ -32,7 +32,6 @@ function CartPage() {
 
 
   useEffect(() => {
-    dispatch(getAllProducts())
     dispatch(loadCart(id)).then(setIsLoaded(true));
   }, [dispatch, id]);
 
