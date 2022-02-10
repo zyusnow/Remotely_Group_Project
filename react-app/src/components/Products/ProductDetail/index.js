@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory, useParams, Link} from 'react-router-dom';
 import { deleteOneProduct, getOneProduct } from '../../../store/product';
+import { addToCart } from '../../../store/cart';
 import Reviews from '../../Reviews';
 
 export default function ProductDetail() {
@@ -9,7 +10,7 @@ export default function ProductDetail() {
     const { id } = useParams();
     const productId = +id;
     const history = useHistory();
-  
+
     const product = useSelector(state => state.product.products[productId])
     const sessionUser = useSelector(state => state.session.user);
     const allReviewsObj = useSelector(state => state.review.reviews)
@@ -22,11 +23,16 @@ export default function ProductDetail() {
         }, 0)
     }
 
-    let rating = Math.round(overallRating(productReviews)/productReviews.length)
+     let rating = Math.round(
+       overallRating(productReviews) / productReviews.length
+     );
+
+
+
 
     useEffect(() => {
         dispatch(getOneProduct(productId))
-    }, [dispatch, productId, productReviews.length])
+    }, [productId, productReviews.length])
 
     const handleDelete = e =>{
         e.preventDefault();
@@ -40,33 +46,56 @@ export default function ProductDetail() {
             e.preventDefault();
             history.push(`/products/${productId}/edit`);
           }
-    
+    const addItemToCart =() => {
+      const cartId = sessionUser.id
+      const productId = product.id
+      const quantity = product.quantity
+      const cartItem  = {
+          cartId,
+          productId,
+          quantity
+      }
+      dispatch(addToCart(cartItem))
+      history.push('/cart');
+    }
 
     return (
-        <>
-            <div className='product_img_container'>
-                <img className="img" src={product?.imageUrl} alt={product?.category_name}></img>
-            </div>
-            <div className='product_detail_container'>
-                <div>{product?.user_name}</div>
-                <div>{product?.category_name}</div>
-                <div>
-                    {rating > 0 && Array(rating).fill(
-                        <span><i className="fas fa-star"></i></span>).map((star, idx) => <span key={idx}>{star}</span>)}
-                </div>
-                <div>{product?.title}</div>
-                <div>${product?.price}</div>
-                <div>{product?.description}</div>
-            </div>
-            <button>Add to Cart</button>            
+      <>
+        <div className="product_img_container">
+          <Link to={`/products/${productId}`}>
+            <img
+              className="img"
+              src={product?.imageUrl}
+              alt={product?.category_name}
+            />
+          </Link>
+        </div>
+        <div className="product_detail_container">
+          <div>{product?.user_name}</div>
+          <div>{product?.category_name}</div>
+          <div>
+            {rating > 0 &&
+              Array(rating)
+                .fill(
+                  <span>
+                    <i className="fas fa-star"></i>
+                  </span>
+                )
+                .map((star, idx) => <span key={idx}>{star}</span>)}
+          </div>
+          <div>{product?.title}</div>
+          <div>${product?.price}</div>
+          <div>{product?.description}</div>
+        </div>
 
-            {sessionUser?.id === product?.userId &&
-              <>
-                <button onClick={handleDelete}>Delete</button>
-                <button onClick={handleUpdate}>Edit</button>
-              </>}
-
-            <Reviews productId={product?.id} />
-        </>
-    )
+        <button onClick={addItemToCart}>Add to Cart</button>
+        {sessionUser?.id === product?.userId && (
+          <>
+            <button onClick={handleDelete}>Delete</button>
+            <button onClick={handleUpdate}>Edit</button>
+          </>
+        )}
+        <Reviews productId={product?.id} />
+      </>
+    );
 }

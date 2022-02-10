@@ -7,6 +7,8 @@ import LoginPage from './components/auth/LoginPage';
 import SignupPage from './components/auth/SignupPage';
 import NavBar from './components/NavBar'
 import PageNotFound from "./components/PageNotFound";
+import CartPage from './components/Cart ';
+import ProtectedRoute from './components/auth/ProtectedRoute';
 import AllProducts from './components/Products/AllProducts';
 import ProductDetail from './components/Products/ProductDetail';
 import NewProduct from './components/Products/NewProduct';
@@ -42,11 +44,13 @@ function App() {
               <Route path='/' exact={true}><HomePage /></Route>
               <Route path='/signup' exact={true}><SignupPage /></Route>
               <Route path='/login' exact={true}><LoginPage /></Route>
+              <Route path='/not-found' exact={true}><PageNotFound /></Route>
               <Route path='/products' exact={true}><AllProducts /></Route>
               <Route path='/products/:id' exact={true}><ProductDetail /></Route>
               <Route path='/products/:id/edit' exact={true}><EditProduct /></Route>
               <Route path='/addProduct' exact={true}><NewProduct /></Route>
               <Route path='/category/:categoryName' exact={true}><Categories /></Route>
+              <ProtectedRoute path='/cart'> <CartPage/> </ProtectedRoute>
               <Route><PageNotFound /></Route>
             </Switch>
           </div>
