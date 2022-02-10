@@ -5,7 +5,7 @@ export default function SearchBar() {
             <form action="/search">
                 <input
                     type="search"
-                    name="term"
+                    name="q"
                     placeholder="Search for a product"
                 />
                 <button type="submit"><i className="fas fa-search"></i></button>

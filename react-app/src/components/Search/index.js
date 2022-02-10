@@ -9,20 +9,20 @@ export default function Search() {
     const products = Object.values(searchResults)
 
     const search = useLocation().search;
-    const term = new URLSearchParams(search).get('term');
+    const q = new URLSearchParams(search).get('q');
 
     useEffect(()=>{
-        dispatch(searchRes(term))
-    }, [dispatch, term])
+        dispatch(searchRes(q))
+    }, [dispatch, q])
 
     if (!products?.length) {
         return (
-            <h2>No results found for {term}</h2>
+            <h2>No results found for {q}</h2>
         )
     } else {
         return (
             <>
-            <h2>Search Results for {term}</h2>
+            <h2>Search Results for {q}</h2>
             {products?.map((product)=>(
                 <div className='one_product_container' key={product?.id}>
                     <div className='img_container'>

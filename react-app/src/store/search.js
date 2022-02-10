@@ -5,8 +5,8 @@ const searchProduct = (products) => ({
     products
 })
 
-export const searchRes = (term) => async(dispatch) => {
-    const response = await fetch(`/api/search?term=${term}`, {
+export const searchRes = (q) => async(dispatch) => {
+    const response = await fetch(`/api/search?q=${q}`, {
     })
 
     if (response.ok) {
