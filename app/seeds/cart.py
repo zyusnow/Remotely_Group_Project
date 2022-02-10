@@ -7,8 +7,11 @@ def seed_cart():
   cart02 = Cart(
     userId = 2
   )
+  cart03 = Cart(
+    userId = 3
+  )
 
-  db.session.add_all([cart01, cart02])
+  db.session.add_all([cart01, cart02, cart03])
   db.session.commit()
 
 def undo_cart():
