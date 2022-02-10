@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import { useParams } from 'react-router-dom';
 import { getAllCategories } from '../../../store/category';
-import { getOneProduct, updateOneProduct } from '../../../store/product';
+import { getAllProducts, getOneProduct, updateOneProduct } from '../../../store/product';
 import '../NewProduct/NewProduct.css'
 
 function EditProduct() {
@@ -52,11 +52,23 @@ function EditProduct() {
         if (!sessionUser) {
             history.push('/login')
         }
-    }, [sessionUser])
+    }, [sessionUser, history])
+
+    useEffect(() => {
+        if (product && (!title)) {
+            setTitle(product.title)
+            setDescription(product.description)
+            setImageUrl(product.imageUrl)
+            setPrice(product.price)
+            setQuantity(product.quantity)
+            setCategoryId(product.categoryId)
+        }
+      }, [product, title])
 
     useEffect(() => {
         dispatch(getOneProduct(productId))
         dispatch(getAllCategories())
+        dispatch(getAllProducts())
     }, [dispatch, productId]);
 
 

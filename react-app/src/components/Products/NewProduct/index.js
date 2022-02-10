@@ -27,7 +27,7 @@ export default function NewProduct() {
     if (!sessionUser) {
       history.push('/login')
     }
-  }, [sessionUser])
+  }, [sessionUser, history])
 
   useEffect(() => {
     dispatch(getAllCategories())

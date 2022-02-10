@@ -1,8 +1,9 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams, Link} from 'react-router-dom';
-import { deleteOneProduct, getOneProduct } from '../../../store/product';
+import { deleteOneProduct, getAllProducts, getOneProduct } from '../../../store/product';
 import { addToCart } from '../../../store/cart';
+import PageNotFound from '../../PageNotFound';
 import Reviews from '../../Reviews';
 
 export default function ProductDetail() {
@@ -26,13 +27,12 @@ export default function ProductDetail() {
      let rating = Math.round(
        overallRating(productReviews) / productReviews.length
      );
-
-
-
+  
 
     useEffect(() => {
+        dispatch(getAllProducts())
         dispatch(getOneProduct(productId))
-    }, [productId, productReviews.length])
+    }, [dispatch, productId, productReviews.length])
 
     const handleDelete = e =>{
         e.preventDefault();
@@ -46,6 +46,7 @@ export default function ProductDetail() {
             e.preventDefault();
             history.push(`/products/${productId}/edit`);
           }
+
     const addItemToCart =() => {
       const cartId = sessionUser.id
       const productId = product.id
@@ -58,44 +59,48 @@ export default function ProductDetail() {
       dispatch(addToCart(cartItem))
       history.push('/cart');
     }
-
-    return (
-      <>
-        <div className="product_img_container">
-          <Link to={`/products/${productId}`}>
-            <img
-              className="img"
-              src={product?.imageUrl}
-              alt={product?.category_name}
-            />
-          </Link>
-        </div>
-        <div className="product_detail_container">
-          <div>{product?.user_name}</div>
-          <div>{product?.category_name}</div>
-          <div>
-            {rating > 0 &&
-              Array(rating)
-                .fill(
-                  <span>
-                    <i className="fas fa-star"></i>
-                  </span>
-                )
-                .map((star, idx) => <span key={idx}>{star}</span>)}
+    
+    if (product) {
+      return (
+        <>
+          <div className="product_img_container">
+            <Link to={`/products/${productId}`}>
+              <img
+                className="img"
+                src={product?.imageUrl}
+                alt={product?.category_name}
+              />
+            </Link>
           </div>
-          <div>{product?.title}</div>
-          <div>${product?.price}</div>
-          <div>{product?.description}</div>
-        </div>
+          <div className="product_detail_container">
+            <div>{product?.user_name}</div>
+            <div>{product?.category_name}</div>
+            <div>
+              {rating > 0 &&
+                Array(rating)
+                  .fill(
+                    <span>
+                      <i className="fas fa-star"></i>
+                    </span>
+                  )
+                  .map((star, idx) => <span key={idx}>{star}</span>)}
+            </div>
+            <div>{product?.title}</div>
+            <div>${product?.price}</div>
+            <div>{product?.description}</div>
+          </div>
 
-        <button onClick={addItemToCart}>Add to Cart</button>
-        {sessionUser?.id === product?.userId && (
-          <>
-            <button onClick={handleDelete}>Delete</button>
-            <button onClick={handleUpdate}>Edit</button>
-          </>
-        )}
-        <Reviews productId={product?.id} />
-      </>
-    );
+          <button onClick={addItemToCart}>Add to Cart</button>
+          {sessionUser?.id === product?.userId && (
+            <>
+              <button onClick={handleDelete}>Delete</button>
+              <button onClick={handleUpdate}>Edit</button>
+            </>
+          )}
+          <Reviews productId={product?.id} />
+        </>
+      );
+    } else {
+      return <PageNotFound />
+    }
 }
