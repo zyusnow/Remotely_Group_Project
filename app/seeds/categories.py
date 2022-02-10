@@ -8,7 +8,7 @@ def seed_categories():
     )
     category02 = Category(
         name = 'Computer & Tablets',
-        category_image =  'https://res.cloudinary.com/dprnsux1z/image/upload/v1644295492/tianyi-ma-WiONHd_zYI4-unsplash_oc7ycm.jpg'
+        category_image =  'https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Huawei_Matebook_2-in-1_tablet_with_Windows_10_%2826627141971%29.jpg/290px-Huawei_Matebook_2-in-1_tablet_with_Windows_10_%2826627141971%29.jpg'
     )
     category03 = Category(
         name = 'Accessories',
@@ -16,11 +16,11 @@ def seed_categories():
     )
     category04 = Category(
         name = 'Stationery & Office Supplies',
-        category_image = 'https://res.cloudinary.com/dprnsux1z/image/upload/v1644336706/marten-bjork-rH8O0FHFpfw-unsplash_s4bbzw.jpg'
+        category_image = 'https://www.mbe.co.uk/uploads/businesshub/MBE-Office-Supplies-Web-V1.jpg'
     )
     category05 = Category(
         name = 'Project Planning',
-        category_image = 'https://res.cloudinary.com/dprnsux1z/image/upload/v1644337131/jan-antonin-kolar-bXBTjpjgidM-unsplash_vxt4ul.jpg'
+        category_image = 'https://www.ikea.com/us/en/images/products/elloven-whiteboard-noticeboard-with-casters-white__1021220_pe832069_s5.jpg?f=s'
     )
     category06 = Category(
         name = 'Office Electronics',
