@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 import { user } from 'pg/lib/defaults';
 import { useEffect,  useState } from 'react';
-=======
-import { useEffect, useState, /* useState */} from 'react';
->>>>>>> 552f7c5433eab0d9bc9b9a29afeadae1fe9c55a9
 import {useDispatch, useSelector } from 'react-redux';
 import { loadCart, deleteFromCart, addToCart } from '../../store/cart'
 import {getAllProducts} from '../../store/product'
