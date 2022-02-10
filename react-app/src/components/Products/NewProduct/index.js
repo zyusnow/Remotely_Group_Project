@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { getAllCategories } from '../../../store/category';
-import { addOneProduct, getAllProducts } from '../../../store/product';
+import { addOneProduct } from '../../../store/product';
 import './NewProduct.css'
 
 
@@ -27,7 +27,7 @@ export default function NewProduct() {
     if (!sessionUser) {
       history.push('/login')
     }
-  }, [sessionUser])
+  }, [sessionUser, history])
 
   useEffect(() => {
     dispatch(getAllCategories())

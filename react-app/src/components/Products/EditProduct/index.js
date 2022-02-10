@@ -52,7 +52,7 @@ function EditProduct() {
         if (!sessionUser) {
             history.push('/login')
         }
-    }, [sessionUser])
+    }, [sessionUser, history])
 
     useEffect(() => {
         if (product && (!title)) {
@@ -63,7 +63,7 @@ function EditProduct() {
             setQuantity(product.quantity)
             setCategoryId(product.categoryId)
         }
-      }, [product])
+      }, [product, title])
 
     useEffect(() => {
         dispatch(getOneProduct(productId))
