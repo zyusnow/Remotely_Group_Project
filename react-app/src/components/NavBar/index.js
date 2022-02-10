@@ -5,6 +5,8 @@ import LoginFormModal from '../Modals/LoginFormModal';
 import SignupFormModal from '../Modals/SignupFormModal';
 import ProfileButton from './ProfileButton';
 import './NavBar.css';
+import SearchBar from './search';
+
 
 function NavBar({ loaded }) {
     const location = useLocation();
@@ -34,7 +36,7 @@ function NavBar({ loaded }) {
               Remotely
             </NavLink>
           </div>
-          <div className="search_bar"></div>
+           <SearchBar />
           <div className="nav_right">{loaded && sessionLinks}</div>
           <NavLink to="/cart">
             <i className="fas fa-shopping-cart"/>
@@ -42,7 +44,6 @@ function NavBar({ loaded }) {
         </nav>
       </>
     );
-
 }
 
 export default NavBar

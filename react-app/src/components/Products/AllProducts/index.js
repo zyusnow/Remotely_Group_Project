@@ -40,5 +40,4 @@ export default function AllProducts() {
         </div>
       </>
     );
-
 }

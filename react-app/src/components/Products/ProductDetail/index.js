@@ -89,14 +89,12 @@ export default function ProductDetail() {
         </div>
 
         <button onClick={addItemToCart}>Add to Cart</button>
-
         {sessionUser?.id === product?.userId && (
           <>
             <button onClick={handleDelete}>Delete</button>
             <button onClick={handleUpdate}>Edit</button>
           </>
         )}
-
         <Reviews productId={product?.id} />
       </>
     );

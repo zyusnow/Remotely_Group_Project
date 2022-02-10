@@ -30,6 +30,16 @@ function HomePage() {
                     </ul>
                 </div>
             </div>
+            <div className='down_banner'>
+                <div className='down_banner_left'>
+                    <div className='left_title'>Home Office</div>
+                    <div className='left_sub_title'>Products For A Better Way To Work</div>
+                    <div className='left_content'>Find everything you need to work from home.</div>
+                    <div className='left_content'> We cut out middlemen and maintain a lea line of modular inventory to save you up to 50% compared to traditional office furniture of similar quality.</div>
+                    <button className='banner_button'><Link className='btn_link' to={`/products`}>SHOP COLLECTIONS</Link></button>
+                </div>
+                <img className="img_banner" src="https://res.cloudinary.com/dprnsux1z/image/upload/v1644427511/ave-calvar-BbQXZ7UyX0w-unsplash_qkehs5.jpg" alt="center_banner"></img>
+            </div>
         </>
     )
 }

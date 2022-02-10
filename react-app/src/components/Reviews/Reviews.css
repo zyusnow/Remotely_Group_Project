@@ -1,0 +1,58 @@
+.review-form {
+    background-color: white;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.review-title {
+    text-align: center;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    color: #9256e0;
+}
+
+.rev-input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: space-evenly;
+}
+
+.rev-input-container > * {
+    margin: 4px 10px;
+}
+
+.rev-input-container select {
+    margin: 5px 10px;
+    font-family: "Open Sans", sans-serif;
+}
+
+.rev-textarea {
+    margin-top: 0px;
+    height: 50px;
+    font-family: "Open Sans", sans-serif;
+}
+
+.rev-submit {
+    box-sizing: border-box;
+    border-radius: 4px;
+    font-size: 0.85em;
+    border: none;
+    align-self: center;
+    background-color: #844bcf;
+    color:white;
+    padding: 7px;
+    margin-top: 12px;
+}
+
+.rev-submit:hover {
+    cursor:pointer;
+    opacity: 80%;
+}
+
+.rev-submit:disabled {
+    cursor: auto;
+    background-color: white;
+    color: #6e6b724f;
+    opacity:100%;
+}
