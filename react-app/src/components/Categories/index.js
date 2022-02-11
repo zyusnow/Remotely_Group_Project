@@ -22,7 +22,9 @@ export default function Categories() {
                  {productArr?.map(product => (
                     <div className='one_product_container' key={product?.id}>
                         <div className='img_container'>
+                            <Link to={`/products/${product.id}`}>
                                 <img className="img" src={product?.imageUrl} alt={product?.category_name}></img>
+                            </Link>
                         </div>
                         <div className='card_content'>
                             <Link className='product_title' to={`/products/${product.id}`}>{product?.title}</Link>

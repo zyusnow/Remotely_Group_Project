@@ -61,7 +61,7 @@ export default function ProductDetail() {
       history.push('/cart');
     }
 
-    if (product && isLoaded) {
+    if (product) {
       return (
         <>
           <div className="product_img_container">
