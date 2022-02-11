@@ -23,8 +23,7 @@ export default function Reviews({ productId }) {
     const productReviews = allReviewsArray.filter(review => review.productId === +productId)
 
     useEffect(() => {
-        dispatch(getAllReviews())
-        .then(() => setIsLoaded(!isLoaded));
+        dispatch(getAllReviews()).then(() => setIsLoaded(true)) 
     }, [dispatch, isLoaded])
 
     const addReview = (e) => {
@@ -41,7 +40,7 @@ export default function Reviews({ productId }) {
         if(newReview) {
           setComment("")
           setRating("")
-          dispatch(getOneProduct(+productId))
+          dispatch(getOneProduct(+productId)).then(() => setIsLoaded(!isLoaded))
           setShowAddModal(false)
         }
       }
@@ -51,7 +50,7 @@ export default function Reviews({ productId }) {
         let deletedReview = dispatch(deleteReviewById(Number(e.target.id)))
 
         if(deletedReview) {
-            dispatch(getOneProduct(+productId))
+            dispatch(getOneProduct(+productId)).then(() => setIsLoaded(!isLoaded))
         }
       }
 
