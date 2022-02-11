@@ -29,7 +29,7 @@ const deleteCartItem = cartItem => {
 //Loads cart based on ID
 export const loadCart = (cartId) => async (dispatch) => {
    console.log("string data SEE MEEEEE");
-  const response = await fetch(`/api/cart/${cartId}/`, {
+  const response = await fetch(`/api/cart/${cartId}`, {
     headers: {
       'Content-Type': 'application/json'
     }
@@ -46,7 +46,7 @@ export const loadCart = (cartId) => async (dispatch) => {
 }
 //Add item to cart
 export const addToCart = (newCartItem) => async (dispatch) => {
-  const res = await fetch('/api/cart/add/', {
+  const res = await fetch('/api/cart/add', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -60,7 +60,7 @@ export const addToCart = (newCartItem) => async (dispatch) => {
 }
 //Delete item from cart
 export const deleteFromCart = (productId) => async (dispatch) => {
-  const res = await fetch(`/api/cart/delete/${productId}/`, {
+  const res = await fetch(`/api/cart/delete/${productId}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
