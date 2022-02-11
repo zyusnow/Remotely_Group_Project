@@ -24,15 +24,18 @@ function AddRemoveItem({productId, cartId, quantity, setTotal}) {
 
   return (
     <>
-    <select
-                value={productQuantity}
-                onChange={(e) => setProductQuantity(e.target.value)}
-              >
-                {options.map((option) => (
-                  <option key={option}>{option}</option>
-                ))}
-                </select>
-      <button onClick={addItemToCart}>Edit Quantity</button>
+      <div className="item_opt_container">
+        <select
+          className="select_quantity"
+          value={productQuantity}
+          onChange={(e) => setProductQuantity(e.target.value)}
+        >
+          {options.map((option) => (
+            <option key={option}>{option}</option>
+          ))}
+        </select>
+        <button onClick={addItemToCart}>Edit Quantity</button>
+      </div>
     </>
   );
 }

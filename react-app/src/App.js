@@ -15,6 +15,7 @@ import NewProduct from './components/Products/NewProduct';
 import HomePage from './components/HomePage';
 import Categories from './components/Categories';
 import EditProduct from './components/Products/EditProduct';
+import About from './components/About'
 import { authenticate } from './store/session';
 import Search from './components/Search';
 
@@ -39,26 +40,54 @@ function App() {
       <NavBar loaded={loaded} />
       <div>
         {loaded && (
-          <div id='main'>
+          <div id="main">
             <Switch>
-              <Route path='/' exact={true}><HomePage /></Route>
-              <Route path='/signup' exact={true}><SignupPage /></Route>
-              <Route path='/login' exact={true}><LoginPage /></Route>
-              <Route path='/not-found' exact={true}><PageNotFound /></Route>
-              <Route path='/products' exact={true}><AllProducts /></Route>
-              <Route path='/products/:id' exact={true}><ProductDetail /></Route>
-              <Route path='/products/:id/edit' exact={true}><EditProduct /></Route>
-              <Route path='/addProduct' exact={true}><NewProduct /></Route>
-              <Route path='/category/:categoryName' exact={true}><Categories /></Route>
-              <ProtectedRoute path='/cart'> <CartPage/> </ProtectedRoute>
-              <Route path='/search'><Search /></Route>
-              <Route><PageNotFound /></Route>
+              <Route path="/" exact={true}>
+                <HomePage />
+              </Route>
+              <Route path="/signup" exact={true}>
+                <SignupPage />
+              </Route>
+              <Route path="/login" exact={true}>
+                <LoginPage />
+              </Route>
+              <Route path="/not-found" exact={true}>
+                <PageNotFound />
+              </Route>
+              <Route path="/products" exact={true}>
+                <AllProducts />
+              </Route>
+              <Route path="/products/:id" exact={true}>
+                <ProductDetail />
+              </Route>
+              <Route path="/products/:id/edit" exact={true}>
+                <EditProduct />
+              </Route>
+              <Route path="/addProduct" exact={true}>
+                <NewProduct />
+              </Route>
+              <Route path="/category/:categoryName" exact={true}>
+                <Categories />
+              </Route>
+              <ProtectedRoute path="/cart">
+                {" "}
+                <CartPage />{" "}
+              </ProtectedRoute>
+              <Route path="/about">
+                <About />
+              </Route>
+              <Route path="/search">
+                <Search />
+              </Route>
+              <Route>
+                <PageNotFound />
+              </Route>
             </Switch>
           </div>
         )}
       </div>
     </>
-  )
+  );
 }
         // <ProtectedRoute path='/users' exact={true} >
         //   <UsersList/>
