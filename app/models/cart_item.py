@@ -16,6 +16,8 @@ class CartItem(db.Model):
     cart = db.relationship('Cart', back_populates='cart_items')
     product = db.relationship('Product', back_populates='cart_items')
 
+
+
     def to_dict(self):
         return {
             'id': self.id,
@@ -29,5 +31,6 @@ class CartItem(db.Model):
             'productPrice': self.product.price,
             'productImageUrl': self.product.imageUrl,
             'productCategory': self.product.category.name,
-            'maxQuanity': self.product.quantity
+            'maxQuanity': self.product.quantity,
+
         }

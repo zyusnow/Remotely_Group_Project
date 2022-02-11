@@ -18,21 +18,23 @@ const getCart = (cart) =>
       type: ADD_CART,
       cartItem
     }
-  }
+  };
+
 
 const deleteCartItem = cartItem => {
   return {
     type: DELETE_CART,
     cartItem
   }
-}
+};
 
 const editCartItem = cartItem => {
   return {
     type: EDIT_CART,
     cartItem
   }
-}
+};
+
 
 //Loads cart based on ID
 export const loadCart = (cartId) => async (dispatch) => {

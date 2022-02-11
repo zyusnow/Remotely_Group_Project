@@ -11,9 +11,12 @@ def cart(id):
     #  TODO: alter this query to join products table
     cart = Cart.query.get(id)
     cartItems = CartItem.query.filter_by(cartId=id).join(Product).all()
-    return jsonify([cartItem.to_dict() for cartItem in cartItems])
+    total = 0
+    for cartItem in cartItems:
+        total += cartItem.product.price * cartItem.quantity
+    return jsonify({'total': total, 'cartItems': [cartItem.to_dict() for cartItem in cartItems]})
 
-
+# Add Product To Cart
 @cart_routes.route('/add', methods=['POST'])
 def add_cart_item():
     form = AddToCartForm()
@@ -36,6 +39,7 @@ def add_cart_item():
         db.session.commit()
     return cartItem.to_dict()
 
+# Delete Product From Cart
 @cart_routes.route('/delete/<int:id>', methods=['DELETE'])
 def delete_cart_item(id):
     cartItem = CartItem.query.get(id)
@@ -46,7 +50,7 @@ def delete_cart_item(id):
         return jsonify({'message': 'Item does not exist in cart'})
     return('Successfully Deleted Item')
 
-# Edit Cart Item Route
+# Edit Cart Item Quantity
 @cart_routes.route('/edit', methods=['PUT'])
 def edit_cart_item():
     form = AddToCartForm()
@@ -59,3 +63,21 @@ def edit_cart_item():
         db.session.add(cartItem)
         db.session.commit()
     return cartItem.to_dict()
+
+# Clear Cart
+@cart_routes.route('/clear', methods=['DELETE'])
+def clear_cart(id):
+    cartItems = CartItem.query.filter_by(cartId=id).all()
+    for cartItem in cartItems:
+        db.session.delete(cartItem)
+    db.session.commit()
+    return('Successfully Cleared Cart')
+
+# Get Cart Total - Not Needed
+# @cart_routes.route('/total/<int:id>', methods=['GET'])
+# def get_cart_total(id):
+#     cartItems = CartItem.query.filter_by(cartId=current_user.id).all()
+#     total = 0
+#     for cartItem in cartItems:
+#         total += cartItem.product.price * cartItem.quantity
+#     return jsonify({'total': total})
