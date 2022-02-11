@@ -10,16 +10,14 @@ cart_routes = Blueprint('cart', __name__)
 def cart(id):
     #  TODO: alter this query to join products table
     cart = Cart.query.get(id)
-    cartItems = CartItem.query.filter_by(cartId=id).join(Product).all()
+    cartItems = CartItem.query.filter_by(cartId=id).join(Product).order_by(CartItem.createdAt).all()
     return jsonify([cartItem.to_dict() for cartItem in cartItems])
 
 
 @cart_routes.route('/add', methods=['POST'])
 def add_cart_item():
-    print("I'm in!")
     form = AddToCartForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    print('add to cart form worked!')
     if form.validate_on_submit:
         quantity = form.data['quantity']
         productId = form.data['productId']
@@ -47,3 +45,17 @@ def delete_cart_item(id):
     else:
         return jsonify({'message': 'Item does not exist in cart'})
     return('Successfully Deleted Item')
+
+# Edit Cart Item Route
+@cart_routes.route('/edit', methods=['PUT'])
+def edit_cart_item():
+    form = AddToCartForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit:
+        quantity = form.data['quantity']
+        productId = form.data['productId']
+        cartItem = CartItem.query.filter_by(id=productId, cartId=current_user.id).first()
+        cartItem.quantity = quantity
+        db.session.add(cartItem)
+        db.session.commit()
+    return cartItem.to_dict()
