@@ -163,6 +163,98 @@ def seed_products():
     quantity=10,
     categoryId=2
   )
+  product19 = Product(
+    title = 'Stor/File™ Medium-Duty Storage Boxes',
+    userId = 8,
+    imageUrl='https://res.cloudinary.com/dprnsux1z/image/upload/v1644538704/329004_o01_020222_1_iswuqh.webp',
+    price = 34.49,
+    description="Older documents are still important to your business, but don't require daily access. To keep everything neat, store paperwork in Bankers Box FastFold boxes. These boxes provide medium-duty strength when used with or without shelving to suit your setup.",
+    quantity=100,
+    categoryId=7
+  )
+
+  product20 = Product(
+    title = 'Home office storage',
+    userId = 8,
+    imageUrl='https://res.cloudinary.com/dprnsux1z/image/upload/v1644539062/Brenton-Studio-Unbreakable-3-Pocket-Letter_v4celi.jpg',
+    price = 14.99,
+    description="https://res.cloudinary.com/dprnsux1z/image/upload/v1644539062/Brenton-Studio-Unbreakable-3-Pocket-Letter_v4celi.jpg",
+    quantity=100,
+    categoryId=7
+  )
+
+  product21 = Product(
+    title = 'Vertical 4-Drawer File Cabinet, Metal, Black',
+    userId = 8,
+    imageUrl='https://res.cloudinary.com/dprnsux1z/image/upload/v1644539070/450092_o01_082120_edz2mq.webp',
+    price = 244.9,
+    description="Organize your office space with this WorkPro vertical 4-drawer letter-size file cabinet. The 4 letter-size drawers make it simple to file and categorize your documents, and the sleek finish fits easily into a range of spaces. A metal construction offers dependable lasting use. With a built-in lock, this WorkPro vertical 4-drawer letter-size file cabinet helps store and protect your important information.",
+    quantity=100,
+    categoryId=7
+  )
+  product22 = Product(
+    title = 'Standard-Duty Storage Boxes With Lift-Off Lids',
+    userId = 8,
+    imageUrl='https://res.cloudinary.com/dprnsux1z/image/upload/v1644539077/Brenton-Studio-Black-Mesh-Step-File_mmg5tv.jpg',
+    price = 16.99,
+    description="Basic-duty box with lift-off lid that stays attached until ready to use",
+    quantity=100,
+    categoryId=7
+  )
+  product23 = Product(
+    title = 'Brand Plastic 6-Drawer Storage Cart',
+    userId = 8,
+    imageUrl='https://res.cloudinary.com/dprnsux1z/image/upload/v1644539672/Office-Depot-Brand-Plastic-6-Drawer_ocozhy.jpg',
+    price = 53.69,
+    description="Stop losing your supplies. Keep the clutter in your office or crafting room to a minimum with help from an Office Depot storage cart. With its organizer top, this cart helps keep paper, scissors, important memos and more neatly separated and stowed away.",
+    quantity=100,
+    categoryId=7
+  )
+  product24 = Product(
+    title = 'Recycled, Red/White, Set Of 25 Cards And Envelopes',
+    userId = 9,
+    imageUrl='https://res.cloudinary.com/dprnsux1z/image/upload/v1644540796/Rite-In-The-Rain-Pocket-Top_ujn6nd.jpg',
+    price = 9.9,
+    description="Sending thoughtful, personal notes composed on this JAM Paper stationery is a great way to put a smile on the faces of the recipients. Use it to send hand-written thank you notes or invitations to your friends and family.",
+    quantity=100,
+    categoryId=4
+  )
+  product25 = Product(
+    title = 'Card Set, With Deepest Sympathy',
+    userId = 9,
+    imageUrl='https://res.cloudinary.com/dprnsux1z/image/upload/v1644540714/912022_p_jam_paper_stationery_set_wz929l.webp',
+    price = 44.99,
+    description="A loss in anyone's life can be hard, but giving your sympathy can sometimes ease the pain. When people come together and give each other the support they need, times get easier, faster.",
+    quantity=100,
+    categoryId=4
+  )
+  product26 = Product(
+    title = 'Pocket Top-Spiral Notebook Kit',
+    userId = 9,
+    imageUrl='https://res.cloudinary.com/dprnsux1z/image/upload/v1644540720/914416_o01_060920_v84uus.webp',
+    price = 33.49,
+    description="Take notes out in the elements with this all-weather notebook, which comes with a durable zippered case and a pen. This Rite in the Rain paper notebook kit takes up little space in your bag and is easy to carry by hand.",
+    quantity=100,
+    categoryId=4
+  )
+  product27 = Product(
+    title = 'Thank You Card Set',
+    userId = 9,
+    imageUrl='https://res.cloudinary.com/dprnsux1z/image/upload/v1644540726/916171_o01_060820_iicpc3.webp',
+    price = 38.09,
+    description="These cards are a great way for you to show your appreciation for friends and family. Whether you want to thank guests for taking part in your party, or co-workers for their congratulations on your promotion, you can't go wrong sending them all a thoughtful handwritten card!",
+    quantity=100,
+    categoryId=4
+  )
+  product28 = Product(
+    title = 'ROG Strix G15 G513 G513QR-ES96 15.6" Gaming Notebook',
+    userId = 7,
+    imageUrl='https://res.cloudinary.com/dprnsux1z/image/upload/v1644541235/4293592_o51_et_7990974_nginhs.jpg',
+    price = 1799,
+    description="Free upgrade to Windows 11 when available: &nbsp;Upgrade rollout plan is being finalized and is scheduled to begin late 2021 and continue into 2022. Specific time will vary by device. Certain features require specific hardware. See&nbsp;https://www.microsoft.com/en-us/windows/windows-11-specifications.",
+    quantity=100,
+    categoryId=2
+  )
 
 
   db.session.add(product01)
@@ -180,9 +272,19 @@ def seed_products():
   db.session.add(product13)
   db.session.add(product14)
   db.session.add(product15)
+  db.session.add(product16)
   db.session.add(product17)
   db.session.add(product18)
-
+  db.session.add(product19)
+  db.session.add(product20)
+  db.session.add(product21)
+  db.session.add(product22)
+  db.session.add(product23)
+  db.session.add(product24)
+  db.session.add(product25)
+  db.session.add(product26)
+  db.session.add(product27)
+  db.session.add(product28)
   db.session.commit()
 
 def undo_products():
