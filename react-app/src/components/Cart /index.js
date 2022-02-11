@@ -21,30 +21,30 @@ function CartPage() {
             return accum + (curr.productPrice * curr.quantity);
           }, 0)))
       .then(() => setIsLoaded(true));
-  }, [dispatch, isLoaded, id, total]);
+  }, [dispatch, isLoaded, id, total, cartItemsArray]);
 
   const handleDelete = (cartId) => {
     cartId = +cartId;
     dispatch(deleteFromCart(cartId));
-    setIsLoaded(false)
+    setIsLoaded(!isLoaded)
     dispatch(loadCart(id));
   }
 
   return (!isLoaded) ? null : 
     (
-      <>
+      <div className='cart_container'>
         <h1>My Cart</h1>
-        <div>
-          <ul className="cartItems">
+        <div className='cart_details'>
+          <ul className="cart_items">
             { (!cartItemsArray || !cartItemsArray.length) ?
               <h1>You have no items in your cart.</h1>
             : cartItemsArray?.map((product) => {
                 return (
-                  <div key={product.id}>
+                  <div key={product.id} className='single_item'>
                     <li key={product.productImg}>
-                      <img alt={product.productTitle} src={product.productImageUrl}  className="cartImage"/>
+                      <img alt={product.productTitle} src={product.productImageUrl}  className="cart_image"/>
                     </li>
-                    <li key={product.productPrice} className="cartItemPrice">
+                    <li key={product.productPrice} className="cart_item_price">
                       {product.productPrice}
                     </li>
                     <AddRemoveItem productId={product.id} cartId={id} quantity={product.quantity} setTotal={setTotal}/>
@@ -53,11 +53,13 @@ function CartPage() {
                 );
             })}
           </ul>
+        </div>
+        <div className='total_div'>
           {!total ? null :<h2>
             Total Price: ${(Math.round(total * 100) / 100).toFixed(2)}
           </h2>}
         </div>
-      </>
+      </div>
     );
 }
 
