@@ -48,14 +48,14 @@ def add_product():
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
-@product_routes.route('/delete/<int:id>/', methods=['DELETE'])
+@product_routes.route('/delete/<int:id>', methods=['DELETE'])
 def delete(id):
     product_to_delete = Product.query.get(id)
     db.session.delete(product_to_delete)
     db.session.commit()
     return ("Delete Sucessfully!")
 
-@product_routes.route('/edit/<int:id>/', methods=['PUT'])
+@product_routes.route('/edit/<int:id>', methods=['PUT'])
 def edit(id):
     form = ProductForm()
     form['csrf_token'].data = request.cookies['csrf_token']
