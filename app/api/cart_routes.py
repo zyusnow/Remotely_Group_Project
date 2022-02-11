@@ -32,7 +32,7 @@ def add_cart_item():
             )
             db.session.add(cartItem)
         else:
-            cartItem.quantity = quantity
+            cartItem.quantity += 1
         db.session.commit()
     return cartItem.to_dict()
 
@@ -49,14 +49,12 @@ def delete_cart_item(id):
 # Edit Cart Item Route
 @cart_routes.route('/edit', methods=['PUT'])
 def edit_cart_item():
-    print("I'm in!")
     form = AddToCartForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    print('add to cart form worked!')
     if form.validate_on_submit:
         quantity = form.data['quantity']
         productId = form.data['productId']
-        cartItem = CartItem.query.filter_by(productId=productId, cartId=current_user.id).first()
+        cartItem = CartItem.query.filter_by(id=productId, cartId=current_user.id).first()
         cartItem.quantity = quantity
         db.session.add(cartItem)
         db.session.commit()
