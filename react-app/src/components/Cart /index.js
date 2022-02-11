@@ -14,9 +14,14 @@ function CartPage() {
 
   
   useEffect(() => {
-    dispatch(loadCart(id));
-    setIsLoaded(true);
-  }, [dispatch, isLoaded, id]);
+    dispatch(loadCart(id))
+      .then(() => setTotal(!cartItemsArray ? null :
+        cartItemsArray
+          .reduce((accum, curr) => {
+            return accum + (curr.productPrice * curr.quantity);
+          }, 0)))
+      .then(() => setIsLoaded(true));
+  }, [dispatch, isLoaded, id, total]);
 
   const handleDelete = (cartId) => {
     cartId = +cartId;
@@ -42,17 +47,15 @@ function CartPage() {
                     <li key={product.productPrice} className="cartItemPrice">
                       {product.productPrice}
                     </li>
-                    <AddRemoveItem productId={product.id} cartId={id} quantity={product.quantity} />
+                    <AddRemoveItem productId={product.id} cartId={id} quantity={product.quantity} setTotal={setTotal}/>
                     <li><button id={product.id} onClick={e => handleDelete(e.target.id)}>Delete</button></li>
                   </div>
                 );
             })}
           </ul>
-          <h2>
-            Total Price: {!cartItemsArray ? 0 : cartItemsArray.reduce((accum, curr) => {
-      return accum + (curr.productPrice * curr.quantity);
-    }, 0)}$
-          </h2>
+          {!total ? null :<h2>
+            Total Price: ${(Math.round(total * 100) / 100).toFixed(2)}
+          </h2>}
         </div>
       </>
     );
