@@ -45,7 +45,7 @@ export const getAllProducts = () => async (dispatch) => {
 }
 
 export const getOneProduct = (productId) => async (dispatch) => {
-    const res = await fetch(`/api/products/${productId}`);
+    const res = await fetch(`/api/products/${productId}/`);
     if (res.ok) {
         const product = await res.json();
         dispatch(getProduct(product));
@@ -84,7 +84,7 @@ export const updateOneProduct = (product, productId) => async dispatch => {
         },
         body: JSON.stringify(product)
     });
-    
+
     if (res.ok) {
         const data = await res.json();
         dispatch(addProduct(data))
