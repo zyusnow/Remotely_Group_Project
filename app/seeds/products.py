@@ -362,8 +362,6 @@ def seed_products():
     quantity=100,
     categoryId=4
   )
-
-
   
   db.session.add(product01)
   db.session.add(product02)
@@ -405,7 +403,6 @@ def seed_products():
   db.session.add(product38)
   db.session.add(product39)
   db.session.add(product40)
-
   db.session.commit()
 
 def undo_products():
