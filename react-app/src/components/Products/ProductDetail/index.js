@@ -65,13 +65,11 @@ export default function ProductDetail() {
       return (
         <>
           <div className="product_img_container">
-            <Link to={`/products/${productId}`}>
               <img
                 className="img"
                 src={product?.imageUrl}
                 alt={product?.category_name}
               />
-            </Link>
           </div>
           <div className="product_detail_container">
             <div>{product?.user_name}</div>
