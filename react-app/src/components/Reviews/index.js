@@ -24,8 +24,8 @@ export default function Reviews({ productId }) {
 
     useEffect(() => {
         dispatch(getAllReviews())
-        .then(() => setIsLoaded(true));
-    }, [dispatch])
+        .then(() => setIsLoaded(!isLoaded));
+    }, [dispatch, isLoaded])
 
     const addReview = (e) => {
         e.preventDefault();

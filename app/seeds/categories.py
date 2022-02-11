@@ -24,11 +24,11 @@ def seed_categories():
     )
     category06 = Category(
         name = 'Office Electronics',
-        category_image = 'https://asia.canon/media/image/2021/02/18/7ee598480e9c47bab6eba33c7df37bfb_Professional+Photo+Printers.png'
+        category_image = 'https://res.cloudinary.com/dikzc7kwd/image/upload/v1644545836/printer-category_wtvc1z.png'
     )
     category07 = Category(
         name = 'Storage & Organization',
-        category_image = 'https://secure.img1-fg.wfcdn.com/im/30835577/resize-h445%5Ecompr-r85/1379/137962373/Stotfold+32%2527%2527+Wide+Server.jpg'
+        category_image = 'https://res.cloudinary.com/dikzc7kwd/image/upload/v1644545918/Eggert_17.72_27_27_Wide_4_-Drawer_Mobile_Vertical_Filing_Cabinet_diw6bc.jpg'
     )
     category08 = Category(
         name = 'Health & Wellness',
