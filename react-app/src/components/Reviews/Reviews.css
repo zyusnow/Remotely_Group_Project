@@ -33,7 +33,7 @@
     font-family: "Open Sans", sans-serif;
 }
 
-.rev-submit {
+/* .rev-submit {
     box-sizing: border-box;
     border-radius: 4px;
     font-size: 0.85em;
@@ -48,7 +48,7 @@
 .rev-submit:hover {
     cursor:pointer;
     opacity: 80%;
-}
+} */
 
 .rev-submit:disabled {
     cursor: auto;

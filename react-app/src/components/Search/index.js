@@ -17,12 +17,12 @@ export default function Search() {
 
     if (!products?.length) {
         return (
-            <h2>No results found for {q}</h2>
+            <h3>No results found for {q}</h3>
         )
     } else {
         return (
             <>
-            <h2>{products?.length} Search Results for "{q}"</h2>
+            <h3>{products?.length} Search Results for "{q}"</h3>
             {products?.map((product)=>(
                 <div className='one_product_container' key={product?.id}>
                     <div className='img_container'>
