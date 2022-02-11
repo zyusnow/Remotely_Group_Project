@@ -12,3 +12,4 @@ def search():
         return { "products" : result }
     else:
         return { "products" : {} }
+

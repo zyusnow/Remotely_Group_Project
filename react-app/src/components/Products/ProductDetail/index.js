@@ -91,7 +91,7 @@ export default function ProductDetail() {
             <div>{product?.description}</div>
           </div>
           {sessionUser &&
-            sessionUser?.id(
+            sessionUser?.id && (
               <button onClick={addItemToCart}>Add to Cart</button>
             )}
 
