@@ -45,7 +45,7 @@ export const getAllProducts = () => async (dispatch) => {
 }
 
 export const getOneProduct = (productId) => async (dispatch) => {
-    const res = await fetch(`/api/products/${productId}/`);
+    const res = await fetch(`/api/products/${productId}`);
     if (res.ok) {
         const product = await res.json();
         dispatch(getProduct(product));
@@ -77,7 +77,7 @@ export const addOneProduct = (productDetails) => async (dispatch) => {
 }
 
 export const updateOneProduct = (product, productId) => async dispatch => {
-    const res = await fetch(`/api/products/edit/${productId}/`, {
+    const res = await fetch(`/api/products/edit/${productId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -100,7 +100,7 @@ export const updateOneProduct = (product, productId) => async dispatch => {
 }
 
 export const deleteOneProduct = productId => async dispatch => {
-    const res = await fetch(`/api/products/delete/${productId}/`, {
+    const res = await fetch(`/api/products/delete/${productId}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json'
