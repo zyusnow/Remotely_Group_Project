@@ -122,6 +122,15 @@ def seed_products():
 
 
 
+
+  s = db.session()
+  objects = [
+      User(name="u1"),
+      User(name="u2"),
+      User(name="u3")
+  ]
+  s.bulk_save_objects(objects)
+
   db.session.add(product01)
   db.session.add(product02)
   db.session.add(product03)

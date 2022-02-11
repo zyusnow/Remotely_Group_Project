@@ -44,9 +44,6 @@ function CartPage() {
                     <li key={product.productImg}>
                       <img alt={product.productTitle} src={product.productImageUrl} className="cart_image"/>
                     </li>
-                    <li key={product.productPrice} className="cart_item_price">
-                      {product.productPrice}
-                    </li>
                     <AddRemoveItem productId={product.id} cartId={id} quantity={product.quantity} setTotal={setTotal}/>
                     <li><button id={product.id} onClick={e => handleDelete(e.target.id)}>Delete</button></li>
                   </div>
@@ -55,6 +52,28 @@ function CartPage() {
           </ul>
         </div>
         <div className='total_div'>
+        { (!cartItemsArray || !cartItemsArray.length) ?
+            null
+          : cartItemsArray?.map((product) => {
+              return (
+                <>
+                  <ul key={product.id} className='single_item'>
+                    <li key={product.productTitle} className="cart_item_label">
+                      {product.productTitle}
+                    </li>
+                    <li>
+                      {product.productCategory}
+                    </li>
+                    <li>
+                      Quantity: {product.quantity}
+                    </li>
+                    <li>
+                      Price: ${product.productPrice}
+                    </li>
+                  </ul>
+                </>
+              );
+          })}
           {!total ? null :<h2>
             Total Price: ${(Math.round(total * 100) / 100).toFixed(2)}
           </h2>}
