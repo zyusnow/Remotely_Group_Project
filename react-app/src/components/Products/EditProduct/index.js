@@ -52,7 +52,18 @@ function EditProduct() {
         if (!sessionUser) {
             history.push('/login')
         }
-    }, [sessionUser])
+    }, [sessionUser, history])
+
+    useEffect(() => {
+        if (product && (!title)) {
+            setTitle(product.title)
+            setDescription(product.description)
+            setImageUrl(product.imageUrl)
+            setPrice(product.price)
+            setQuantity(product.quantity)
+            setCategoryId(product.categoryId)
+        }
+      }, [product, title])
 
     useEffect(() => {
         dispatch(getOneProduct(productId))

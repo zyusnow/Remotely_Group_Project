@@ -18,7 +18,7 @@ const getCategory= (category) => {
 
 // thunk
 export const getAllCategories = () => async dispatch => {
-    const res = await fetch('/api/categories');
+    const res = await fetch('/api/categories/');
 
     if (res.ok) {
         const categories = await res.json();
@@ -27,7 +27,7 @@ export const getAllCategories = () => async dispatch => {
 }
 
 export const getOneCategory = (categoryName) => async dispatch => {
-    const res = await fetch(`/api/categories/${categoryName}`);
+    const res = await fetch(`/api/categories/${categoryName}/`);
 
     if (res.ok) {
         const category = await res.json();

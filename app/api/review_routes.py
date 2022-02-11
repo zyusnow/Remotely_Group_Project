@@ -22,7 +22,7 @@ def get_reviews():
     return {'reviews': [review.to_dict() for review in reviews]}
 
 
-@review_routes.route('/new', methods=['POST'])
+@review_routes.route('/new/', methods=['POST'])
 @login_required
 def add_review():
     form = ReviewForm()
@@ -40,7 +40,7 @@ def add_review():
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
-@review_routes.route('/<int:id>', methods=['PUT'])
+@review_routes.route('/<int:id>/', methods=['PUT'])
 @login_required
 def edit_review(id):
     review = Review.query.get(id)
@@ -57,7 +57,7 @@ def edit_review(id):
         return review.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401 
 
-@review_routes.route('/<int:id>', methods=['DELETE'])
+@review_routes.route('/<int:id>/', methods=['DELETE'])
 @login_required
 def delete_review(id):
     review = Review.query.get(id)

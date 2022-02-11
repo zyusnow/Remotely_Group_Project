@@ -14,6 +14,7 @@ export default function Reviews({ productId }) {
     const [showEditModal, setShowEditModal] = useState(false)
     const [showAddModal, setShowAddModal] = useState(false)
     const [editRevId, setEditRevId] = useState("")
+    const [isLoaded, setIsLoaded] = useState(false);
 
     const userId = useSelector(state => state.session.user?.id)
     const allReviewsObj = useSelector(state => state.review.reviews)
@@ -22,8 +23,8 @@ export default function Reviews({ productId }) {
     const productReviews = allReviewsArray.filter(review => review.productId === +productId)
 
     useEffect(() => {
-        dispatch(getAllReviews())
-    }, [dispatch])
+        dispatch(getAllReviews()).then(() => setIsLoaded(true)) 
+    }, [dispatch, isLoaded])
 
     const addReview = (e) => {
         e.preventDefault();
@@ -39,7 +40,7 @@ export default function Reviews({ productId }) {
         if(newReview) {
           setComment("")
           setRating("")
-          dispatch(getOneProduct(+productId))
+          dispatch(getOneProduct(+productId)).then(() => setIsLoaded(!isLoaded))
           setShowAddModal(false)
         }
       }
@@ -49,7 +50,7 @@ export default function Reviews({ productId }) {
         let deletedReview = dispatch(deleteReviewById(Number(e.target.id)))
 
         if(deletedReview) {
-            dispatch(getOneProduct(+productId))
+            dispatch(getOneProduct(+productId)).then(() => setIsLoaded(!isLoaded))
         }
       }
 
@@ -101,7 +102,7 @@ export default function Reviews({ productId }) {
                         </form>
                     </div>
                 </Modal>)}
-            <div className='reviews-header'>Reviews</div>
+            <div className='reviews-header'>Reviews ({productReviews?.length})</div>
             <div className='reviews-list'>
                 {productReviews.length > 0 && productReviews.map((review, idx) => (
                     <div key={idx} className="reviews-content">

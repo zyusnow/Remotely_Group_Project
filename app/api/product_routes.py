@@ -1,7 +1,7 @@
-from flask import Blueprint, jsonify, session, request, redirect
+from flask import Blueprint, jsonify, session, request
 from flask_login import login_required, current_user
 from app.models import Product, db
-from app.forms import ProductForm, ProductFormEdit
+from app.forms import ProductForm
 
 product_routes = Blueprint('products', __name__)
 
@@ -21,13 +21,13 @@ def get_products():
     products = Product.query.all()
     return {'products': [product.to_dict() for product in products]}
 
-@product_routes.route('/<int:id>')
+@product_routes.route('/<int:id>/')
 def get_product(id):
     product = Product.query.get(id)
     return product.to_dict()
 
 
-@product_routes.route('/new', methods=['POST'])
+@product_routes.route('/new/', methods=['POST'])
 @login_required
 def add_product():
     form = ProductForm()
@@ -57,7 +57,7 @@ def delete(id):
 
 @product_routes.route('/edit/<int:id>', methods=['PUT'])
 def edit(id):
-    form = ProductFormEdit()
+    form = ProductForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         product_to_edit = Product.query.get(id)

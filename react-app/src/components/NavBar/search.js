@@ -1,13 +1,14 @@
 export default function SearchBar() {
+
     return (
         <>
-            <form action="/search" method="POST">
+            <form action="/search">
                 <input
-                    type="text"
-                    name="term"
-                    placeholder="Search for product"
+                    type="search"
+                    name="q"
+                    placeholder="Search for a product"
                 />
-            <button type="submit"><i className="fas fa-search"></i></button>
+                <button type="submit"><i className="fas fa-search"></i></button>
             </form>
         </>
     )
