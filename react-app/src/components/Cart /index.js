@@ -21,7 +21,7 @@ function CartPage() {
             return accum + (curr.productPrice * curr.quantity);
           }, 0)))
       .then(() => setIsLoaded(true));
-  }, [dispatch, isLoaded, id, total, cartItemsArray]);
+  }, [dispatch, isLoaded, id, total]);
 
   const handleDelete = (cartId) => {
     cartId = +cartId;
@@ -42,7 +42,7 @@ function CartPage() {
                 return (
                   <div key={product.id} className='single_item'>
                     <li key={product.productImg}>
-                      <img alt={product.productTitle} src={product.productImageUrl}  className="cart_image"/>
+                      <img alt={product.productTitle} src={product.productImageUrl} className="cart_image"/>
                     </li>
                     <li key={product.productPrice} className="cart_item_price">
                       {product.productPrice}
