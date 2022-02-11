@@ -14,6 +14,7 @@ export default function Reviews({ productId }) {
     const [showEditModal, setShowEditModal] = useState(false)
     const [showAddModal, setShowAddModal] = useState(false)
     const [editRevId, setEditRevId] = useState("")
+    const [isLoaded, setIsLoaded] = useState(false);
 
     const userId = useSelector(state => state.session.user?.id)
     const allReviewsObj = useSelector(state => state.review.reviews)
@@ -23,6 +24,7 @@ export default function Reviews({ productId }) {
 
     useEffect(() => {
         dispatch(getAllReviews())
+        .then(() => setIsLoaded(true));
     }, [dispatch])
 
     const addReview = (e) => {
