@@ -113,7 +113,7 @@ const SignupForm = () => {
                             required
                         />
                     </label>
-                    <button className="button_submit" type="submit">Sign Up</button>
+                    <button className="button_submit button_main" type="submit">Sign Up</button>
                 </div>
             </form>
             <hr className="hrmodal"/>
