@@ -1,4 +1,3 @@
-from unicodedata import category
 from app.models import db, Product
 
 def seed_products():
@@ -54,7 +53,7 @@ def seed_products():
   price = 199.99,
   description='Lorem ipsum dolor sit amet, consectetur adispiscing elit, sed do eismod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
   quantity=10,
-  categoryId=3,
+  categoryId=8,
   )
   product07 = Product(
     title = 'L Shaped Office Desk',
@@ -119,7 +118,51 @@ def seed_products():
     quantity=10,
     categoryId=4
   )
-
+  product14 = Product(
+    title = 'Epson® Workforce® Pro WF-4830 Wireless Color Inkjet All-In-One Printer',
+    userId = 3,
+    imageUrl='https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/9940280/9940280_o01_051121/9940280_o01_051121',
+    price = 219.99,
+    description='Lorem ipsum dolor sit amet, consectetur adispiscing elit, sed do eismod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    quantity=10,
+    categoryId=6
+  )
+  product15 = Product(
+    title = 'Realspace® 36"W Steel 5-Shelf Cabinet, Black',
+    userId = 7,
+    imageUrl='https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/945822/945822_o01_120720/945822_o01_120720',
+    price = 359.99,
+    description='Lorem ipsum dolor sit amet, consectetur adispiscing elit, sed do eismod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    quantity=10,
+    categoryId=7
+  )
+  product16 = Product(
+    title = 'LG 32" Class QHD IPS Monitor',
+    userId = 3,
+    imageUrl='https://images.costco-static.com/ImageDelivery/imageService?profileId=12026540&itemId=8325500-847&recipeName=352&viewId=1',
+    price = 219.99,
+    description='Lorem ipsum dolor sit amet, consectetur adispiscing elit, sed do eismod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    quantity=10,
+    categoryId=2
+  )
+  product17 = Product(
+    title = 'HP 14a-na0122od Chromebook, 14" Screen, Intel® Pentium®, 4GB Memory',
+    userId = 2,
+    imageUrl='https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/3847496/3847496_o01/3847496_o01',
+    price = 289.99,
+    description='Lorem ipsum dolor sit amet, consectetur adispiscing elit, sed do eismod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    quantity=15,
+    categoryId=2
+  )
+  product18 = Product(
+    title = 'Samsung Galaxy Tab A7 Tablet, 8.7" Touchscreen, 32GB Storage, Grey/Black',
+    userId = 5,
+    imageUrl='https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/7356427/7356427_o01_102821/7356427_o01_102821',
+    price = 129.99,
+    description="Meet the device your whole family will love: Samsung Galaxy Tab A7 Lite, thetablet that's made to be shared. With its compact 8.7 inch screen, Galaxy Tab A7 Liteis perfectly sized for entertainment on the go. Its sturdy metal frame is built tobe brought along from the living room to your beach vacation, or wherever youwant to take it. Galaxy Tab A7 Lite comes with 2-months of free YouTube Premium¹and access to hours of ad-free entertainment so you can keep everyone happywithout annoying interruptions. Plus, with a powerful processor for fast streamingand plenty of storage for your favorite files, Galaxy Tab A7 Lite simplifiesentertainment needs for everyone under your roof.",
+    quantity=10,
+    categoryId=2
+  )
 
 
   db.session.add(product01)
@@ -135,6 +178,11 @@ def seed_products():
   db.session.add(product11)
   db.session.add(product12)
   db.session.add(product13)
+  db.session.add(product14)
+  db.session.add(product15)
+  db.session.add(product17)
+  db.session.add(product18)
+
   db.session.commit()
 
 def undo_products():

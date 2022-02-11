@@ -101,7 +101,7 @@ export default function Reviews({ productId }) {
                         </form>
                     </div>
                 </Modal>)}
-            <div className='reviews-header'>Reviews</div>
+            <div className='reviews-header'>Reviews ({productReviews?.length})</div>
             <div className='reviews-list'>
                 {productReviews.length > 0 && productReviews.map((review, idx) => (
                     <div key={idx} className="reviews-content">

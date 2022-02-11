@@ -22,7 +22,7 @@ export default function Search() {
     } else {
         return (
             <>
-            <h2>Search Results for {q}</h2>
+            <h2>{products?.length} Search Results for {q}</h2>
             {products?.map((product)=>(
                 <div className='one_product_container' key={product?.id}>
                     <div className='img_container'>
