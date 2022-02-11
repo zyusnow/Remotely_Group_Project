@@ -35,7 +35,7 @@ const deleteReview = (reviewId) => {
 
 /* ------ THUNK ACTIONS ------ */
 export const getAllReviews = () => async (dispatch) => {
-    const response = await fetch('/api/reviews')
+    const response = await fetch('/api/reviews/')
 
     if (response.ok) {
         const reviewsObj = await response.json()
@@ -45,7 +45,7 @@ export const getAllReviews = () => async (dispatch) => {
 }
 
 export const addOneReview = (reviewDetails) => async (dispatch) => {
-    const response = await fetch('/api/reviews/new', {
+    const response = await fetch('/api/reviews/new/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -68,7 +68,7 @@ export const addOneReview = (reviewDetails) => async (dispatch) => {
 }
 
 export const editReviewById = ({ reviewId, rating, comment, productId }) => async (dispatch)  => {
-    const response = await fetch(`/api/reviews/${reviewId}`, {
+    const response = await fetch(`/api/reviews/${reviewId}/`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -88,7 +88,7 @@ export const editReviewById = ({ reviewId, rating, comment, productId }) => asyn
 }
 
 export const deleteReviewById = (reviewId) => async (dispatch) => {
-    const response = await fetch(`/api/reviews/${reviewId}`, {
+    const response = await fetch(`/api/reviews/${reviewId}/`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'
