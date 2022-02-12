@@ -75,6 +75,7 @@ function CartPage() {
             )}
           </ul>
         </div>
+
         <div className="total_div">
           <div>
             <h2 className="total_div_header">Order Summary</h2>
