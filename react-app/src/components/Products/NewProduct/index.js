@@ -46,7 +46,7 @@ export default function NewProduct() {
     if (!imageUrl) errors.push('Please provide an image URL.')
 
     setErrors(errors)
-  }, [title, description, price, quantity])
+  }, [title, description, price, quantity, imageUrl])
 
   const addProductSubmit = async (e) => {
     e.preventDefault()
