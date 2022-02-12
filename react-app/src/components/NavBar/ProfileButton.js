@@ -46,6 +46,7 @@ function ProfileButton({ user }) {
 
   return (
     <>
+ 
       <div className="nav_welcome">Welcome, {user.username}</div>
       <button className='nav_right_menu' onClick={openMenu}>
         <i className="fas fa-user-circle"></i>

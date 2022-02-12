@@ -3,8 +3,9 @@
     height: 60px;
     padding: 0 4vw;
     display: grid;
-    grid-template-columns: 1fr 2fr 3fr 0.2fr;
+    grid-template-columns: 1fr 10fr 2fr 0.2fr;
     align-items: center;
+    justify-content: center;
 }
 /* ------------------------------------------------------------ */
 
@@ -102,4 +103,22 @@ ul.modal_ul_errors {
 
     border-radius: 5px;
     border: 1px solid #ffd08c;
+}
+
+.searchBar input{
+    height:2.6em;
+    width: 80%;
+    border-radius: 20px;
+    border: 1px solid rgba(92, 92, 92, 0.7);
+    padding-left: 10px;
+
+}
+
+.searchBar {
+    margin-bottom: -0.4em;
+    margin-left: 3em;
+}
+
+.search_button{
+    margin-left: -2em;
 }

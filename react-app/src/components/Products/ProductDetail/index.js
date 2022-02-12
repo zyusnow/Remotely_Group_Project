@@ -61,7 +61,7 @@ export default function ProductDetail() {
       history.push('/cart');
     }
 
-    if (product && isLoaded) {
+    if (product) {
       return (
         <>
           <div className="product_img_container">
@@ -90,8 +90,11 @@ export default function ProductDetail() {
             <div>${product?.price}</div>
             <div>{product?.description}</div>
           </div>
+          {sessionUser &&
+            sessionUser?.id && (
+              <button onClick={addItemToCart}>Add to Cart</button>
+            )}
 
-          <button onClick={addItemToCart}>Add to Cart</button>
           {sessionUser?.id === product?.userId && (
             <>
               <button onClick={handleDelete}>Delete</button>

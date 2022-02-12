@@ -3,7 +3,7 @@ from app.models import Product
 
 search_routes = Blueprint('search', __name__)
 
-@search_routes.route('/')
+@search_routes.route('')
 def search():
     term = request.args.get('q')
     searchResult = Product.query.filter(Product.title.ilike(f'%{term}%')).all()
@@ -12,3 +12,4 @@ def search():
         return { "products" : result }
     else:
         return { "products" : {} }
+

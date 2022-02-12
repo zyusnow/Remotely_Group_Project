@@ -8,6 +8,7 @@ function HomePage() {
     const dispatch = useDispatch();
     const categoriesObj = useSelector(state => state?.category?.categories)
     const categoriesArr = Object.values(categoriesObj)
+    const user = useSelector(state => state?.session?.user)
 
     useEffect(() => {
         dispatch(getAllCategories())
@@ -16,7 +17,13 @@ function HomePage() {
     return (
         <>
             <div className='banner'>
-                <div className='welcome'>Stay comfortabley, work remotely!</div>
+                {!user ? (
+                <div className='welcome'>
+                    Shop comfortably, work remotely!
+                </div> ) : (
+                <div className='welcome'>
+                    Welcome, {user.username}!
+                    </div>)}
                 <div className='categories_container'>
                     <ul>
                     {categoriesArr?.map(category => (

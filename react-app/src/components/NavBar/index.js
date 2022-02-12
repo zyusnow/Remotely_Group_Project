@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import LoginFormModal from '../Modals/LoginFormModal';
 import SignupFormModal from '../Modals/SignupFormModal';
 import ProfileButton from './ProfileButton';
+import Footer from './Footer';
 import './NavBar.css';
 import SearchBar from './search';
 
@@ -42,6 +43,7 @@ function NavBar({ loaded }) {
             <i className="fas fa-shopping-cart"/>
           </NavLink>
         </nav>
+        <Footer />
       </>
     );
 }

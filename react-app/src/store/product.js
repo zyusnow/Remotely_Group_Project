@@ -36,7 +36,7 @@ const deleteProduct = (id) => {
 
 //thunk
 export const getAllProducts = () => async (dispatch) => {
-    const res = await fetch('/api/products');
+    const res = await fetch('/api/products/');
     if (res.ok) {
         const productsObj = await res.json();
         dispatch(getProducts(productsObj.products));
@@ -45,7 +45,7 @@ export const getAllProducts = () => async (dispatch) => {
 }
 
 export const getOneProduct = (productId) => async (dispatch) => {
-    const res = await fetch(`/api/products/${productId}`);
+    const res = await fetch(`/api/products/${productId}/`);
     if (res.ok) {
         const product = await res.json();
         dispatch(getProduct(product));
@@ -54,7 +54,7 @@ export const getOneProduct = (productId) => async (dispatch) => {
 }
 
 export const addOneProduct = (productDetails) => async (dispatch) => {
-    const res = await fetch('/api/products/new', {
+    const res = await fetch('/api/products/new/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -84,7 +84,7 @@ export const updateOneProduct = (product, productId) => async dispatch => {
         },
         body: JSON.stringify(product)
     });
-    
+
     if (res.ok) {
         const data = await res.json();
         dispatch(addProduct(data))

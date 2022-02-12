@@ -1,65 +1,115 @@
-import { useEffect, /* useState */} from 'react';
+import { useEffect,  useState } from 'react';
 import {useDispatch, useSelector } from 'react-redux';
-import { loadCart, deleteFromCart } from '../../store/cart'
+import { loadCart, deleteFromCart, addToCart } from '../../store/cart'
 import {getAllProducts} from '../../store/product'
+import AddRemoveItem from './Add_Remove_Item';
 import './Cart.css'
 
 function CartPage() {
   const id = useSelector((state) => state.session?.user.id);
   const cartItemsArray = useSelector((state) => state.carts?.cart);
-  const products = useSelector((state) => state.product?.products )
-  // const user = useSelector((state) => state.session?.user)
-  // const [cart, setCart] = useState({});
-  // const [isLoaded, setIsLoaded] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [total, setTotal] = useState(0);
   const dispatch = useDispatch();
 
-  // const productIds = cartItemsArray?.map(cartItem => {
-  //  return [cartItem.productId, cartItem.quantity, cartItem.id];
-  // })
-
-  // const cartProducts = productIds?.map(productId => {
-  //   const cartItem = products[productId[0]];
-  //   if (cartItem) {
-  //     cartItem.quantity = productId[1];
-  //     cartItem.cartId = productId[2];
-  //   }
-  //   return cartItem;
-  // })
 
   useEffect(() => {
-    dispatch(getAllProducts())
-    dispatch(loadCart(id));
-  }, [dispatch, id]);
-  
+    dispatch(loadCart(id))
+      .then(() => setTotal(!cartItemsArray ? null :
+        cartItemsArray
+          .reduce((accum, curr) => {
+            return accum + (curr.productPrice * curr.quantity);
+          }, 0)))
+      .then(() => setIsLoaded(true));
+  }, [dispatch, isLoaded, id, total]);
 
   const handleDelete = (cartId) => {
     cartId = +cartId;
     dispatch(deleteFromCart(cartId));
+    setIsLoaded(!isLoaded)
     dispatch(loadCart(id));
   }
 
-  return (
+  return !isLoaded ? null : (
     <>
-      <h1>My Cart</h1>
-
       <div>
-        <ul className="cartItems">
-          { (!cartItemsArray || !cartItemsArray.length) ? 
-            <h1>You have no items in your cart.</h1>
-          : cartItemsArray?.map((product) => {
-              return (
-                <>
-                  <li key={product.productImg}>
-                    <img alt={product.productTitle} src={product.productImageUrl}  className="cartImage"/>
-                  </li>
-                  <li key={product.productPrice} className="cartItemPrice">
-                    {product.productPrice}
-                  </li>
-                  <li><button id={product.id} onClick={e => handleDelete(e.target.id)}>Delete</button></li>
-                </>
-              );
-          })}
-        </ul>
+        <h1 className="cart_title">Shopping Cart</h1>
+      </div>
+      <div className="cart_container">
+        <div className="cart_details">
+          <ul className="cart_items">
+            {!cartItemsArray || !cartItemsArray.length ? (
+              <h1>You have no items in your cart.</h1>
+            ) : (
+              cartItemsArray?.map((product) => {
+                return (
+                  <div key={product.id} className="single_item">
+                    <li>{product.productTitle}</li>
+                    <li key={product.productImg}>
+                      <img
+                        alt={product.productTitle}
+                        src={product.productImageUrl}
+                        className="cart_image"
+                      />
+                    </li>
+                    <AddRemoveItem
+                      productId={product.id}
+                      cartId={id}
+                      quantity={product.quantity}
+                      setTotal={setTotal}
+                    />
+                    <li>
+                      <button
+                        id={product.id}
+                        onClick={(e) => handleDelete(e.target.id)}
+                      >
+                        Delete
+                      </button>
+                    </li>
+                  </div>
+                );
+              })
+            )}
+          </ul>
+        </div>
+        <div className="total_div">
+          <div>
+            <h2 className="total_div_header">Order Summary</h2>
+          </div>
+          {!cartItemsArray || !cartItemsArray.length
+            ? null
+            : cartItemsArray?.map((product) => {
+                return (
+                  <>
+                    <ul key={product.id} className="single_item">
+                      <li
+                        key={product.productTitle}
+                        className="cart_item_label"
+                        id="title"
+                      >
+                        {product.productTitle}
+                      </li>
+                      <li className="cart_item_label" id="category">
+                        {product.productCategory}
+                      </li>
+                      <li className="cart_item_label" id="quantity">
+                        Quantity: {product.quantity}
+                      </li>
+                      <li className="cart_item_label" id="item_price">
+                        Price: ${product.productPrice}
+                      </li>
+                    </ul>
+                  </>
+                );
+              })}
+          <div className="total_div_footer">
+            {!total ? null : (
+              <h2 className="total_price">
+                Total Price: ${(Math.round(total * 100) / 100).toFixed(2)}
+              </h2>
+            )}
+          </div>
+        </div>
       </div>
     </>
   );
