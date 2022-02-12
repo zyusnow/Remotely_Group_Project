@@ -53,10 +53,7 @@ function ProfileButton({ user }) {
       {showMenu && (
         <ul className="profile-dropdown">
           <li>
-            <button id="nav_logout" onClick={toMyOrder}>My order</button>
-          </li>
-          <li>
-            <button id="nav_logout" onClick={toAddProduct}>Sell product</button>
+            <button id="nav_logout" onClick={toAddProduct}>Sell Product</button>
           </li>
           <li>
             <button id="nav_logout" onClick={logout}>Log Out</button>

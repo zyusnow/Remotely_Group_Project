@@ -7,10 +7,10 @@ import './Reviews.css'
 export default function EditReviewForm({ reviewId, productId, setShowEditModal }) {
     const dispatch = useDispatch()
 
-    const review = useSelector(state => state.review.reviews[+reviewId])
+    const review = useSelector(state => state.review?.reviews[+reviewId])
 
-    const [rating, setRating] = useState(review.rating)
-    const [comment, setComment] = useState(review.comment)
+    const [rating, setRating] = useState(review?.rating)
+    const [comment, setComment] = useState(review?.comment)
 
     const editReview = async (e) => {
         e.preventDefault()
