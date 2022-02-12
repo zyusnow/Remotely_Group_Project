@@ -44,7 +44,7 @@ function EditProduct() {
             setErrors(data);
         } else {
             setErrors([])
-            history.push("/products")
+            history.push(`/products/${productId}`)
         }
     }
 
@@ -73,7 +73,7 @@ function EditProduct() {
 
     const handleCancel = (e) => {
         e.preventDefault();
-        history.push('/products')
+        history.push('/products/')
     }
     return (
         <div id="new-product-container">

@@ -17,7 +17,7 @@ export default function Reviews({ productId }) {
     const [isLoaded, setIsLoaded] = useState(false);
 
     const userId = useSelector(state => state.session.user?.id)
-    const allReviewsObj = useSelector(state => state.review.reviews)
+    const allReviewsObj = useSelector(state => state.review?.reviews)
 
     const allReviewsArray = Object.values(allReviewsObj)
     const productReviews = allReviewsArray.filter(review => review.productId === +productId)
@@ -116,8 +116,8 @@ export default function Reviews({ productId }) {
                             {review.comment}
                         {review.userId === userId &&
                             <>
-                                <button onClick={deleteReview} id={review.id}><i className="far fa-trash-alt"></i></button>
-                                <button onClick={openEditReviewForm} value={review.id}><i className="far fa-edit"></i></button>
+                                <button onClick={openEditReviewForm} value={review.id}>Edit</button>
+                                <button onClick={deleteReview} id={review.id}>Delete</button>
                             </>}
                         </span>
                   </div>

@@ -64,6 +64,7 @@ export default function ProductDetail() {
       return (
         <>
           <div className="product_img_container">
+            <div>{product?.title}</div>
             <Link to={`/products/${productId}`}>
               <img
                 className="productImage"
@@ -85,7 +86,7 @@ export default function ProductDetail() {
                   )
                   .map((star, idx) => <span key={idx}>{star}</span>)}
             </div>
-            <div>{product?.title}</div>
+
             <div>${product?.price}</div>
             <div>{product?.description}</div>
           </div>
@@ -96,8 +97,8 @@ export default function ProductDetail() {
 
           {sessionUser?.id === product?.userId && (
             <>
-              <button onClick={handleDelete}>Delete</button>
-              <button onClick={handleUpdate}>Edit</button>
+              <button onClick={handleUpdate}>Update</button>
+              <button onClick={handleDelete}>Delete product</button>
             </>
           )}
           <Reviews productId={product?.id} />
