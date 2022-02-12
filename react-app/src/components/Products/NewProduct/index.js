@@ -14,6 +14,7 @@ export default function NewProduct() {
   const [quantity, setQuantity] = useState("")
   const [categoryId, setCategoryId] = useState("")
   const [errors, setErrors] = useState([])
+  const [triedSubmit, setTriedSubmit] = useState(false)
 
   const categoriesObj = useSelector(state => state?.category?.categories)
   const categoriesArr = Object.values(categoriesObj)
@@ -42,6 +43,7 @@ export default function NewProduct() {
     if (description.length > 255) errors.push("Description must be less than 255 characters")
     if (price < 1) errors.push("Price must be at least $1")
     if (quantity < 1) errors.push("Please enter a valid quantity")
+    if (!imageUrl) errors.push('Please provide an image URL.')
 
     setErrors(errors)
   }, [title, description, price, quantity])
@@ -49,6 +51,10 @@ export default function NewProduct() {
   const addProductSubmit = async (e) => {
     e.preventDefault()
 
+    if (errors.length) {
+      setTriedSubmit(true);
+      return;
+    }
     const payload = {
       title,
       description,
@@ -74,7 +80,7 @@ export default function NewProduct() {
       <form className='new-product-form' onSubmit={addProductSubmit}>
         <div className="add-form-title">Sell Your Product</div>
         <div className="add-input-container">
-          {errors.length > 0 && <ul className="errors">
+          {errors.length > 0 && <ul className={triedSubmit ? "errors urgent-errors" : "errors"}>
             {errors.map((error, idx) => <li className="error" key={idx}>{error}</li>)}
           </ul>}
           <div className='form_content'>

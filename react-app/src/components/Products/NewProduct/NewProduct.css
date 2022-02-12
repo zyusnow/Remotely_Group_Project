@@ -83,3 +83,9 @@
     padding: 20px;
     text-align: center;
 }
+
+.urgent-errors {
+    color: red;
+    font-size: x-large;
+    font-weight: bolder;
+}
