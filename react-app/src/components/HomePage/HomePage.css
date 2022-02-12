@@ -142,6 +142,7 @@ a {
 }
 .product_image img{
     border-radius: 2em;
+    object-fit: contain;
 }
 .single_product{
     display:flex;
