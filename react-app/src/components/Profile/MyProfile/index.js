@@ -42,6 +42,7 @@ console.log(products)
 
        <div className="my_products_container">
          <h2>My Products</h2>
+         <div className="products_list">
          <ul className="my_products_info">
            {products?.map((product) => {
              if (product) {
@@ -61,6 +62,7 @@ console.log(products)
              }
            })}
          </ul>
+         </div>
        </div>
      </div>
    </>

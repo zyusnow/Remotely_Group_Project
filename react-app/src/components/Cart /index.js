@@ -1,7 +1,7 @@
 import { useEffect,  useState } from 'react';
 import {useDispatch, useSelector } from 'react-redux';
 import { loadCart, deleteFromCart, addToCart } from '../../store/cart'
-import {getAllProducts} from '../../store/product'
+import {Link} from 'react-router-dom'
 import AddRemoveItem from './Add_Remove_Item';
 import './Cart.css'
 
@@ -39,19 +39,21 @@ function CartPage() {
         <div className="cart_details">
           <ul className="cart_items">
             {!cartItemsArray || !cartItemsArray.length ? (
-              <h1>You have no items in your cart.</h1>
+              <h1 className="no_items">You have no items in your cart.</h1>
             ) : (
               cartItemsArray?.map((product) => {
                 return (
                   <div key={product.id} className="single_item">
                     <li>{product.productTitle}</li>
-                    <li key={product.productImg}>
-                      <img
-                        alt={product.productTitle}
-                        src={product.productImageUrl}
-                        className="cart_image"
-                      />
-                    </li>
+                    <Link to={`/products/${product.productId}`}>
+                      <li key={product.productImg}>
+                        <img
+                          alt={product.productTitle}
+                          src={product.productImageUrl}
+                          className="cart_image"
+                        />
+                      </li>
+                    </Link>
                     <AddRemoveItem
                       productId={product.id}
                       cartId={id}
@@ -64,6 +66,7 @@ function CartPage() {
                         onClick={(e) => handleDelete(e.target.id)}
                       >
                         Delete
+                        {/* <i className="fa-solid fa-x"></i> */}
                       </button>
                     </li>
                   </div>
@@ -81,7 +84,7 @@ function CartPage() {
             : cartItemsArray?.map((product) => {
                 return (
                   <>
-                    <ul key={product.id} className="single_item">
+                    <ul key={product.id} className="item_list">
                       <li
                         key={product.productTitle}
                         className="cart_item_label"
@@ -103,10 +106,14 @@ function CartPage() {
                 );
               })}
           <div className="total_div_footer">
+
             {!total ? null : (
-              <h2 className="total_price">
+              <>
+              <div className="divider"/>
+              <p className="total_price">
                 Total Price: ${(Math.round(total * 100) / 100).toFixed(2)}
-              </h2>
+              </p>
+              </>
             )}
           </div>
         </div>
