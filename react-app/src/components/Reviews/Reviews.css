@@ -33,22 +33,6 @@
     font-family: "Open Sans", sans-serif;
 }
 
-/* .rev-submit {
-    box-sizing: border-box;
-    border-radius: 4px;
-    font-size: 0.85em;
-    border: none;
-    align-self: center;
-    background-color: #844bcf;
-    color:white;
-    padding: 7px;
-    margin-top: 12px;
-}
-
-.rev-submit:hover {
-    cursor:pointer;
-    opacity: 80%;
-} */
 
 .rev-submit:disabled {
     cursor: auto;
