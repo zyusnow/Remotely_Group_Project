@@ -10,8 +10,15 @@ function HomePage() {
     const categoriesArr = Object.values(categoriesObj)
     const products = useSelector(state=> state?.product?.products)
     const productArr = Object.values(products)
-    const product1 = productArr[0]
-    console.log(product1)
+    const product1 = productArr[2]
+    const product2 = productArr[24]
+    const product3 = productArr[18]
+    const product4 = productArr[13]
+    const product5 = productArr[8]
+    const product6 = productArr[9]
+    const product7 = productArr[10]
+
+
     useEffect(() => {
         dispatch(getAllCategories())
         dispatch(getAllProducts())
@@ -37,12 +44,27 @@ function HomePage() {
             <div className='center_container'>
                 <div>Our picks for you</div>
                 <div className='picks_products'>
-                    <Link to={`/products/${product1.id}`}>
-                  <img
-                    className="img"
-                    src={product1?.imageUrl}
-                    alt={product1?.category_name} />
-                </Link>
+                    <Link to={`/products/${product1?.id}`}>
+                        <img className="img" src={product1?.imageUrl} alt={product1?.category_name} />
+                    </Link>
+                    <Link to={`/products/${product2?.id}`}>
+                        <img className="img" src={product2?.imageUrl} alt={product2?.category_name} />
+                    </Link>
+                    <Link to={`/products/${product3?.id}`}>
+                        <img className="img" src={product3?.imageUrl} alt={product3?.category_name} />
+                    </Link>
+                    <Link to={`/products/${product4?.id}`}>
+                        <img className="img" src={product4?.imageUrl} alt={product4?.category_name} />
+                    </Link>
+                    <Link to={`/products/${product5?.id}`}>
+                        <img className="img" src={product5?.imageUrl} alt={product5?.category_name} />
+                    </Link>
+                    <Link to={`/products/${product6?.id}`}>
+                        <img className="img" src={product6?.imageUrl} alt={product6?.category_name} />
+                    </Link>
+                    <Link to={`/products/${product7?.id}`}>
+                        <img className="img" src={product7?.imageUrl} alt={product7?.category_name} />
+                    </Link>
                 </div>
 
             </div>
