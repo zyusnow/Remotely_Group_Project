@@ -10,7 +10,7 @@ export default function SearchBar() {
                     name="q"
                     placeholder="Search for a product"
                 />
-                <button type="submit"><i className="fas fa-search"></i></button>
+                <button className="search_button" type="submit"><i className="fas fa-search"></i></button>
             </form>
         </>
     )
