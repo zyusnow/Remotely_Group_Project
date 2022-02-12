@@ -1,0 +1,33 @@
+.footer {
+ box-sizing: border-box;
+ position: fixed;
+ padding: 10px 10px 0px 10px;
+ bottom: 0;
+ width: 100%;
+/* Height of the footer*/
+  height: 50px;
+  background: white;
+  color: black;
+  text-align: center;
+  border-top: 2px solid rgba(0, 28, 183, 1);
+}
+
+.footer_container{
+  flex-direction: column;
+}
+.about_links{
+  color: white;
+  text-decoration: none;
+  font-size:1em;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+ li.footer_links{
+   padding: 0px 25px 2px 25px;
+   display: inline-block;
+   justify-content: space-evenly
+ }
