@@ -90,8 +90,7 @@ export default function ProductDetail() {
             <div>${product?.price}</div>
             <div>{product?.description}</div>
           </div>
-          {sessionUser &&
-            sessionUser?.id(
+          {!sessionUser ? null : (
               <button onClick={addItemToCart}>Add to Cart</button>
             )}
 
