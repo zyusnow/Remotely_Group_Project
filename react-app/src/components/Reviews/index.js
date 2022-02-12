@@ -116,8 +116,8 @@ export default function Reviews({ productId }) {
                             {review.comment}
                         {review.userId === userId &&
                             <>
-                                <button onClick={deleteReview} id={review.id}>Delete Review</button>
-                                <button onClick={openEditReviewForm} value={review.id}>Edit Review</button>
+                                <button onClick={deleteReview} id={review.id}><i className="far fa-trash-alt"></i></button>
+                                <button onClick={openEditReviewForm} value={review.id}><i className="far fa-edit"></i></button>
                             </>}
                         </span>
                   </div>

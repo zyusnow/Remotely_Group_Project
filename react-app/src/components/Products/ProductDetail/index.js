@@ -5,6 +5,7 @@ import { deleteOneProduct, getOneProduct } from '../../../store/product';
 import { addToCart } from '../../../store/cart';
 // import PageNotFound from '../../PageNotFound';
 import Reviews from '../../Reviews';
+import './ProductDetail.css'
 
 export default function ProductDetail() {
     const dispatch = useDispatch();
@@ -12,7 +13,6 @@ export default function ProductDetail() {
     const productId = +id;
     const history = useHistory();
 
-    const [isLoaded, setIsLoaded] = useState(false);
     const product = useSelector(state => state.product.products[productId])
     const sessionUser = useSelector(state => state.session.user);
     const allReviewsObj = useSelector(state => state.review.reviews)
@@ -32,7 +32,6 @@ export default function ProductDetail() {
 
     useEffect(() => {
         dispatch(getOneProduct(productId))
-          .then(() => setIsLoaded(true));
     }, [dispatch, productId, productReviews.length])
 
     const handleDelete = e =>{
@@ -67,7 +66,7 @@ export default function ProductDetail() {
           <div className="product_img_container">
             <Link to={`/products/${productId}`}>
               <img
-                className="img"
+                className="productImage"
                 src={product?.imageUrl}
                 alt={product?.category_name}
               />
