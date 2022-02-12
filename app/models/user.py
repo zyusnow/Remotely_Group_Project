@@ -12,6 +12,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
     createdAt = db.Column(db.DateTime, nullable=False, default=datetime.now())
+  
 
     products = db.relationship('Product', back_populates='user')
     reviews = db.relationship('Review', back_populates='user')
@@ -33,7 +34,6 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
-        }
+            'email': self.email,
 
-    
+        }
