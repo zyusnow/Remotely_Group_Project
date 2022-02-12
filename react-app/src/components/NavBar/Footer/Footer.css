@@ -16,16 +16,20 @@
   flex-direction: column;
 }
 .about_links{
-  color: white;
   text-decoration: none;
   font-size:1em;
 }
 
-a {
+a>.about_links{
   text-decoration: none;
-  color: black;
+  color: rgba(0, 28, 183, 1)
 }
-
+a:hover{
+  color:rgba(0, 28, 183, 1)
+}
+a:visited{
+ color: rgba(0, 28, 183, 1)
+}
  li.footer_links{
    padding: 0px 25px 2px 25px;
    display: inline-block;

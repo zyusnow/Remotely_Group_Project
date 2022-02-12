@@ -1,15 +1,15 @@
 a {
     text-decoration: none;
-    color: white;
     font-weight: 400;
 }
 .banner{
     position: relative;
-    background-image:url('https://res.cloudinary.com/bigtechnik/image/upload/v1644639842/Remotely/images_kv4xvp.jpg') no;
+    background: rgb(2,0,36);
+    background: linear-gradient(248deg, rgba(2,0,36,1) 0%, rgba(63,0,183,0.85) 35%, rgba(0,28,183,0.85) 100%);
     text-align: center;
     margin-bottom: 4em;
     height: 300px;
-    border-radius: .5em;
+    border-radius: 1em;
     z-index: 1;
 }
 
@@ -107,3 +107,51 @@ a {
     color:black;
     font-size: larger;
 }
+
+.username_link{
+    text-decoration:none;
+    font-weight: 400;
+    color: white;
+}
+
+.username_link:hover{
+    font-weight:600;
+}
+
+.username_link:visited{
+    color: white;
+}
+
+.products_container1 {
+    width:auto;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2em;
+    border-radius: 1em;
+    border: 1px solid rgba(63,0,183,0.85);
+    text-align: center;
+}
+
+.products_list{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    text-align: center;
+}
+.product_image img{
+    border-radius: 2em;
+}
+.single_product{
+    display:flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 2em;
+}
+ .products_container1 h2{
+    font-size: 2.5em;
+    font-weight: 500;
+    margin-bottom: 1em;
+    color: rgb(63,0,183);
+ }

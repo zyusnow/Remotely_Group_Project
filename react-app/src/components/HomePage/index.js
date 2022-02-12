@@ -1,7 +1,8 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getAllCategories } from '../../store/category';
+import { getAllProducts } from '../../store/product';
 import './HomePage.css'
 
 function HomePage() {
@@ -9,9 +10,13 @@ function HomePage() {
     const categoriesObj = useSelector(state => state?.category?.categories)
     const categoriesArr = Object.values(categoriesObj)
     const user = useSelector(state => state?.session?.user)
+    const [isLoaded, setIsLoaded] = useState(false)
+    const productsObj = useSelector(state => state?.product?.products)
+    const productsArr = Object.values(productsObj)
+    console.log(productsArr)
 
     useEffect(() => {
-        dispatch(getAllCategories())
+        dispatch(getAllCategories()).then(() => dispatch(getAllProducts())).then(() => setIsLoaded(true));
     }, [dispatch])
 
     return (
@@ -21,7 +26,11 @@ function HomePage() {
             <div className="welcome">Shop comfortably, work remotely!</div>
           ) : (
             <div className="welcome">
-              Welcome, <Link to="/profile">{user.username}</Link>!
+              Welcome,{" "}
+              <Link className="username_link" to="/profile">
+                {user.username}
+              </Link>
+              !
             </div>
           )}
           <div className="categories_container">
@@ -41,32 +50,33 @@ function HomePage() {
             </ul>
           </div>
         </div>
-        <div className="down_banner">
-          <div className="down_banner_left">
-            <div className="left_title">Home Office</div>
-            <div className="left_sub_title">
-              Products For A Better Way To Work
-            </div>
-            <div className="left_content">
-              Find everything you need to work from home.
-            </div>
-            <div className="left_content">
-              {" "}
-              We cut out middlemen and maintain a lea line of modular inventory
-              to save you up to 50% compared to traditional office furniture of
-              similar quality.
-            </div>
-            <button className="banner_button">
-              <Link className="btn_link" to={`/products`}>
-                SHOP COLLECTIONS
-              </Link>
-            </button>
+
+        <div className="products_container1">
+          <h2>Featured Products</h2>
+          <div className="products_list" id="home">
+            {productsArr?.map((product) => (
+              <div className="single_product" key={product?.id}>
+                <div className="product_image">
+                  <Link to={`/products/${product.id}`}>
+                    <img
+                      className="img"
+                      src={product?.imageUrl}
+                      alt={product?.category_name}
+                    />
+                  </Link>
+                </div>
+                <div className="product_info">
+                  <Link
+                    className="product_title"
+                    to={`/products/${product.id}`}
+                  >
+                    {product?.title}
+                  </Link>
+                  <div className="product_price">${product?.price}</div>
+                </div>
+              </div>
+            ))}
           </div>
-          <img
-            className="img_banner"
-            src="https://res.cloudinary.com/dprnsux1z/image/upload/v1644427511/ave-calvar-BbQXZ7UyX0w-unsplash_qkehs5.jpg"
-            alt="center_banner"
-          ></img>
         </div>
       </>
     );

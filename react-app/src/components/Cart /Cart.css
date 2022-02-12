@@ -1,15 +1,14 @@
-*{
-  color: black;
-}
+
 ul {
   list-style-type: none;
 }
 
 h1 {
   padding-bottom: 20px;
-  font-weight: 200;
+  font-weight: 300;
   text-align: center;
-  color: rgba(0, 28, 183, 1);
+  color: rgba(63, 0, 183, 1);
+  font-size: 2.5em
 }
 h2 {
   width: 75%;
@@ -18,14 +17,21 @@ h2 {
   justify-content: center;
   font-weight: 200px;
 }
+select {
+  text-align:center;
+  border:none;
+  background: transparent;
+}
+
 button {
   display: inline-block;
   border: none;
   padding: none;
   background-color: transparent;
+  color:rgba(0, 28, 183, 0.85)
 }
 button:hover{
-  color:rgba(63, 0, 183, 0.55);
+  color:rgba(63, 0, 183, 0.65);
   cursor: pointer;
 }
 button.delete:hover {
@@ -40,18 +46,20 @@ button.delete:hover {
   align-content: space-between;
   background-color: rgba(236, 236, 236, 0.5);
   border-radius: 1em;
+
 }
 .single_item {
   box-sizing: border-box;
-  padding: 180px;
-  display: inline-block;
+  display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  border-bottom:2px solid rgba(63, 0, 183, 0.85);
+
 }
 
 
 .cart_details {
-  display: block;
   flex-grow: 0;
   flex-shrink: 1;
   flex-basis: 1;
@@ -59,7 +67,9 @@ button.delete:hover {
   align-self: auto;
   order: 0;
   height:800px;
-  overflow-y: scroll;
+  display: grid;
+  grid-template-areas: repeat(4, 1fr);
+
 }
 .total_div {
   box-sizing: border-box;
@@ -93,6 +103,9 @@ button.delete:hover {
   font-weight: 100;
   ;
 }
+.cart_image{
+  width: 12em;
+}
 #item_title{
   font-weight:;
 }
@@ -117,4 +130,8 @@ button.delete:hover {
 
 .fa-solid fa-x{
   color: rgba(63, 0, 183, 0.85);
+}
+
+.total_div_header {
+  padding-bottom: 20px;
 }

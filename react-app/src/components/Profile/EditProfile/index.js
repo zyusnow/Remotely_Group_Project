@@ -41,7 +41,7 @@ function EditProfile(){
   return(
     <>
       <h1>Edit Profile</h1>
-      <div>
+      <div className="edit_container">
         <form onSubmit={handleSubmit}>
           <label>Username:</label>
           <input type="text" value={username} onChange={e => setUsername(e.target.value)} />

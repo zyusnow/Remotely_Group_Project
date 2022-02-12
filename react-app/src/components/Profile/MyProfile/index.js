@@ -23,45 +23,62 @@ console.log(products)
 
  return (
    <>
-     <div className="main">
-       <div className="profile_banner">
-         <div>
-           <div className="image_container">
-             <img className="profile_picture"
-               alt="profile_pic"
-               src="https://res.cloudinary.com/bigtechnik/image/upload/v1644534295/Remotely/images_bvdorh.png"
-             />
-           </div>
-           <ul>
-             <li>{sessionUser.username}</li>
-             <li>{sessionUser.email}</li>
-             <li><Link to={`/profile/${sessionUser.id}/edit`}>Edit My Profile</Link></li>
-           </ul>
-         </div>
+     <div className="profile_banner">
+       <div className="image_container">
+         <img
+           className="profile_picture"
+           alt="profile_pic"
+           src="https://res.cloudinary.com/bigtechnik/image/upload/v1644534295/Remotely/images_bvdorh.png"
+         />
+         <ul>
+           <li key={sessionUser.username}>{sessionUser.username}</li>
+           <li key={sessionUser.email}>{sessionUser.email}</li>
+         </ul>
        </div>
+       <div className="profile_right">
+         <h3>Good Vibes!</h3>
+         <p className="right_text">
+           As an introduction to Remotely - we will be providing you with
+           motivational quotes on your dashboard! We are committed to not only
+           providing useful, popular products for your remote work experience -
+           we care about <i>you</i>!
+         </p>
+         <p className="quote_heading">
+           <b>Quote of the Week</b>
+         </p>
+         <p>
+           <i>
+             {" "}
+             "Never limit yourself because of others’ limited imagination; never
+             limit others because of your own limited imagination.”{" "}
+           </i>
+           <br />
+           <p className="quote_origin">–Mae Jemison</p>
+         </p>
+       </div>
+     </div>
 
-       <div className="my_products_container">
-         <h2>My Products</h2>
-         <div className="products_list">
-         <ul className="my_products_info">
+     <div className="my_products_container">
+       <h2>My Products</h2>
+       <div className="products_list_profile">
+         <div className="my_products_info">
            {products?.map((product) => {
              if (product) {
                return (
                  <>
                    <div className="product_square">
-                     <li key={product.imageUrl}>
+                     <div key={product.imageUrl}>
                        <img className="product_img" src={product.imageUrl} />
-                     </li>
-                     <li>{product.title}</li>
-                     <li>
+                     </div>
+                     <div>{product.title}</div>
+                     <div key={product.id}>
                        <Link to={`/products/${product.id}/edit`}>Edit</Link>
-                     </li>
+                     </div>
                    </div>
                  </>
                );
              }
            })}
-         </ul>
          </div>
        </div>
      </div>
