@@ -17,7 +17,7 @@ export default function Reviews({ productId }) {
     const [isLoaded, setIsLoaded] = useState(false);
 
     const userId = useSelector(state => state.session.user?.id)
-    const allReviewsObj = useSelector(state => state.review.reviews)
+    const allReviewsObj = useSelector(state => state.review?.reviews)
 
     const allReviewsArray = Object.values(allReviewsObj)
     const productReviews = allReviewsArray.filter(review => review.productId === +productId)
@@ -69,7 +69,7 @@ export default function Reviews({ productId }) {
 
     return (
         <div className='review-container'>
-            {userId && <button onClick={openAddReviewForm}>Write a review</button>}
+            {userId && <button onClick={openAddReviewForm} className="rev-write-button"> * Write a review *</button>}
             {showAddModal && (
                 <Modal onClose={() => setShowAddModal(false)}>
                     <div className='review-form'>
@@ -106,20 +106,23 @@ export default function Reviews({ productId }) {
             <div className='reviews-list'>
                 {productReviews.length > 0 && productReviews.map((review, idx) => (
                     <div key={idx} className="reviews-content">
-                        <span>{review.user_name}: </span>
-                        <span>{review.createdAt}</span>
-                        <span>
+                        <div className="rev-user-name-date">
+                            <span><i className="fas fa-user-circle review-user"></i></span>
+                            <span>{review.user_name}</span>
+                            <span className="date">{review.createdAt.slice(5, 17)}</span>
+                        </div>
+                        <div className="rev-comment-container">
                         <div>
                             {Array(review.rating).fill(
                                 <span><i className="fas fa-star fa-xs"></i></span>).map((star, idx) => <span key={idx}>{star}</span>)}
                         </div>
                             {review.comment}
                         {review.userId === userId &&
-                            <>
-                                <button onClick={deleteReview} id={review.id}>Delete Review</button>
-                                <button onClick={openEditReviewForm} value={review.id}>Edit Review</button>
-                            </>}
-                        </span>
+                            <div className="rev-button-container">
+                                <button onClick={openEditReviewForm} value={review.id}>Edit</button>
+                                <button onClick={deleteReview} id={review.id}>Delete</button>
+                            </div>}
+                        </div>
                   </div>
                 ))}
                 {showEditModal && (

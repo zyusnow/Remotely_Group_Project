@@ -44,11 +44,10 @@ function App() {
               <Route path='/' exact={true}><HomePage /></Route>
               <Route path='/signup' exact={true}><SignupPage /></Route>
               <Route path='/login' exact={true}><LoginPage /></Route>
-              <Route path='/not-found' exact={true}><PageNotFound /></Route>
               <Route path='/products' exact={true}><AllProducts /></Route>
               <Route path='/products/:id' exact={true}><ProductDetail /></Route>
-              <Route path='/products/:id/edit' exact={true}><EditProduct /></Route>
-              <Route path='/addProduct' exact={true}><NewProduct /></Route>
+              <ProtectedRoute path='/products/:id/edit' exact={true}><EditProduct /></ProtectedRoute>
+              <ProtectedRoute path='/addProduct' exact={true}><NewProduct /></ProtectedRoute>
               <Route path='/category/:categoryName' exact={true}><Categories /></Route>
               <ProtectedRoute path='/cart'> <CartPage/> </ProtectedRoute>
               <Route path='/search'><Search /></Route>

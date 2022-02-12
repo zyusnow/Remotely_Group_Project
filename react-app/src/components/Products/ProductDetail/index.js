@@ -5,6 +5,7 @@ import { deleteOneProduct, getOneProduct } from '../../../store/product';
 import { addToCart } from '../../../store/cart';
 // import PageNotFound from '../../PageNotFound';
 import Reviews from '../../Reviews';
+import './ProductDetail.css'
 
 export default function ProductDetail() {
     const dispatch = useDispatch();
@@ -12,7 +13,6 @@ export default function ProductDetail() {
     const productId = +id;
     const history = useHistory();
 
-    const [isLoaded, setIsLoaded] = useState(false);
     const product = useSelector(state => state.product.products[productId])
     const sessionUser = useSelector(state => state.session.user);
     const allReviewsObj = useSelector(state => state.review.reviews)
@@ -32,7 +32,6 @@ export default function ProductDetail() {
 
     useEffect(() => {
         dispatch(getOneProduct(productId))
-          .then(() => setIsLoaded(true));
     }, [dispatch, productId, productReviews.length])
 
     const handleDelete = e =>{
@@ -63,44 +62,49 @@ export default function ProductDetail() {
 
     if (product) {
       return (
-        <>
-          <div className="product_img_container">
-              <img
-                className="img"
-                src={product?.imageUrl}
-                alt={product?.category_name}
-              />
-          </div>
-          <div className="product_detail_container">
-            <div>{product?.user_name}</div>
-            <div>{product?.category_name}</div>
-            <div>
-              {rating > 0 ?
-                Array(rating)
-                  .fill(
-                    <span>
-                      <i className="fas fa-star"></i>
-                    </span>
-                  )
-                  .map((star, idx) => <span key={idx}>{star}</span>)
-              : <span>No Ratings Yet!</span>}
+        <div className="product-details-page">
+          <div className="product-container">
+            <div className="product_img_container">
+                <img
+                  className="product-detail-image"
+                  src={product?.imageUrl}
+                  alt={product?.category_name}
+                  />
             </div>
-            <div>{product?.title}</div>
-            <div>${product?.price}</div>
-            <div>{product?.description}</div>
+            <div className="product-detail-container">
+              <div><p className="product-det-user">{product?.user_name}</p></div>
+              <div><p className="product-det-title">{product?.title}</p></div>
+              <div>
+                {rating > 0 &&
+                  Array(rating)
+                    .fill(
+                      <span>
+                        <i className="fas fa-star"></i>
+                      </span>
+                    )
+                    .map((star, idx) => <span key={idx}>{star}</span>)}
+              </div>
+              <Link className="product-det-category" to={`/category/${product?.category_name}`}>{product?.category_name}</Link>
+              <div><p className="product-det-price">${product?.price}</p></div>
+              <div><p className="product-det-desc">{product?.description}</p></div>
+                <div>
+                  <div>
+                    {!sessionUser ? null : (
+                        <button className="product-det-addCart" onClick={addItemToCart}>Add to Cart</button>
+                      )}
+                  </div>
+              {sessionUser?.id === product?.userId && (
+                <div className="product-button-container">
+                  <button onClick={handleUpdate}>Update</button>
+                  <button onClick={handleDelete}>Delete product</button>
+                </div>
+              )}
+              </div>
+            </div>
           </div>
-          {!sessionUser ? null : (
-              <button onClick={addItemToCart}>Add to Cart</button>
-            )}
-
-          {sessionUser?.id === product?.userId && (
-            <>
-              <button onClick={handleDelete}>Delete</button>
-              <button onClick={handleUpdate}>Edit</button>
-            </>
-          )}
+          
           <Reviews productId={product?.id} />
-        </>
+        </div>
       );
     } else {
       return <></>
