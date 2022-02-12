@@ -45,25 +45,25 @@ function HomePage() {
                 <div>Our picks for you</div>
                 <div className='picks_products'>
                     <Link to={`/products/${product1?.id}`}>
-                        <img className="img" src={product1?.imageUrl} alt={product1?.category_name} />
+                        <img className="picks_img" src={product1?.imageUrl} alt={product1?.category_name} />
                     </Link>
                     <Link to={`/products/${product2?.id}`}>
-                        <img className="img" src={product2?.imageUrl} alt={product2?.category_name} />
+                        <img className="picks_img" src={product2?.imageUrl} alt={product2?.category_name} />
                     </Link>
                     <Link to={`/products/${product3?.id}`}>
-                        <img className="img" src={product3?.imageUrl} alt={product3?.category_name} />
+                        <img className="picks_img" src={product3?.imageUrl} alt={product3?.category_name} />
                     </Link>
                     <Link to={`/products/${product4?.id}`}>
-                        <img className="img" src={product4?.imageUrl} alt={product4?.category_name} />
+                        <img className="picks_img" src={product4?.imageUrl} alt={product4?.category_name} />
                     </Link>
                     <Link to={`/products/${product5?.id}`}>
-                        <img className="img" src={product5?.imageUrl} alt={product5?.category_name} />
+                        <img className="picks_img" src={product5?.imageUrl} alt={product5?.category_name} />
                     </Link>
                     <Link to={`/products/${product6?.id}`}>
-                        <img className="img" src={product6?.imageUrl} alt={product6?.category_name} />
+                        <img className="picks_img" src={product6?.imageUrl} alt={product6?.category_name} />
                     </Link>
                     <Link to={`/products/${product7?.id}`}>
-                        <img className="img" src={product7?.imageUrl} alt={product7?.category_name} />
+                        <img className="picks_img" src={product7?.imageUrl} alt={product7?.category_name} />
                     </Link>
                 </div>
 
