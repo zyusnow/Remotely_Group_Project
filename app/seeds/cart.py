@@ -31,7 +31,12 @@ def seed_cart():
   cart10 = Cart(
     userId = 10
   )
+  cart11 = Cart(
+    userId = 11
+  )
+  cart12 = Cart(
+    userId = 12
+  )
 
-  db.session.add_all([cart01, cart02, cart03, cart04, cart05, cart06, cart07, cart08, cart09, cart10])
+  db.session.add_all([cart01, cart02, cart03, cart04, cart05, cart06, cart07, cart08, cart09, cart10, cart11, cart12])
   db.session.commit()
-

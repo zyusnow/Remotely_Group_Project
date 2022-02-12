@@ -36,24 +36,24 @@ const dispatch = useDispatch();
        </div>
        <div className="profile_right">
          <h3>Good Vibes!</h3>
-         <p className="right_text">
+         <div className="right_text">
            As an introduction to Remotely - we will be providing you with
            motivational quotes on your dashboard! We are committed to not only
            providing useful, popular products for your remote work experience -
            we care about <i>you</i>!
-         </p>
-         <p className="quote_heading">
+         </div>
+         <div className="quote_heading">
            <b>Quote of the Week</b>
-         </p>
-         <p>
+         </div>
+         <div>
            <i>
              {" "}
              "Never limit yourself because of others’ limited imagination; never
              limit others because of your own limited imagination.”{" "}
            </i>
            <br />
-           <p className="quote_origin">–Mae Jemison</p>
-         </p>
+           <div className="quote_origin">–Mae Jemison</div>
+         </div>
        </div>
      </div>
 

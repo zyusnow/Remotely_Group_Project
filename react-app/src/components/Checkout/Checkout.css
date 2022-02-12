@@ -1,0 +1,15 @@
+.checkdout_container {
+
+  box-sizing: border-box;
+  padding: 2em;
+  border: 1px solid rgba(63, 0, 183, 0.85);
+  margin: auto;
+  text-align: center;
+  border-radius: 2em;
+}
+
+.congrats{
+  width: 100%;
+  font-size: 2em;
+  padding-bottom: 30px;
+}

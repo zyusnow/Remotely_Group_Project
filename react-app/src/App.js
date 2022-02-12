@@ -17,6 +17,7 @@ import Categories from './components/Categories';
 import EditProduct from './components/Products/EditProduct';
 import ProfilePage from './components/Profile/MyProfile';
 import EditProfile from './components/Profile/EditProfile';
+import Checkout from './components/Checkout';
 import { authenticate } from './store/session';
 import Search from './components/Search';
 
@@ -56,6 +57,7 @@ function App() {
               <Route path='/search'><Search /></Route>
               <ProtectedRoute path='/profile' exact={true}><ProfilePage /></ProtectedRoute>
               <Route path='/profile/:id/edit'><EditProfile/></Route>
+              <Route path='/checkout'><Checkout /></Route>
               <Route><PageNotFound /></Route>
             </Switch>
           </div>
