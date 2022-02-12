@@ -23,6 +23,8 @@ export default function Search() {
         return (
             <>
             <h3>{products?.length} Search Results for "{q}"</h3>
+            <br/>
+            <div className="products_container">
             {products?.map((product)=>(
                 <div className='one_product_container' key={product?.id}>
                     <div className='img_container'>
@@ -36,6 +38,7 @@ export default function Search() {
                     </div>
                 </div>
                 ))}
+                </div>
             </>
         )
     }
