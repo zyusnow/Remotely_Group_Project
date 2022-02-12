@@ -16,7 +16,6 @@ function NavBar({ loaded }) {
     const cartLength = useSelector(state => state.carts?.cart?.length);
     const dispatch = useDispatch();
 
-    // console.log(cartLength?.length);
     let sessionLinks;
     if (sessionUser) {
         sessionLinks = (

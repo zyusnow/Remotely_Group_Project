@@ -13,7 +13,6 @@ function HomePage() {
     const [isLoaded, setIsLoaded] = useState(false)
     const productsObj = useSelector(state => state?.product?.products)
     const productsArr = Object.values(productsObj)
-    console.log(productsArr)
 
     useEffect(() => {
         dispatch(getAllCategories()).then(() => dispatch(getAllProducts())).then(() => setIsLoaded(true));

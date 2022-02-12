@@ -36,16 +36,15 @@ const editCartItem = cartItem => {
 
 //Loads cart based on ID
 export const loadCart = (cartId) => async (dispatch) => {
-   console.log("string data SEE MEEEEE");
   const response = await fetch(`/api/cart/${cartId}`, {
     headers: {
       'Content-Type': 'application/json'
     }
   });
-  console.log(response);
+
   if (response.ok) {
     const data = await response.json();
-    console.log(data)
+
     if (data.errors) {
       return;
     }

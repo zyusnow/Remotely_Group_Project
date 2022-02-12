@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import { useParams, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { loadUser } from '../../../store/user'
 import './Profile.css';
 
@@ -11,8 +11,7 @@ function ProfilePage(){
  const products = useSelector(state => state.user?.user?.products)
  const id = sessionUser.id;
 const dispatch = useDispatch();
-console.log(id)
-console.log(products)
+
  useEffect(() => {
   dispatch(loadUser(id)).then(user => setUser(user)).then(() => setIsLoaded(true));
  }, [id]);

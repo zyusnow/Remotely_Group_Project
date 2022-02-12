@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Redirect, useHistory, NavLink, Link} from "react-router-dom";
+import { Redirect, useHistory, Link} from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 
