@@ -11,7 +11,7 @@ function Footer() {
             </a>
           </li>
           <li className="footer_links">
-            <a href="https://github.com/hisownway/">David's Github</a>
+            <a href="https://github.com/hisownspace/">David's Github</a>
           </li>
           <li className="footer_links">
             <a href="https://github.com/sornamvairavan/">Sornam's Github</a>
