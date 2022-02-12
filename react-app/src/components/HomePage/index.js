@@ -2,13 +2,14 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getAllCategories } from '../../store/category';
+import {getAllProducts} from '../../store/product'
 import './HomePage.css'
-
 function HomePage() {
     const dispatch = useDispatch();
     const categoriesObj = useSelector(state => state?.category?.categories)
     const categoriesArr = Object.values(categoriesObj)
-
+    const products = useSelector(state=> state?.product?.products)
+    console.log(products)
     useEffect(() => {
         dispatch(getAllCategories())
     }, [dispatch])
@@ -29,6 +30,13 @@ function HomePage() {
                     ))}
                     </ul>
                 </div>
+            </div>
+            <div className='center_container'>
+                <div>Our picks for you</div>
+                <div className='picks_products'>
+
+                </div>
+
             </div>
             <div className='down_banner'>
                 <div className='down_banner_left'>
