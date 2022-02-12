@@ -43,3 +43,28 @@
     font-weight: 500;
     font-size: 1.3em;
 }
+
+.one_product_container {
+    color: black;
+    margin: 20px;
+    padding: 10px;
+    /* box-shadow: 5px 5px 30px 5px rgba(212, 212, 212, 0.466); */
+    border-radius: 9px;
+}
+
+/* .one_product_container:hover {
+    background-color: rgba(214, 214, 214, 0.123);
+    box-shadow: 5px 5px 5px 1px rgba(238, 238, 238, 0.123);
+}
+
+.img_container {
+} */
+
+.img_container img {
+    text-decoration: none;
+    object-fit: contain;
+}
+
+.card_content {
+    text-decoration: none;
+}
