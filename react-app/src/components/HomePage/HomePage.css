@@ -109,8 +109,10 @@
     grid-template-columns: repeat(3, 1fr);
     grid-auto-flow: row;
     justify-content: center;
+    align-items: center;
 }
 
 .picks_img{
-    
+    width: 20rem;
+    height: 12rem;
 }

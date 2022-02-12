@@ -10,12 +10,12 @@ function HomePage() {
     const categoriesArr = Object.values(categoriesObj)
     const products = useSelector(state=> state?.product?.products)
     const productArr = Object.values(products)
-    const product1 = productArr[2]
+    const product1 = productArr[16]
     const product2 = productArr[24]
     const product3 = productArr[18]
     const product4 = productArr[13]
-    const product5 = productArr[8]
-    const product6 = productArr[9]
+    const product5 = productArr[6]
+    const product6 = productArr[4]
 
 
     useEffect(() => {
@@ -40,8 +40,19 @@ function HomePage() {
                     </ul>
                 </div>
             </div>
+
+            <div className='down_banner'>
+                <div className='down_banner_left'>
+                    <div className='left_title'>Home Office</div>
+                    <div className='left_sub_title'>Products For A Better Way To Work</div>
+                    <div className='left_content'>Find everything you need to work from home.</div>
+                    <div className='left_content'> We cut out middlemen and maintain a lea line of modular inventory to save you up to 50% compared to traditional office furniture of similar quality.</div>
+                    <button className='banner_button'><Link className='btn_link' to={`/products`}>SHOP COLLECTIONS</Link></button>
+                </div>
+                <img className="img_banner" src="https://res.cloudinary.com/dprnsux1z/image/upload/v1644427511/ave-calvar-BbQXZ7UyX0w-unsplash_qkehs5.jpg" alt="center_banner"></img>
+            </div>
             <div className='center_container'>
-                <div>Our picks for you</div>
+                <div className="left_sub_title">Our picks for you</div>
                 <div className='picks_products'>
                     <Link to={`/products/${product1?.id}`}>
                         <img className="picks_img first" src={product1?.imageUrl} alt={product1?.category_name} />
@@ -63,16 +74,6 @@ function HomePage() {
                     </Link>
                 </div>
 
-            </div>
-            <div className='down_banner'>
-                <div className='down_banner_left'>
-                    <div className='left_title'>Home Office</div>
-                    <div className='left_sub_title'>Products For A Better Way To Work</div>
-                    <div className='left_content'>Find everything you need to work from home.</div>
-                    <div className='left_content'> We cut out middlemen and maintain a lea line of modular inventory to save you up to 50% compared to traditional office furniture of similar quality.</div>
-                    <button className='banner_button'><Link className='btn_link' to={`/products`}>SHOP COLLECTIONS</Link></button>
-                </div>
-                <img className="img_banner" src="https://res.cloudinary.com/dprnsux1z/image/upload/v1644427511/ave-calvar-BbQXZ7UyX0w-unsplash_qkehs5.jpg" alt="center_banner"></img>
             </div>
         </>
     )
