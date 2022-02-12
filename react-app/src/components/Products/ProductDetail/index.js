@@ -85,13 +85,11 @@ export default function ProductDetail() {
                     .map((star, idx) => <span key={idx}>{star}</span>)}
               </div>
               <Link className="product-det-category" to={`/category/${product?.category_name}`}>{product?.category_name}</Link>
-
               <div><p className="product-det-price">${product?.price}</p></div>
               <div><p className="product-det-desc">{product?.description}</p></div>
                 <div>
                   <div>
-                    {sessionUser &&
-                      sessionUser?.id && (
+                    {!sessionUser ? null : (
                         <button className="product-det-addCart" onClick={addItemToCart}>Add to Cart</button>
                       )}
                   </div>
