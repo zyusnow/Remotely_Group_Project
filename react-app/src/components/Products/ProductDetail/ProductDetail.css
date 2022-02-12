@@ -23,7 +23,6 @@
 }
 
 .product-det-category {
-    color: #595959;
     font-size: .85rem;
     padding: 15px 0 10px 0;
 }
@@ -62,11 +61,5 @@
 
 .product-button-container > button {
     margin: 0px 10px 0px 0px;
-    color: #595959;
     font-size: .80em;
-}
-
-.product-button-container > button:hover {
-    color:rgba(63, 0, 183, 0.55);
-    cursor: pointer;
 }

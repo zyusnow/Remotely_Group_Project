@@ -31,12 +31,12 @@ function ProfileButton({ user }) {
     return <Redirect to='/' />;
   };
 
-  const toMyOrder = (e) => {
-    e.preventDefault();
-    if(user) {
-      history.push(`/`)
-    }
-  }
+  // const toMyOrder = (e) => {
+  //   e.preventDefault();
+  //   if(user) {
+  //     history.push(`/`)
+  //   }
+  // }
   const toAddProduct = (e) => {
     e.preventDefault();
     if(user) {
@@ -55,9 +55,6 @@ function ProfileButton({ user }) {
         <ul className="profile-dropdown">
           <li>
             <Link to='/profile'>My Profile</Link>
-          </li>
-          <li>
-            <button id="nav_logout" onClick={toMyOrder}>My order</button>
           </li>
           <li>
             <button id="nav_logout" onClick={toAddProduct}>Sell product</button>
