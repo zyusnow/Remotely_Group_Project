@@ -62,47 +62,51 @@ export default function ProductDetail() {
 
     if (product) {
       return (
-        <>
-          <div className="product_img_container">
-            <div>{product?.title}</div>
-            <Link to={`/products/${productId}`}>
-              <img
-                className="productImage"
-                src={product?.imageUrl}
-                alt={product?.category_name}
-              />
-            </Link>
-          </div>
-          <div className="product_detail_container">
-            <div>{product?.user_name}</div>
-            <div>{product?.category_name}</div>
-            <div>
-              {rating > 0 &&
-                Array(rating)
-                  .fill(
-                    <span>
-                      <i className="fas fa-star"></i>
-                    </span>
-                  )
-                  .map((star, idx) => <span key={idx}>{star}</span>)}
+        <div className="product-details-page">
+          <div className="product-container">
+            <div className="product_img_container">
+                <img
+                  className="product-detail-image"
+                  src={product?.imageUrl}
+                  alt={product?.category_name}
+                  />
             </div>
+            <div className="product-detail-container">
+              <div><p className="product-det-user">{product?.user_name}</p></div>
+              <div><p className="product-det-title">{product?.title}</p></div>
+              <div>
+                {rating > 0 &&
+                  Array(rating)
+                    .fill(
+                      <span>
+                        <i className="fas fa-star"></i>
+                      </span>
+                    )
+                    .map((star, idx) => <span key={idx}>{star}</span>)}
+              </div>
+              <Link className="product-det-category" to={`/category/${product?.category_name}`}>{product?.category_name}</Link>
 
-            <div>${product?.price}</div>
-            <div>{product?.description}</div>
+              <div><p className="product-det-price">${product?.price}</p></div>
+              <div><p className="product-det-desc">{product?.description}</p></div>
+                <div>
+                  <div>
+                    {sessionUser &&
+                      sessionUser?.id && (
+                        <button className="product-det-addCart" onClick={addItemToCart}>Add to Cart</button>
+                      )}
+                  </div>
+              {sessionUser?.id === product?.userId && (
+                <div className="product-button-container">
+                  <button onClick={handleUpdate}>Update</button>
+                  <button onClick={handleDelete}>Delete product</button>
+                </div>
+              )}
+              </div>
+            </div>
           </div>
-          {sessionUser &&
-            sessionUser?.id && (
-              <button onClick={addItemToCart}>Add to Cart</button>
-            )}
-
-          {sessionUser?.id === product?.userId && (
-            <>
-              <button onClick={handleUpdate}>Update</button>
-              <button onClick={handleDelete}>Delete product</button>
-            </>
-          )}
+          
           <Reviews productId={product?.id} />
-        </>
+        </div>
       );
     } else {
       return <></>
