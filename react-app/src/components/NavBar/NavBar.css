@@ -3,7 +3,7 @@
     height: 60px;
     padding: 0 4vw;
     display: grid;
-    grid-template-columns: 1fr 2fr 3fr 0.2fr;
+    grid-template-columns: 1fr 8fr 2fr 0.2fr;
     align-items: center;
 }
 /* ------------------------------------------------------------ */
@@ -103,3 +103,14 @@ ul.modal_ul_errors {
     border-radius: 5px;
     border: 1px solid #ffd08c;
 }
+
+.searchBar input{
+    height:2em;
+    width: 80%
+}
+
+.searchBar {
+    height:2em;
+}
+
+

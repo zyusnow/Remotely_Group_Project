@@ -1,8 +1,10 @@
+import "./NavBar.css"
+
 export default function SearchBar() {
 
     return (
         <>
-            <form action="/search">
+            <form className="searchBar" action="/search">
                 <input
                     type="search"
                     name="q"
