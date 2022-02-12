@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import LoginFormModal from '../Modals/LoginFormModal';
 import SignupFormModal from '../Modals/SignupFormModal';
 import ProfileButton from './ProfileButton';
+import { loadCart } from '../../store/cart'
+import Footer from './Footer';
 import './NavBar.css';
 import SearchBar from './search';
 
@@ -11,6 +13,10 @@ import SearchBar from './search';
 function NavBar({ loaded }) {
     const location = useLocation();
     const sessionUser = useSelector(state => state.session.user);
+    const cartLength = useSelector(state => state.carts?.cart?.length);
+    const dispatch = useDispatch();
+
+    // console.log(cartLength?.length);
     let sessionLinks;
     if (sessionUser) {
         sessionLinks = (
@@ -28,6 +34,11 @@ function NavBar({ loaded }) {
             );
         }
     }
+
+    useEffect( () => {
+      dispatch(loadCart(sessionUser?.id))
+    })
+
     return (
       <>
         <nav className="nav">
@@ -38,10 +49,13 @@ function NavBar({ loaded }) {
           </div>
            <SearchBar />
           <div className="nav_right">{loaded && sessionLinks}</div>
-          <NavLink to="/cart">
+          {!sessionUser?.id ? null: 
+          <NavLink className="cart-icon" to="/cart">
             <i className="fas fa-shopping-cart"/>
-          </NavLink>
+            {<div className="shopping-cart-count">{cartLength}</div>}
+          </NavLink>}
         </nav>
+        <Footer />
       </>
     );
 }
