@@ -69,7 +69,7 @@ function LoginForm() {
                         required
                     />
                 </label>
-                <button className="button_submit" type="submit">Log In</button>
+                <button className="button_submit button_main" type="submit">Log In</button>
             </form>
             <hr className="hrmodal"/>
             <form  onSubmit={DemoLogin}>
