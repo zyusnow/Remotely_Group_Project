@@ -5,6 +5,7 @@ import LoginFormModal from '../Modals/LoginFormModal';
 import SignupFormModal from '../Modals/SignupFormModal';
 import ProfileButton from './ProfileButton';
 import { loadCart } from '../../store/cart'
+import Footer from './Footer';
 import './NavBar.css';
 import SearchBar from './search';
 
@@ -54,6 +55,7 @@ function NavBar({ loaded }) {
             {<div className="shopping-cart-count">{cartLength}</div>}
           </NavLink>}
         </nav>
+        <Footer />
       </>
     );
 }

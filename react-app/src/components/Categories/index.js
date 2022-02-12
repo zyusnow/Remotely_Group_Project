@@ -18,7 +18,7 @@ export default function Categories() {
     return (
         <>
           <div className='category_title'>{category?.name}</div>
-             <div className='products_container'>
+             <div className='products_list'>
                  {productArr?.map(product => (
                     <div className='one_product_container' key={product?.id}>
                         <div className='img_container'>
