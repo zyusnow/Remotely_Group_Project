@@ -33,7 +33,7 @@
     font-family: "Open Sans", sans-serif;
 }
 
-.rev-submit {
+/* .rev-submit {
     box-sizing: border-box;
     border-radius: 4px;
     font-size: 0.85em;
@@ -48,11 +48,68 @@
 .rev-submit:hover {
     cursor:pointer;
     opacity: 80%;
-}
+} */
 
 .rev-submit:disabled {
     cursor: auto;
     background-color: white;
     color: #6e6b724f;
     opacity:100%;
+}
+
+.review-user {
+    color:rgba(64, 0, 183, 0.4);
+    margin: 5px 7px 0px 0px;
+}
+
+.reviews-content {
+    box-sizing: border-box;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    max-width: 500px;
+}
+
+.rev-user-name-date {
+    font-size: .85rem;
+    display:flex;
+    align-items: center;
+}
+
+.date {
+    margin-left: 15px;
+    font-size: .75rem;
+    color: #595959;
+}
+
+.rev-comment-container {
+    margin-left: 30px;
+    font-size: 0.9em
+}
+
+.rev-button-container > button {
+    margin: 5px 10px 0px 0px;
+    color: #595959;
+    font-size: .70rem;
+}
+
+.rev-button-container > button:hover {
+    color:rgba(63, 0, 183, 0.55);
+    cursor: pointer;
+}
+
+.rev-write-button {
+    box-sizing: border-box;
+    border-radius: 4px;
+    font-size: 0.75em;
+    border: none;
+    align-self: center;
+    background-color: #f1641ec7;
+    color:white;
+    padding: 6px;
+    margin: 20px 0px 20px 10px;
+}
+
+.rev-write-button:hover {
+    background-color: #f1641ee7;
+    color: white
 }

@@ -44,7 +44,7 @@ function EditProduct() {
             setErrors(data);
         } else {
             setErrors([])
-            history.push("/products")
+            history.push(`/products/${productId}`)
         }
     }
 

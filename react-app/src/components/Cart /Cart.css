@@ -17,7 +17,8 @@ button {
   background-color: transparent;
 }
 button:hover{
-  color:rgba(63, 0, 183, 0.55)
+  color:rgba(63, 0, 183, 0.55);
+  cursor: pointer;
 }
 button.delete:hover{
   color: rgba(0, 28, 183, .5)
