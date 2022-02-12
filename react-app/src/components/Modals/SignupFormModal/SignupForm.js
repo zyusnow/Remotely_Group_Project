@@ -64,7 +64,9 @@ const SignupForm = () => {
 
     return (
         <>
-            <form onSubmit={onSignUp}>
+            <form
+            className="main_modal"
+            onSubmit={onSignUp}>
                 <div className='modal_ul_errors'>
                     {errors.map((error, ind) => (
                         <div key={ind}>{error}</div>
@@ -111,7 +113,7 @@ const SignupForm = () => {
                             required
                         />
                     </label>
-                    <button className="button_submit" type="submit">Sign Up</button>
+                    <button className="button_submit button_main" type="submit">Sign Up</button>
                 </div>
             </form>
             <hr className="hrmodal"/>
