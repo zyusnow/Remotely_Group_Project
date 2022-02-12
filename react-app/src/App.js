@@ -17,6 +17,7 @@ import Categories from './components/Categories';
 import EditProduct from './components/Products/EditProduct';
 import { authenticate } from './store/session';
 import Search from './components/Search';
+import Footer from './components/Footer';
 
 
 function App() {
@@ -56,6 +57,7 @@ function App() {
           </div>
         )}
       </div>
+      <Footer loaded={loaded} />
     </>
   )
 }
