@@ -11,7 +11,7 @@
     font-size: 3em;
     align-self: center;
     margin-bottom: 1.7em;
-    background: -webkit-linear-gradient(45deg, #d54fe7, #3845d4);
+    background: linear-gradient(248deg, rgba(2,0,36,1) 0%, rgba(63,0,183,0.85) 35%, rgba(0,28,183,0.85) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -36,7 +36,7 @@
 }
 
 .product_title:hover{
-    color:#8430f1
+    color:rgba(63, 0, 183, 0.8);
 }
 
 .product_price{

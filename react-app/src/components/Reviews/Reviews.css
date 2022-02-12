@@ -1,15 +1,14 @@
 .review-form {
     background-color: white;
     border-radius: 5px;
-    padding: 20px;
 }
 
 .review-title {
     text-align: center;
-    font-weight: 400;
+    font-weight: 500;
     margin-bottom: 1rem;
     font-size: 1.25rem;
-    color: #9256e0;
+    color: rgba(0, 28, 183, 0.75);
 }
 
 .rev-input-container {
@@ -24,7 +23,6 @@
 
 .rev-input-container select {
     margin: 5px 10px;
-    font-family: "Open Sans", sans-serif;
 }
 
 .rev-textarea {
@@ -33,22 +31,23 @@
     font-family: "Open Sans", sans-serif;
 }
 
-/* .rev-submit {
+.rev-submit {
     box-sizing: border-box;
     border-radius: 4px;
-    font-size: 0.85em;
+    font-size: 0.8em;
     border: none;
     align-self: center;
-    background-color: #844bcf;
+    background-color: rgba(0, 28, 183, 0.8);
     color:white;
     padding: 7px;
-    margin-top: 12px;
+    margin-top: 20px;
 }
 
 .rev-submit:hover {
-    cursor:pointer;
-    opacity: 80%;
-} */
+    cursor: pointer;
+    background-color: rgba(0, 28, 183, 1);
+    color: white;
+}
 
 .rev-submit:disabled {
     cursor: auto;
@@ -58,7 +57,7 @@
 }
 
 .review-user {
-    color:rgba(64, 0, 183, 0.4);
+    color:rgba(0, 28, 183, 0.75);
     margin: 5px 7px 0px 0px;
 }
 
@@ -88,7 +87,6 @@
 
 .rev-button-container > button {
     margin: 5px 10px 0px 0px;
-    color: #595959;
     font-size: .70rem;
 }
 

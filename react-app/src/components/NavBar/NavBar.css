@@ -15,7 +15,7 @@
 }
 
 .nav a:hover{
-    color:#8430f1;
+    color:rgba(0, 28, 183, 0.85);
 }
 
 #nav_head{
@@ -66,7 +66,7 @@
 }
 
 .cart-icon:hover > .shopping-cart-count {
-    background-color:#8430f1;
+    background-color:rgba(63, 0, 183, 0.8);
 }
 
 /* ------------------------------------------------------------ */

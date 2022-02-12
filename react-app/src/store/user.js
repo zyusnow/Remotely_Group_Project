@@ -23,16 +23,16 @@ const deleteUser = (user) => ({
 //thunks
 
 export const loadUser = (userId) => async (dispatch) => {
-  console.log('STARTING TO LOAD USER');
+
   const response = await fetch(`/api/users/${userId}`, {
     headers: {
       'Content-Type': 'application/json'
     }
   });
-  console.log(response);
+
   if (response.ok) {
     const data = await response.json();
-    console.log(data)
+
     if (data.errors) {
       return;
     }
@@ -41,7 +41,7 @@ export const loadUser = (userId) => async (dispatch) => {
 };
 
 export const editUserInfo = (user) => async (dispatch) => {
-  console.log('STARTING TO EDIT USER');
+
   const response = await fetch(`/api/users/edit/${user.id}`, {
     method: 'PUT',
     headers: {
@@ -49,10 +49,10 @@ export const editUserInfo = (user) => async (dispatch) => {
     },
     body: JSON.stringify(user)
   });
-  console.log(response);
+
   if (response.ok) {
     const data = await response.json();
-    console.log(data)
+
     if (data.errors) {
       return;
     }
@@ -61,7 +61,7 @@ export const editUserInfo = (user) => async (dispatch) => {
 }
 
 export const deleteUserInfo = (user) => async (dispatch) => {
-  console.log('STARTING TO DELETE USER');
+
   const response = await fetch(`/api/users/delete/${user.id}`, {
     method: 'DELETE',
     headers: {
@@ -69,10 +69,10 @@ export const deleteUserInfo = (user) => async (dispatch) => {
     },
     body: JSON.stringify(user)
   });
-  console.log(response);
+
   if (response.ok) {
     const data = await response.json();
-    console.log(data)
+
     if (data.errors) {
       return;
     }
