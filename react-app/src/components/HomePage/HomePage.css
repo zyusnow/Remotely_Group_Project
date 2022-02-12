@@ -102,3 +102,15 @@
     color:black;
     font-size: larger;
 }
+
+.picks_products{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-flow: row;
+    justify-content: center;
+}
+
+.picks_img{
+    
+}

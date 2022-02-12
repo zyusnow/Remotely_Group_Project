@@ -16,7 +16,6 @@ function HomePage() {
     const product4 = productArr[13]
     const product5 = productArr[8]
     const product6 = productArr[9]
-    const product7 = productArr[10]
 
 
     useEffect(() => {
@@ -45,7 +44,7 @@ function HomePage() {
                 <div>Our picks for you</div>
                 <div className='picks_products'>
                     <Link to={`/products/${product1?.id}`}>
-                        <img className="picks_img" src={product1?.imageUrl} alt={product1?.category_name} />
+                        <img className="picks_img first" src={product1?.imageUrl} alt={product1?.category_name} />
                     </Link>
                     <Link to={`/products/${product2?.id}`}>
                         <img className="picks_img" src={product2?.imageUrl} alt={product2?.category_name} />
@@ -61,9 +60,6 @@ function HomePage() {
                     </Link>
                     <Link to={`/products/${product6?.id}`}>
                         <img className="picks_img" src={product6?.imageUrl} alt={product6?.category_name} />
-                    </Link>
-                    <Link to={`/products/${product7?.id}`}>
-                        <img className="picks_img" src={product7?.imageUrl} alt={product7?.category_name} />
                     </Link>
                 </div>
 
