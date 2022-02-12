@@ -1,7 +1,7 @@
 import { useEffect,  useState } from 'react';
 import {useDispatch, useSelector } from 'react-redux';
-import { loadCart, deleteFromCart, addToCart } from '../../store/cart'
-import {Link} from 'react-router-dom'
+import { loadCart, deleteFromCart, clearCartItems} from '../../store/cart'
+import {Link, useHistory} from 'react-router-dom'
 import AddRemoveItem from './Add_Remove_Item';
 import './Cart.css'
 
@@ -11,7 +11,7 @@ function CartPage() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [total, setTotal] = useState(0);
   const dispatch = useDispatch();
-
+  const history = useHistory();
 
   useEffect(() => {
     dispatch(loadCart(id))
@@ -28,6 +28,13 @@ function CartPage() {
     dispatch(deleteFromCart(cartId));
     setIsLoaded(!isLoaded)
     dispatch(loadCart(id));
+  }
+
+  const handleCheckout = (cartId) => {
+    dispatch(clearCartItems(id));
+    setIsLoaded(!isLoaded)
+    dispatch(loadCart(id));
+    history.push('/checkout');
   }
 
   return !isLoaded ? null : (
@@ -93,13 +100,25 @@ function CartPage() {
                       >
                         {product.productTitle}
                       </li>
-                      <li className="cart_item_label" id="category">
+                      <li
+                        key={product.productCategory}
+                        className="cart_item_label"
+                        id="category"
+                      >
                         {product.productCategory}
                       </li>
-                      <li className="cart_item_label" id="quantity">
+                      <li
+                        key={product.quantity}
+                        className="cart_item_label"
+                        id="quantity"
+                      >
                         Quantity: {product.quantity}
                       </li>
-                      <li className="cart_item_label" id="item_price">
+                      <li
+                        key={product.productPrice}
+                        className="cart_item_label"
+                        id="item_price"
+                      >
                         Price: ${product.productPrice}
                       </li>
                     </ul>
@@ -107,13 +126,17 @@ function CartPage() {
                 );
               })}
           <div className="total_div_footer">
-
             {!total ? null : (
               <>
-              <div className="divider"/>
-              <p className="total_price">
-                Total Price: ${(Math.round(total * 100) / 100).toFixed(2)}
-              </p>
+                <div className="divider" />
+                <div className="total_price">
+                  Total Price: ${(Math.round(total * 100) / 100).toFixed(2)}
+                </div>
+                <div className="checkout_container">
+                  <button className="checkout_btn" onClick={handleCheckout}>
+                    Checkout
+                  </button>
+                </div>
               </>
             )}
           </div>

@@ -4,6 +4,7 @@ const GET_CART = 'cart/GET_CART';
 const ADD_CART = 'cart/ADD_CART_ITEM';
 const DELETE_CART = 'cart/DELETE_CART_ITEM'
 const EDIT_CART = 'cart/EDIT_CART_ITEM'
+const CLEAR_CART = 'cart/CLEAR_CART'
 
 const getCart = (cart) =>
   {
@@ -31,6 +32,13 @@ const editCartItem = cartItem => {
   return {
     type: EDIT_CART,
     cartItem
+  }
+}
+
+const clearCart = cart => {
+  return {
+    type: CLEAR_CART,
+    cart
   }
 }
 
@@ -100,6 +108,25 @@ export const editCart = (editedCartItem) => async (dispatch) => {
    return cartItem;
 }
 
+export const clearCartItems = (id) => async (dispatch) => {
+  const res = await fetch(`/api/cart/clear/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  if (res.ok) {
+    await dispatch(deleteCartItem(id));
+    return res.json();
+  } else if (res.status === 401) {
+    return res.json().then(({ message }) => {
+      throw new Error(message);
+    });
+  } else {
+    throw new Error("Something went wrong");
+  }
+};
+
 const initialState = {};
 //Reducer
 export default function reducer(state = initialState, action) {
@@ -118,6 +145,10 @@ export default function reducer(state = initialState, action) {
     case DELETE_CART:
       newState = { ...state };
       delete newState.cart[action.id];
+      return newState;
+    case CLEAR_CART:
+      newState = { ...state };
+      delete newState.cart;
       return newState;
     default:
       return state;

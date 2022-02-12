@@ -8,8 +8,6 @@ cart_routes = Blueprint('cart', __name__)
 
 @cart_routes.route('/<int:id>')
 def cart(id):
-    #  TODO: alter this query to join products table
-    cart = Cart.query.get(id)
     cartItems = CartItem.query.filter_by(cartId=id).join(Product).order_by(CartItem.createdAt).all()
     return jsonify([cartItem.to_dict() for cartItem in cartItems])
 
@@ -59,3 +57,16 @@ def edit_cart_item():
         db.session.add(cartItem)
         db.session.commit()
     return cartItem.to_dict()
+
+#Clear Cart Route
+@cart_routes.route('/clear/<int:id>', methods=['DELETE'])
+def clear_cart(id):
+    cart = Cart.query.get(id)
+    if cart:
+        cartItems = CartItem.query.filter_by(cartId=id).all()
+        for cartItem in cartItems:
+            db.session.delete(cartItem)
+        db.session.commit()
+    else:
+        return jsonify({'message': 'Cart does not exist'})
+    return('Successfully Cleared Cart')
