@@ -65,26 +65,25 @@ export default function ProductDetail() {
       return (
         <>
           <div className="product_img_container">
-            <Link to={`/products/${productId}`}>
               <img
                 className="img"
                 src={product?.imageUrl}
                 alt={product?.category_name}
               />
-            </Link>
           </div>
           <div className="product_detail_container">
             <div>{product?.user_name}</div>
             <div>{product?.category_name}</div>
             <div>
-              {rating > 0 &&
+              {rating > 0 ?
                 Array(rating)
                   .fill(
                     <span>
                       <i className="fas fa-star"></i>
                     </span>
                   )
-                  .map((star, idx) => <span key={idx}>{star}</span>)}
+                  .map((star, idx) => <span key={idx}>{star}</span>)
+              : <span>No Ratings Yet!</span>}
             </div>
             <div>{product?.title}</div>
             <div>${product?.price}</div>
