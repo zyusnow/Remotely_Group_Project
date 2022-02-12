@@ -29,5 +29,6 @@ class CartItem(db.Model):
             'productPrice': self.product.price,
             'productImageUrl': self.product.imageUrl,
             'productCategory': self.product.category.name,
-            'maxQuanity': self.product.quantity
+            'maxQuanity': self.product.quantity,
+            'productDescription': self.product.description
         }
