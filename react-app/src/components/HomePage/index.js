@@ -9,9 +9,12 @@ function HomePage() {
     const categoriesObj = useSelector(state => state?.category?.categories)
     const categoriesArr = Object.values(categoriesObj)
     const products = useSelector(state=> state?.product?.products)
-    console.log(products)
+    const productArr = Object.values(products)
+    const product1 = productArr[0]
+    console.log(product1)
     useEffect(() => {
         dispatch(getAllCategories())
+        dispatch(getAllProducts())
     }, [dispatch])
 
     return (
@@ -34,7 +37,12 @@ function HomePage() {
             <div className='center_container'>
                 <div>Our picks for you</div>
                 <div className='picks_products'>
-
+                    <Link to={`/products/${product1.id}`}>
+                  <img
+                    className="img"
+                    src={product1?.imageUrl}
+                    alt={product1?.category_name} />
+                </Link>
                 </div>
 
             </div>
