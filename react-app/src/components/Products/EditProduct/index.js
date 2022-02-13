@@ -67,12 +67,12 @@ function EditProduct() {
         dispatch(getOneProduct(productId))
     }, [dispatch, productId]);
 
-    const [title, setTitle] = useState(product?.title);
-    const [description, setDescription] = useState(product?.description);
-    const [imageUrl, setImageUrl] = useState(product?.imageUrl);
-    const [price, setPrice] = useState(product?.price);
-    const [quantity, setQuantity] = useState(product?.quantity);
-    const [categoryId, setCategoryId] = useState(product?.categoryId);
+    const [title, setTitle] = useState(product?.title || "");
+    const [description, setDescription] = useState(product?.description || "");
+    const [imageUrl, setImageUrl] = useState(product?.imageUrl || "");
+    const [price, setPrice] = useState(product?.price || "");
+    const [quantity, setQuantity] = useState(product?.quantity || "");
+    const [categoryId, setCategoryId] = useState(product?.categoryId || "");
     const [errors, setErrors] = useState([]);
 
     useEffect(() => {
