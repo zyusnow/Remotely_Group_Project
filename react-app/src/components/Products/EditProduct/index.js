@@ -19,14 +19,6 @@ function EditProduct() {
     const categoriesObj = useSelector(state => state?.category?.categories)
     const categoriesArr = Object.values(categoriesObj)
 
-    const [title, setTitle] = useState(product?.title);
-    const [description, setDescription] = useState(product?.description);
-    const [imageUrl, setImageUrl] = useState(product?.imageUrl);
-    const [price, setPrice] = useState(product?.price);
-    const [quantity, setQuantity] = useState(product?.quantity);
-    const [categoryId, setCategoryId] = useState(product?.categoryId);
-    const [errors, setErrors] = useState([]);
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         const product_to_update = {
@@ -48,14 +40,43 @@ function EditProduct() {
         }
     }
 
+    const handleCancel = (e) => {
+        e.preventDefault();
+        history.push('/products')
+    }
+
     useEffect(() => {
         if (!sessionUser) {
             history.push('/login')
         }
     }, [sessionUser, history])
 
+    // useEffect(() => {
+    //     if (product && (!title)) {
+    //         setTitle(product.title)
+    //         setDescription(product.description)
+    //         setImageUrl(product.imageUrl)
+    //         setPrice(product.price)
+    //         setQuantity(product.quantity)
+    //         setCategoryId(product.categoryId)
+    //     }
+    //   }, [product, title])
+
     useEffect(() => {
-        if (product && (!title)) {
+        dispatch(getAllCategories())
+        dispatch(getOneProduct(productId))
+    }, [dispatch, productId]);
+
+    const [title, setTitle] = useState(product?.title);
+    const [description, setDescription] = useState(product?.description);
+    const [imageUrl, setImageUrl] = useState(product?.imageUrl);
+    const [price, setPrice] = useState(product?.price);
+    const [quantity, setQuantity] = useState(product?.quantity);
+    const [categoryId, setCategoryId] = useState(product?.categoryId);
+    const [errors, setErrors] = useState([]);
+
+    useEffect(() => {
+        if (product){
             setTitle(product.title)
             setDescription(product.description)
             setImageUrl(product.imageUrl)
@@ -63,18 +84,8 @@ function EditProduct() {
             setQuantity(product.quantity)
             setCategoryId(product.categoryId)
         }
-      }, [product, title])
+    }, [product])
 
-    useEffect(() => {
-        dispatch(getOneProduct(productId))
-        dispatch(getAllCategories())
-    }, [dispatch, productId]);
-
-
-    const handleCancel = (e) => {
-        e.preventDefault();
-        history.push('/products')
-    }
     return (
         <div id="new-product-container">
             <form className='new-product-form' onSubmit={handleSubmit}>
