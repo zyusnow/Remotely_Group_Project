@@ -1,9 +1,9 @@
-import { useEffect,  useState } from 'react';
-import {useDispatch, useSelector } from 'react-redux';
-import { loadCart, deleteFromCart, clearCartItems} from '../../store/cart'
-import {Link, useHistory} from 'react-router-dom'
-import AddRemoveItem from './Add_Remove_Item';
-import './Cart.css'
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { loadCart, deleteFromCart, clearCartItems } from "../../store/cart";
+import { Link, useHistory } from "react-router-dom";
+import AddRemoveItem from "./Add_Remove_Item";
+import "./Cart.css";
 
 function CartPage() {
   const id = useSelector((state) => state.session?.user.id);
@@ -15,30 +15,37 @@ function CartPage() {
 
   useEffect(() => {
     dispatch(loadCart(id))
-      .then(() => setTotal(!cartItemsArray ? null :
-        cartItemsArray
-          .reduce((accum, curr) => {
-            return accum + (curr.productPrice * curr.quantity);
-          }, 0)))
+      .then(() =>
+        setTotal(
+          !cartItemsArray
+            ? null
+            : cartItemsArray.reduce((accum, curr) => {
+                return accum + curr.productPrice * curr.quantity;
+              }, 0)
+        )
+      )
       .then(() => setIsLoaded(true));
   }, [dispatch, isLoaded, id, total]);
 
   const handleDelete = (cartId) => {
     cartId = +cartId;
     dispatch(deleteFromCart(cartId));
-    setIsLoaded(!isLoaded)
+    setIsLoaded(!isLoaded);
     dispatch(loadCart(id));
-  }
+  };
 
   const handleCheckout = (cartId) => {
     dispatch(clearCartItems(id));
-    setIsLoaded(!isLoaded)
+    setIsLoaded(!isLoaded);
     dispatch(loadCart(id));
-    history.push('/checkout');
-  }
+    history.push("/checkout");
+  };
 
   return !isLoaded ? null : (
     <>
+      <div className="continue_shopping">
+        <Link to="/products">Continue Shopping</Link>
+      </div>
       <div>
         <h1 className="cart_title">Shopping Cart</h1>
       </div>
