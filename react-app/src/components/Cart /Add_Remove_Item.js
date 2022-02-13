@@ -1,7 +1,7 @@
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
-import {addToCart, deleteFromCart, editCart} from '../../store/cart'
+import {editCart} from '../../store/cart'
 
 const options = [ 1, 2, 3, 4, 5]
 function AddRemoveItem({productId, cartId, quantity, setTotal}) {

@@ -36,8 +36,10 @@ function NavBar({ loaded }) {
 
 
     useEffect( () => {
-      dispatch(loadCart(sessionUser?.id))
-    }, [])
+      if (sessionUser) {
+        dispatch(loadCart(sessionUser?.id))
+      }
+    }, [dispatch, sessionUser])
 
     return (
       <>
