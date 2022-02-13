@@ -13,7 +13,7 @@ function Checkout() {
         </div>
         <div>You will receive an email at {user.email} to confirm.</div>
 
-      <div><Link to="/products">Continue Shopping</Link></div>
+      <div className="cont_shop"><Link to="/products">Continue Shopping</Link></div>
     </div>
   )
 }
