@@ -57,7 +57,7 @@ function App() {
               <Route path='/search'><Search /></Route>
               <ProtectedRoute path='/profile' exact={true}><ProfilePage /></ProtectedRoute>
               <Route path='/profile/:id/edit'><EditProfile/></Route>
-              <Route path='/checkout'><Checkout /></Route>
+              <ProtectedRoute path='/checkout'><Checkout /></ProtectedRoute>
               <Route><PageNotFound /></Route>
             </Switch>
           </div>
