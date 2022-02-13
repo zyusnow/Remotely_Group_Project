@@ -91,8 +91,8 @@ function CartPage() {
             ? null
             : cartItemsArray?.map((product) => {
                 return (
-                  <>
-                    <ul key={product.id} className="item_list">
+                  <div key={product.id}>
+                    <ul className="item_list">
                       <li
                         key={product.productTitle}
                         className="cart_item_label"
@@ -122,7 +122,7 @@ function CartPage() {
                         Price: ${product.productPrice}
                       </li>
                     </ul>
-                  </>
+                  </div>
                 );
               })}
           <div className="total_div_footer">
