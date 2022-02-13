@@ -10,11 +10,11 @@ function ProfilePage(){
  const sessionUser = useSelector(state => state.session?.user);
  const products = useSelector(state => state.user?.user?.products)
  const id = sessionUser.id;
-const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
  useEffect(() => {
   dispatch(loadUser(id)).then(user => setUser(user)).then(() => setIsLoaded(true));
- }, [id]);
+ }, [dispatch, id]);
 
  if (!isLoaded || !sessionUser) {
    return null;
@@ -61,22 +61,22 @@ const dispatch = useDispatch();
        <h2>My Products</h2>
        <div className="products_list_profile">
          <div className="my_products_info">
-           {products?.map((product) => {
-             if (product) {
+           {products?.map((product, idx) => {
+            //  if (product) {
                return (
-                 <>
+                 <div key={idx}>
                    <div className="product_square">
-                     <div key={product.imageUrl}>
-                       <img className="product_img" src={product.imageUrl} />
+                     <div key={product?.imageUrl}>
+                       <img className="product_img" src={product?.imageUrl} alt={product?.title}/>
                      </div>
-                     <div>{product.title}</div>
-                     <div key={product.id}>
-                       <Link to={`/products/${product.id}/edit`}>Edit</Link>
+                     <div>{product?.title}</div>
+                     <div key={product?.id}>
+                       <Link to={`/products/${product?.id}/edit`}>Edit</Link>
                      </div>
                    </div>
-                 </>
+                 </div>
                );
-             }
+            //  }
            })}
          </div>
        </div>
