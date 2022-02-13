@@ -13,7 +13,7 @@ import SearchBar from './search';
 function NavBar({ loaded }) {
     const location = useLocation();
     const sessionUser = useSelector(state => state.session.user);
-    const cartLength = useSelector(state => state.carts?.cart?.length);
+    const cart = useSelector(state => state.carts?.cart);
     const dispatch = useDispatch();
 
     let sessionLinks;
@@ -34,9 +34,10 @@ function NavBar({ loaded }) {
         }
     }
 
+
     useEffect( () => {
       dispatch(loadCart(sessionUser?.id))
-    })
+    }, [])
 
     return (
       <>
@@ -51,7 +52,9 @@ function NavBar({ loaded }) {
           {!sessionUser?.id ? null: 
           <NavLink className="cart-icon" to="/cart">
             <i className="fas fa-shopping-cart"/>
-            {<div className="shopping-cart-count">{cartLength}</div>}
+            {<div className="shopping-cart-count">{cart?.reduce((accum, curr) => {
+              return curr.quantity + accum
+            }, 0)}</div>}
           </NavLink>}
         </nav>
         <Footer />
