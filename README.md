@@ -1,6 +1,7 @@
 # Flask React Project
 
-This is the starter for the Flask React project.
+Remotely,inspired by Esty, is designed for people to build a comfortable home office, especially for work-from-home working style. 
+Check out our live link: https://remotely-shop.herokuapp.com/category/Accessories
 
 ## Getting started
 
