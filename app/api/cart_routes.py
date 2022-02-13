@@ -42,7 +42,7 @@ def delete_cart_item(id):
         db.session.commit()
     else:
         return jsonify({'message': 'Item does not exist in cart'})
-    return('Successfully Deleted Item')
+    return jsonify({'message': 'Successfully Deleted Item'})
 
 # Edit Cart Item Route
 @cart_routes.route('/edit', methods=['PUT'])
@@ -69,4 +69,4 @@ def clear_cart(id):
         db.session.commit()
     else:
         return jsonify({'message': 'Cart does not exist'})
-    return('Successfully Cleared Cart')
+    return jsonify({'message': 'Successfully Cleared Cart'})
