@@ -9,7 +9,9 @@ h1 {
   font-weight: 300;
   text-align: center;
   color: rgba(63, 0, 183, 1);
-  font-size: 2.5em
+  font-size: 2.5em;
+  position: relative;
+  z-index: 1;
 }
 h2 {
   width: 100%;
@@ -41,6 +43,8 @@ button.delete:hover {
 }
 
 .continue_shopping a{
+  position:relative;
+  z-index: 4;
   font-weight:200;
 }
 .continue_shopping a:hover{
@@ -56,6 +60,7 @@ button.delete:hover {
   align-content: space-between;
   background-color: rgba(236, 236, 236, 0.5);
   border-radius: 1em;
+
 
 }
 .single_item {
@@ -91,7 +96,8 @@ ul.cart_items{
 div.single_item{
   box-sizing: border-box;
   padding: 55px;
-  height:400px;
+  height:350px;
+  padding: 10px;
 
 }
 .total_div {
