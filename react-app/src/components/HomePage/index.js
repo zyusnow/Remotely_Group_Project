@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getAllCategories } from '../../store/category';
-import { getAllProducts } from '../../store/product';
+import { getTopProducts } from '../../store/product';
 import './HomePage.css'
 
 function HomePage() {
@@ -15,8 +15,12 @@ function HomePage() {
     const productsArr = Object.values(productsObj)
 
     useEffect(() => {
-        dispatch(getAllCategories()).then(() => dispatch(getAllProducts())).then(() => setIsLoaded(true));
+        dispatch(getAllCategories()).then(() => dispatch(getTopProducts())).then(() => setIsLoaded(true));
     }, [dispatch])
+
+    if (!isLoaded) {
+      return null
+    }
 
     return (
       <>
