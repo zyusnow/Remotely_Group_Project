@@ -73,3 +73,8 @@ def edit(id):
         return product_to_edit.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
+
+@product_routes.route('/top/')
+def top_products():
+    products = Product.query.order_by(Product.createdAt).limit(16)
+    return {'products': [product.to_dict() for product in products]}

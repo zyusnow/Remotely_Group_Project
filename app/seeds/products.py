@@ -2,21 +2,21 @@ from app.models import db, Product
 
 def seed_products():
   product01 = Product(
-    title='Remotely Adjustable Height Desk',
+    title='WorkPro® Electric Height-Adjustable Standing Desk with Wireless Charging, 60"W, Black',
     userId=1,
-    imageUrl='https://res.cloudinary.com/bigtechnik/image/upload/v1644253577/Remotely/image_dalnxk.jpg',
+    imageUrl='https://res.cloudinary.com/bigtechnik/image/upload/v1644794034/Remotely/WorkPro%C2%AE%20Electric%20Height-Adjustable%20Standing%20Desk.webp',
     price = 399.99,
-    description='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
-    quantity=10,
+    description='Upgrade your office workstation with this 60-inch WorkPro electric sit-stand desk. The aluminum frame provides sturdy support, while the built-in power outlets and charging interfaces keep your devices powered all day long for convenience. This WorkPro electric sit-stand desk is height-adjustable with 4 programmable memory presets to suit different needs, and the paper laminate finish helps protect against chips and scratches.',
+    quantity=100,
     categoryId=1,
   )
   product02 = Product(
     title='Keychron K2 Keyboard',
     userId=5,
     imageUrl='https://res.cloudinary.com/bigtechnik/image/upload/v1644253526/Remotely/image_mhtykj.png',
-    price = 100.99,
-    description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-    quantity=10,
+    price = 79.99,
+    description = 'Keychron K2 is a 75% layout (84-keys) white backlit compact Bluetooth mechanical keyboard. The ultimate keyboard that retains shortcut and arrow keys.With a unique Mac layout provides all necessary Mac function keys, while compatible with Windows. It connects with up to 3 devices with the reliable and broad compatibility Broadcom Bluetooth chipset proved from time over time.',
+    quantity=100,
     categoryId=3,
   )
   product03 = Product(
@@ -24,8 +24,8 @@ def seed_products():
     userId=1,
     imageUrl='https://res.cloudinary.com/bigtechnik/image/upload/v1644253487/Remotely/image_yrnqdn.png',
     price = 999.99,
-    description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-    quantity=10,
+    description = 'iPad Pro features the powerful Apple M1 chip for next-level performance and all-day battery life. An immersive 12.9-inch Liquid Retina XDR display for viewing and editing HDR photos and videos.¹ And a front camera with Center Stage keeps you in frame automatically during video calls. iPad Pro has pro cameras and a LiDAR Scanner for stunning photos, videos, and immersive AR. Thunderbolt for connecting to high-performance accessories. And you can add Apple Pencil for note-taking, drawing, and marking up documents, and the Magic Keyboard for a responsive typing experience and trackpad.',
+    quantity=100,
     categoryId=2,
   )
   product04 = Product(
@@ -33,52 +33,52 @@ def seed_products():
     userId=3,
     imageUrl='https://res.cloudinary.com/bigtechnik/image/upload/v1644253515/Remotely/image_xqoaoa.png',
     price = 149.99,
-    description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    description = 'Magic Keyboard with Numeric Keypad features an extended layout, with document navigation controls for quick scrolling and full-size arrow keys for gaming. A scissor mechanism beneath each key allows for increased stability, while optimized key travel and a low profile provide a comfortable and precise typing experience. The numeric keypad is also great for spreadsheets and finance applications. And the built-in, rechargeable battery is incredibly long-lasting, powering your keyboard for about a month or more between charges.',
     quantity=10,
     categoryId=3,
   )
   product05 = Product(
-    title='ALT Over The Ear Headset',
+    title='SteelSeries - Arctis 7+ Wireless 7.1 Surround Sound  Headset',
     userId=1,
-    imageUrl='https://res.cloudinary.com/bigtechnik/image/upload/v1644253404/Remotely/image_dgz2jl.jpg',
+    imageUrl='https://res.cloudinary.com/bigtechnik/image/upload/v1644793586/Remotely/SteelSeries%20-%20Arctis%207%2B%20Wireless%207.1%20Surround%20Sound%20Gaming%20Headset%20for%20PS5%7C4%20%2C%20PC%2C%20Mac%2C%20Switch%2C%20and%20Android%20-%20Black.jpg',
     price = 99.99,
-    description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-    quantity = 10,
+    description = 'The SteelSeries Arctis 7+ Wireless headset is designed specifically for multi-system compatibility (PC, PlayStation, Mac, Android, and Switch) with 7.1 Surround Sound on PC. It has a 30-hour battery life, ClearCast mic, easy on-ear headset controls like ChatMix, a durable lightweight steel frame, and lossless ultra-low latency 2.4GHz wireless.',
+    quantity = 100,
     categoryId=3,
   )
   product06 = Product(
-    title = 'Desktop Air Purifier',
+    title = 'LG - PuriCare Mini Air Purifier - Black',
     userId = 1,
-    imageUrl='https://res.cloudinary.com/bigtechnik/image/upload/v1644254451/Remotely/image_upspw6.png',
+    imageUrl='https://res.cloudinary.com/bigtechnik/image/upload/v1644793094/Remotely/LG%20-%20PuriCare%20Mini%20Air%20Purifier%20-%20Black.jpg',
     price = 199.99,
-    description='Lorem ipsum dolor sit amet, consectetur adispiscing elit, sed do eismod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-    quantity=10,
+    description='Pure air wherever you go. The micro particle sensor inside the LG PuriCare™ 360° Air Purifier detects contaminants as small as one microns or smaller in diameter (≤ PM1), for more effective filtration. Enhance home comfort by efficiently eliminating these microscopic pollutants for improved air quality.',
+    quantity=100,
     categoryId=8,
   )
   product07 = Product(
-    title = 'L Shaped Office Desk',
+    title = 'kathy ireland® Home by Bush Furniture Madison Avenue 60"W L-Shaped Desk With Hutch, Modern Gray',
     userId = 2,
-    imageUrl='https://res.cloudinary.com/bigtechnik/image/upload/v1644421335/Remotely/image_jmmg3t.jpg',
-    price = 489.99,
-    description='Lorem ipsum dolor sit amet, consectetur adispiscing elit, sed do eismod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    imageUrl='https://res.cloudinary.com/bigtechnik/image/upload/v1644796392/Remotely/kathy%20ireland%C2%AE%20Home%20by%20Bush%20Furniture%20Madison%20Avenue%2060%22W%20L-Shaped%20Desk%20With%20Hutch%2C%20Modern%20Gray.webp',
+    price = 715.99,
+    description='The stylish and progressive Madison Avenue 60"W L-Shaped Desk with Hutch presents an ideal workspace solution for the modern home office. Get to work on this spacious corner desk with storage and enjoy an appealing geometric design that comes in your choice of attractive finishes.',
     quantity=10,
     categoryId=1
   )
   product08 = Product(
-    title = 'Leather Executive Chair',
+    title = 'Flash Furniture - High Back LeatherSoft Executive Swivel Office Chair',
     userId = 1,
-    imageUrl='https://res.cloudinary.com/bigtechnik/image/upload/v1644421311/Remotely/image_beprjd.jpg',
-    price = 299.99,
-    description='Lorem ipsum dolor sit amet, consectetur adispiscing elit, sed do eismod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    imageUrl='https://res.cloudinary.com/bigtechnik/image/upload/v1644793210/Remotely/Flash%20Furniture%20-%20High%20Back%20LeatherSoft%20Executive%20Swivel%20Office%20Chair%20with%20Flared%20Arms%20-%20Black.jpg',
+    price = 294.99,
+    description='Select this value priced leather chair by flash furniture for an incredible value. This chair will provide the needed comfort for completing work related tasks or leisurely browsing the internet. The chair features attractive upholstery gathering on the seat and back cushions. Personalize this chair with custom text or a logo to show off your individual style or company design.',
     quantity=10,
     categoryId=1
   )
   product09 = Product(
-    title = 'Office Chair',
+    title = 'Steelcase - Gesture Shell Back Office Chair - Onyx',
     userId = 1,
-    imageUrl='https://res.cloudinary.com/bigtechnik/image/upload/v1644421316/Remotely/image_mvksla.jpg',
-    price = 199.99,
-    description='Lorem ipsum dolor sit amet, consectetur adispiscing elit, sed do eismod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    imageUrl='https://res.cloudinary.com/bigtechnik/image/upload/v1644796932/Remotely/Steelcase%20-%20Gesture%20Shell%20Back%20Office%20Chair%20-%20Onyx.jpg',
+    price = 1263.99,
+    description="Perfect for the endurance sitter and technology power user, Gesture adapts to your every move, and every device you use, to provide ultimate, long-lasting comfort and support for your body. With the most inclusive fit of any chair in our portfolio, everyone feels comfortable sitting in Gesture. Our proprietary seat cushion design leverages built in air pockets that conform to your body and reduce pressure that comes from long term sitting. Arrives fully assembled and is backed by a 12-year warranty.",
     quantity=10,
     categoryId=1
   )
@@ -87,34 +87,34 @@ def seed_products():
     userId = 4,
     imageUrl='https://res.cloudinary.com/bigtechnik/image/upload/v1644421939/Remotely/image_b0u3dt.jpg',
     price=24.99,
-    description='Lorem ipsum dolor sit amet, consectetur adispiscing elit, sed do eismod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    description='Moleskine classic notebooks are perfect notebooks for writing journals, a daily diary, or note taking in college classes or meetings. Moleskine notebooks are beloved by travelers & bullet journalists for their slim design..',
     quantity=10,
     categoryId=4
   )
   product11 = Product(
-    title='24" x 36" Whiteboard',
+    title='Lorell® Magnetic Dry-Erase Whiteboard Easel, 36" x 48", Aluminum Frame With Silver Finish',
     userId=1,
-    imageUrl='https://res.cloudinary.com/bigtechnik/image/upload/v1644421219/Remotely/image_smki1y.png',
+    imageUrl='https://res.cloudinary.com/bigtechnik/image/upload/v1644794163/Remotely/Lorell%C2%AE%20Magnetic%20Dry-Erase%2036%22%20x%2048%22.webp',
     price=149.99,
-    description='Lorem ipsum dolor sit amet, consectetur adispiscing elit, sed do eismod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    description='This whiteboard easel features a double-sided design that revolves to provide a fresh board when needed. Its magnetic surface allows you to simply attach notes or magnetic accessories to keep them within quick reach.',
     quantity=10,
     categoryId=5
   )
   product12 = Product(
-    title= '72" x 36" Whiteboard',
+    title= 'Quartet® DuraMax® Magnetic Dry-Erase Whiteboard, 96" x 48", Aluminum Frame With Silver Finish',
     userId=9,
-    imageUrl='https://res.cloudinary.com/bigtechnik/image/upload/v1644421223/Remotely/image_pjedx7.jpg',
+    imageUrl='https://res.cloudinary.com/bigtechnik/image/upload/v1644794346/Remotely/Quartet%C2%AE%20DuraMax%C2%AE%20Magnetic%20Dry-Erase%20Whiteboard%2C%2096.webp',
     price=299.99,
-    description='Lorem ipsum dolor sit amet, consectetur adispiscing elit, sed do eismod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    description='Brainstorm and collaborate with this Quartet DuraMax porcelain magnetic whiteboard. The ultra-smooth, durable surface does not stain or ghost, while the magnetic board lets you display memos and announcements. Get a clean, modern look and lasting durability from the aluminum frame. This heavy-duty Quartet DuraMax porcelain magnetic dry-erase whiteboard has a full-length tray to hold markers and is designed for daily use in busy classrooms and offices.',
     quantity=10,
     categoryId=5
   )
   product13 = Product(
     title = 'Sharpie S-Note - 24 pack',
     userId = 2,
-    imageUrl='https://res.cloudinary.com/bigtechnik/image/upload/v1644436803/Remotely/image_rzzzpf.jpg',
+    imageUrl='https://res.cloudinary.com/bigtechnik/image/upload/v1644794417/Remotely/Sharpie%C2%AE%20S-Note%20Highlighters.webp',
     price = 9.99,
-    description='Lorem ipsum dolor sit amet, consectetur adispiscing elit, sed do eismod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    description='Ignite your imagination with Sharpie S-Note creative markers. Versatile and fun, both a marker and highlighter, adding color to note-taking, underlining, highlighting, drawing and more. The versatile chisel tip lets you quickly switch between precise and broad lines, while no-bleed ink keeps your work looking clean.',
     quantity=10,
     categoryId=4
   )
@@ -123,7 +123,7 @@ def seed_products():
     userId = 3,
     imageUrl='https://res.cloudinary.com/dikzc7kwd/image/upload/v1644539115/epson-printer_xnaayk.webp',
     price = 219.99,
-    description='Lorem ipsum dolor sit amet, consectetur adispiscing elit, sed do eismod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    description='Print professional-quality photos and documents from almost anywhere with the Epson WorkForce Pro WF-4830 Wireless Inkjet All-in-One Color Printer. App-based and e-mail printing allow you to print from your computer, tablet or smartphone, and with speeds of 25 pages per minute in black, you can have your documents quickly. Plus the DURABrite Ultra ink dries quickly, so you can enjoy printouts with minimal smudging.',
     quantity=10,
     categoryId=6
   )
@@ -132,25 +132,25 @@ def seed_products():
     userId = 7,
     imageUrl='https://res.cloudinary.com/dikzc7kwd/image/upload/v1644539165/office-cupboard_hmi54u.webp',
     price = 359.99,
-    description='Lorem ipsum dolor sit amet, consectetur adispiscing elit, sed do eismod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    description='Keep office supplies and other items organized with this 72"H x 36"W Realspace steel storage cabinet. A fixed shelf provides room for your tools and supplies, while the 4 adjustable shelves let you customize your storage options. A metal construction with a sleek finish offers durability and adds a professional look to your space. This Realspace steel storage cabinet features a magnetic door latch for easy access.',
     quantity=10,
     categoryId=7
   )
   product16 = Product(
-    title = 'LG 32" Class QHD IPS Monitor',
+    title = 'LG 34” UltraWide Full HD HDR Monitor with FreeSync',
     userId = 3,
-    imageUrl='https://res.cloudinary.com/dikzc7kwd/image/upload/v1644539212/lg-monitor_xxc1fd.jpg',
-    price = 219.99,
-    description='Lorem ipsum dolor sit amet, consectetur adispiscing elit, sed do eismod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    imageUrl='https://res.cloudinary.com/bigtechnik/image/upload/v1644794713/Remotely/LG%2034%E2%80%9D%20UltraWide%20Full%20HD%20HDR%20Monitor%20with%20FreeSync.jpg',
+    price = 329.99,
+    description='UltraWide monitors immerse you in everything from content creation to gaming. See a panoramic view made possible by the extra wide 21:9 IPS display for true color accuracy at wide angles. Experience easier multitasking, quickly switch between applications and enjoy a full, unencumbered view.',
     quantity=10,
     categoryId=2
   )
   product17 = Product(
-    title = 'HP 14a-na0122od Chromebook, 14" Screen, Intel® Pentium®, 4GB Memory',
+    title = 'HP - 14" 2-In-1 Touchscreen Chromebook',
     userId = 2,
-    imageUrl='https://res.cloudinary.com/dikzc7kwd/image/upload/v1644539248/hp-laptop_ptxg8h.webp',
+    imageUrl='https://res.cloudinary.com/bigtechnik/image/upload/v1644797706/Remotely/6455914_sd_nn52rt.jpg',
     price = 289.99,
-    description='Lorem ipsum dolor sit amet, consectetur adispiscing elit, sed do eismod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    description='Powered up: The Chromebook x360 is powered by an Intel® processor and packed full of the features you have to have, like a long battery life, and a full-size keyboard. An entertainment experience that adapts to you: With the versatility of a 360° hinge, the beauty of a micro-edge, HD touch display and Audio by B&O, your entertainment experience looks as good as it sounds. Apps for everything: Redefine how you work and play with the seamless integration of your favorite Chrome browser, always secure and up to date, and access to a huge selection of apps in the Google Play Store',
     quantity=15,
     categoryId=2
   )
@@ -174,11 +174,11 @@ def seed_products():
   )
 
   product20 = Product(
-    title = 'Home office storage',
+    title = 'Safco® Steel Triple-Tray Letter-Size Wall Pocket',
     userId = 8,
-    imageUrl='https://res.cloudinary.com/dprnsux1z/image/upload/v1644539062/Brenton-Studio-Unbreakable-3-Pocket-Letter_v4celi.jpg',
+    imageUrl='https://res.cloudinary.com/bigtechnik/image/upload/v1644797792/Remotely/912462_wpit88.webp',
     price = 14.99,
-    description="https://res.cloudinary.com/dprnsux1z/image/upload/v1644539062/Brenton-Studio-Unbreakable-3-Pocket-Letter_v4celi.jpg",
+    description="Contemporary design complements your workspace's décor. Steel construction features a durable, mar-resistant, powder-coat finish. Accommodates letter-size documents and offers 3 compartments for organization. Includes wall-mounting hardware.",
     quantity=100,
     categoryId=7
   )

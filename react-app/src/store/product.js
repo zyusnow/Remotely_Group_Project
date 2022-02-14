@@ -44,6 +44,16 @@ export const getAllProducts = () => async (dispatch) => {
     }
 }
 
+export const getTopProducts = () => async (dispatch) => {
+    const res = await fetch('api/products/top/');
+    if (res.ok) {
+        const productsObj = await res.json();
+        dispatch(getProducts(productsObj.products));
+        return productsObj.products
+    }
+}
+
+
 export const getOneProduct = (productId) => async (dispatch) => {
     const res = await fetch(`/api/products/${productId}/`);
     if (res.ok) {
