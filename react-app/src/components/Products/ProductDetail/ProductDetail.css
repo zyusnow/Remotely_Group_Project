@@ -63,3 +63,9 @@
     margin: 0px 10px 0px 0px;
     font-size: .80em;
 }
+
+#loginToAdd button {
+    padding: 0px;
+    margin-top: 30px;
+    text-decoration: underline;
+}

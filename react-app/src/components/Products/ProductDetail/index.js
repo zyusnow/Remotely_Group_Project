@@ -3,9 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams, Link} from 'react-router-dom';
 import { deleteOneProduct, getOneProduct } from '../../../store/product';
 import { addToCart } from '../../../store/cart';
-// import PageNotFound from '../../PageNotFound';
 import Reviews from '../../Reviews';
 import './ProductDetail.css'
+import LoginFormModal from '../../Modals/LoginFormModal';
+
 
 export default function ProductDetail() {
     const dispatch = useDispatch();
@@ -60,6 +61,13 @@ export default function ProductDetail() {
       history.push('/cart');
     }
 
+    const openLoginModal = (e) => {
+      e.preventDefault()
+      return (
+        <LoginFormModal />
+      )
+    }
+
     if (product) {
       return (
         <div className="product-details-page">
@@ -89,7 +97,7 @@ export default function ProductDetail() {
               <div><p className="product-det-desc">{product?.description}</p></div>
                 <div>
                   <div>
-                    {!sessionUser ? null : (
+                    {!sessionUser ? <div id="loginToAdd"><LoginFormModal /> to Add to Cart</div> : (
                         <button className="product-det-addCart" onClick={addItemToCart}>Add to Cart</button>
                       )}
                   </div>
