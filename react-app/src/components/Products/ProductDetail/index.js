@@ -61,13 +61,6 @@ export default function ProductDetail() {
       history.push('/cart');
     }
 
-    const openLoginModal = (e) => {
-      e.preventDefault()
-      return (
-        <LoginFormModal />
-      )
-    }
-
     if (product) {
       return (
         <div className="product-details-page">
