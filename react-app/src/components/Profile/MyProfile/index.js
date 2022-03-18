@@ -1,24 +1,44 @@
 import { useState, useEffect } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { loadUser } from '../../../store/user'
 import './Profile.css';
+import { deleteOneProduct } from '../../../store/product';
+
 
 function ProfilePage(){
- const [user, setUser] = useState({});
- const [isLoaded, setIsLoaded] = useState(false);
- const sessionUser = useSelector(state => state.session?.user);
- const products = useSelector(state => state.user?.user?.products)
- const id = sessionUser.id;
+  const history = useHistory()
   const dispatch = useDispatch();
+
+  const [user, setUser] = useState({});
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [del, setDel] = useState(false);
+
+  const sessionUser = useSelector(state => state.session?.user);
+  const products = useSelector(state => state.user?.user?.products)
+  const id = sessionUser.id;
 
  useEffect(() => {
   dispatch(loadUser(id)).then(user => setUser(user)).then(() => setIsLoaded(true));
- }, [dispatch, id]);
+ }, [dispatch, id, del]);
 
  if (!isLoaded || !sessionUser) {
    return null;
  }
+
+  const handleDelete = (e, productId) =>{
+    e.preventDefault();
+    const confirmed = window.confirm("Are you sure you want to delete the product?")
+    if (confirmed) {
+      return dispatch(deleteOneProduct(+productId))
+        .then(() => setDel(!del))
+    } 
+  }
+
+  const handleUpdate = (e, productId) => {
+    e.preventDefault();
+    history.push(`/products/${productId}/edit`);
+  }
 
  return (
    <>
@@ -61,17 +81,22 @@ function ProfilePage(){
        <h2>My Products</h2>
        <div className="products_list_profile">
          <div className="my_products_info">
-           {products?.map((product, idx) => {
+           {products?.map((product, idx, idx2) => {
             //  if (product) {
                return (
                  <div key={idx}>
                    <div className="product_square">
+                   <Link key={idx2} to={`/products/${product.id}`}>
                      <div key={product?.imageUrl}>
                        <img className="product_img" src={product?.imageUrl} alt={product?.title}/>
                      </div>
                      <div>{product?.title}</div>
+                  </Link>
                      <div key={product?.id}>
-                       <Link to={`/products/${product?.id}/edit`}>Edit</Link>
+                      <div className="product-button-container">
+                        <button onClick={(e) => handleUpdate(e, product?.id)} style={{color: "black"}}>Update</button>
+                        <button onClick={(e) => handleDelete(e, product?.id)} style={{color: "black"}}>Delete</button>
+                      </div>
                      </div>
                    </div>
                  </div>

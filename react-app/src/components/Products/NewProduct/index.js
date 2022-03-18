@@ -39,10 +39,10 @@ export default function NewProduct() {
     const errors = [];
     if (title.length < 2 || !title) errors.push("Please enter a valid title")
     if (title.length > 100) errors.push("Title must be less than 100 characters")
-    if (description.length < 2) errors.push("Please enter a valid description")
-    if (description.length > 255) errors.push("Description must be less than 255 characters")
     if (price < 1) errors.push("Price must be at least $1")
     if (quantity < 1) errors.push("Please enter a valid quantity")
+    if (description.length < 2) errors.push("Please enter a valid description")
+    if (description.length > 255) errors.push("Description must be less than 255 characters")
     if (!imageUrl) errors.push('Please provide an image URL.')
 
     setErrors(errors)
@@ -137,7 +137,7 @@ export default function NewProduct() {
               value={categoryId}
               onChange={(e) => setCategoryId(e.target.value)}
             >
-              <option value=''>Select a category</option>
+              <option value='' disabled>Select a category</option>
               {categoriesArr.map((category) => (
                 <option key={category?.id} value={category?.id}>{category?.name}</option>
               ))}
@@ -154,7 +154,7 @@ export default function NewProduct() {
               onChange={(e) => setImageUrl(e.target.value)}
             />
           </div>
-          <div>
+          <div className="product-buttons">
             <button type="submit" className="add-product-button">Add Product</button>
             <button className="add-product-button cancel" onClick={handleCancel}>Cancel</button>
           </div>

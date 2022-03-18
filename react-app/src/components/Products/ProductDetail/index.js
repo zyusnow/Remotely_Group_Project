@@ -36,11 +36,12 @@ export default function ProductDetail() {
     }, [dispatch, productId, productReviews.length])
 
     const handleDelete = e =>{
-        e.preventDefault();
-        const deleted_product = dispatch(deleteOneProduct(productId))
-        if (deleted_product) {
-            history.push('/products')
-        }
+      e.preventDefault();
+      const confirmed = window.confirm("Are you sure you want to delete the product?")
+      if (confirmed) {
+        return dispatch(deleteOneProduct(+productId))
+          .then(() => history.push('/products'))
+      } 
     }
 
     const handleUpdate = e => {

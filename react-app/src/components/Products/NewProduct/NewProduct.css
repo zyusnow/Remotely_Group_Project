@@ -14,6 +14,8 @@
     font-size: 3em;
     font-weight: 500;
     font-style:oblique;
+    color: #3F00B7;
+    text-align: center;
 }
 
 .form_content{
@@ -28,7 +30,7 @@
     color:rgb(30, 30, 31);
     margin-top: 30px;
     width: 16%;
-    background: -webkit-linear-gradient(45deg, #d54fe7, #3845d4);
+    background: linear-gradient(248deg, rgba(2,0,36,1) 0%, rgba(63,0,183,0.85) 35%, rgba(0,28,183,0.85) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -38,13 +40,14 @@
 .form_content textarea,
 .form_content select{
     width: 80%;
-    margin: 30px 40px;
+    margin: 15px 40px;
     line-height: 2.2em;
+    border-radius: 10px;
     border: 1px solid rgba(0, 0, 0, 0.2);
     font-size: 14px;
     color:rgb(70, 70, 70);
-    padding-left: 10px;
-    font-family: "Open Sans", sans-serif;
+    padding: 1px 10px;
+    font-family: 'Exo 2', sans-serif;
 }
 
 .form_content select{
@@ -88,10 +91,15 @@
     border: 1px solid rgba(0, 0, 0, 0.2);
     padding: 20px;
     text-align: center;
+    margin-bottom: 15px;
 }
 
 .urgent-errors {
     color: red;
     font-size: x-large;
     font-weight: bolder;
+}
+
+.product-buttons {
+    text-align: center;
 }

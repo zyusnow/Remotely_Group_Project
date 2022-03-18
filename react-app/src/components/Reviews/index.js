@@ -76,12 +76,12 @@ export default function Reviews({ productId }) {
                         <h3 className="review-title">Add a Review</h3>
                         <form>
                             <div className='rev-input-container'>
-                                <label>*Select a rating:
+                                <label><span style={{color:"red"}}>*</span>Select a rating:
                                     <select
                                     value={rating}
                                     onChange={(e) => setRating(e.target.value)}
                                     >
-                                        <option value='' disabled>Rating</option>
+                                        <option value='' disabled>Select</option>
                                         <option value={Number(5)}>5</option>
                                         <option value={Number(4)}>4</option>
                                         <option value={Number(3)}>3</option>
