@@ -57,6 +57,7 @@ function LoginForm() {
                         onChange={updateEmail}
                         placeholder='Email'
                         required
+                        autoComplete='off'
                     />
                 </label>
                 <label>

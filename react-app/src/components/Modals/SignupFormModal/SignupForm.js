@@ -81,6 +81,7 @@ const SignupForm = () => {
                             onChange={updateUsername}
                             placeholder='Username'
                             required
+                            autoComplete='off'
                         />
                     </label>
                     <label htmlFor='email'>
@@ -91,6 +92,7 @@ const SignupForm = () => {
                             onChange={updateEmail}
                             placeholder='Email'
                             required
+                            autoComplete='off'
                         />
                     </label>
                     <label htmlFor='password'>
