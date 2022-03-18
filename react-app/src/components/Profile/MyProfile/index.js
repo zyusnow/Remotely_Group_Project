@@ -90,12 +90,12 @@ function ProfilePage(){
                      <div key={product?.imageUrl}>
                        <img className="product_img" src={product?.imageUrl} alt={product?.title}/>
                      </div>
-                     <div>{product?.title}</div>
+                     <div  style={{color: "black"}}>{product?.title}</div>
                   </Link>
                      <div key={product?.id}>
                       <div className="product-button-container">
-                        <button onClick={(e) => handleUpdate(e, product?.id)} style={{color: "black"}}>Update</button>
-                        <button onClick={(e) => handleDelete(e, product?.id)} style={{color: "black"}}>Delete</button>
+                        <button onClick={(e) => handleUpdate(e, product?.id)}>Update</button>
+                        <button onClick={(e) => handleDelete(e, product?.id)}>Delete</button>
                       </div>
                      </div>
                    </div>

@@ -10,17 +10,17 @@
 /* ------------------------------------------------------------ */
 
 .nav a {
-    color: black;
+    color: rgba(0, 28, 183, 0.85);
     font-weight: 600;
 }
 
-.nav a:hover{
-    color:rgba(0, 28, 183, 0.85);
+#nav_head{
+    font-size: 1.7em;
+    text-decoration: none;
 }
 
-#nav_head{
-    font-size: 1.5em;
-    text-decoration: none;
+#nav_head:hover {
+    color: rgba(63, 0, 183, 0.8);
 }
 
 .nav_right{
@@ -93,7 +93,7 @@
 #nav_logout{
     border: none;
     background-color: transparent;
-    font-family: "Open Sans", sans-serif;
+    font-family: 'Exo 2', sans-serif;
     font-size: 16px;
 }
 
@@ -133,7 +133,7 @@ ul.modal_ul_errors {
     border-radius: 20px;
     border: 1px solid rgba(92, 92, 92, 0.7);
     padding-left: 10px;
-
+    font-family: 'Exo 2', sans-serif;
 }
 
 .searchBar {

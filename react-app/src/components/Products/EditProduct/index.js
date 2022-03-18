@@ -166,7 +166,7 @@ function EditProduct() {
                         />
                     </div>
                     <div className="product-buttons">
-                        <button type="submit" className="add-product-button">Update Product</button>
+                        <button type="submit" className="add-product-button">Save Changes</button>
                         <button className="add-product-button cancel" onClick={handleCancel}>Cancel</button>
                     </div>
                 </div>
