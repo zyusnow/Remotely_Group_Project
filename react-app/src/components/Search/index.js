@@ -17,7 +17,7 @@ export default function Search() {
 
     if (!products?.length) {
         return (
-            <h3>No results found for {q}</h3>
+            <h3>No results found for "{q}"</h3>
         )
     } else {
         return (
