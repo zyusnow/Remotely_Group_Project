@@ -35,10 +35,11 @@
   border: 1px solid rgb(133, 133, 133);;
   background: none;
   border-radius: 5px;
+  font-family: 'Exo 2', sans-serif;
 }
 
 #modal-content input:focus{
-  outline:rgba(0, 0, 0, 0);
+  /* outline:rgba(0, 0, 0, 0); */
   border: 1px solid rgba(0, 0, 0, 0);
 }
 

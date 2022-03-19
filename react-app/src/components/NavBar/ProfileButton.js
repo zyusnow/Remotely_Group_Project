@@ -3,7 +3,6 @@ import { useHistory, Link} from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 
-
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const history = useHistory()
@@ -37,12 +36,6 @@ function ProfileButton({ user }) {
   //     history.push(`/`)
   //   }
   // }
-  const toAddProduct = (e) => {
-    e.preventDefault();
-    if(user) {
-      history.push(`/addProduct`)
-    }
-  }
 
   return (
     <>
@@ -57,7 +50,7 @@ function ProfileButton({ user }) {
             <Link to='/profile'>My Profile</Link>
           </li>
           <li>
-            <button id="nav_logout" onClick={toAddProduct}>Sell product</button>
+            <Link to='/addProduct'>Sell Product</Link>
           </li>
           <li>
             <button id="nav_logout" onClick={logout}>Log Out</button>

@@ -19,3 +19,7 @@ hr {
     border-bottom: 1px solid rgba(182, 182, 182, 0.3);
     border-left: none;
 }
+
+button {
+    font-family: 'Exo 2', sans-serif
+}

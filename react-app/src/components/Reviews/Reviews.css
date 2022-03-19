@@ -26,9 +26,12 @@
 }
 
 .rev-textarea {
-    margin-top: 0px;
-    height: 50px;
-    font-family: "Open Sans", sans-serif;
+    padding: 10px;
+    margin-top: 3px;
+    height: 70px;
+    font-family: 'Exo 2', sans-serif;
+    border-radius: 10px;
+    border: 1px solid rgba(92, 92, 92, 0.7);
 }
 
 .rev-submit {

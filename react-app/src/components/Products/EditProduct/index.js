@@ -165,8 +165,8 @@ function EditProduct() {
                             onChange={(e) => setImageUrl(e.target.value)}
                         />
                     </div>
-                    <div>
-                        <button type="submit" className="add-product-button">Update Product</button>
+                    <div className="product-buttons">
+                        <button type="submit" className="add-product-button">Save Changes</button>
                         <button className="add-product-button cancel" onClick={handleCancel}>Cancel</button>
                     </div>
                 </div>

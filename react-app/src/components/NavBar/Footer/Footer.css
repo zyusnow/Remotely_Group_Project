@@ -24,7 +24,7 @@ a>.about_links{
   text-decoration: none;
   color: rgba(0, 28, 183, 1)
 }
-a:hover{
+.footer a:hover{
   color:rgba(0, 28, 183, 1)
 }
 a:visited{
