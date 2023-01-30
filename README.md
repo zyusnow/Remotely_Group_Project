@@ -4,6 +4,7 @@
 
 [Remotely](http://remotely-shop.herokuapp.com) is a (loosely based) Etsy clone. Users are able to sign-up/login, sell and buy products, view/edit their own products and leave ratings/reviews on other items.
 
+
 ## Splash Page
 ![Splash Page](https://res.cloudinary.com/bigtechnik/image/upload/v1644852891/Remotely/Image_2-13-22_at_1.03_PM_ggztja.jpg)
 
